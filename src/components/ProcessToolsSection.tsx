@@ -13,7 +13,7 @@ const TAPE_ITEMS = [
   'VIDEO EDITOR & VISUAL DESIGNER'
 ];
 
-const SoftwareIcon: React.FC<{ code: string }> = ({ code }) => {
+const SoftwareIcon: React.FC<{ code?: string }> = ({ code }) => {
   switch (code) {
     case 'Ps':
       return (
