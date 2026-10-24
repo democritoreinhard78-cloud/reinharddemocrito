@@ -94,26 +94,14 @@ const SoftwareIcon: React.FC<{ code?: string }> = ({ code }) => {
         </svg>
       );
     case 'Cc':
-      // CapCut geometric scissor / bow-tie mark
+      // Official CapCut logo uploaded by user
       return (
-        <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" aria-hidden="true">
-          <rect
-            x="1"
-            y="1"
-            width="22"
-            height="22"
-            rx="4"
-            fill="#111315"
-            stroke="#E2E8F0"
-            strokeWidth="1.3"
-          />
-          <path
-            d="M6 7.5h3.2L18 14.5v2H14.8L6 9.5v-2zm0 9v-2l8.8-7H18v2l-8.8 7H6z"
-            fill="#FFFFFF"
-          />
-          <rect x="15.5" y="6.8" width="2.5" height="1.5" fill="#FFFFFF" />
-          <rect x="15.5" y="15.7" width="2.5" height="1.5" fill="#FFFFFF" />
-        </svg>
+        <img
+          src="/capcut-logo.png"
+          alt=""
+          aria-hidden="true"
+          className="w-5 h-5 rounded-[4px] object-cover shrink-0"
+        />
       );
     case 'Cv':
       // Canva gradient circle + C monogram
