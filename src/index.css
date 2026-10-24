@@ -1,22 +1,67 @@
 @import "tailwindcss";
 
+@theme {
+  --color-ink: #050607;
+  --color-panel: #0b0d0f;
+  --color-studio: #1e2629;
+  --color-line: #1f2427;
+  --color-cream: #f4f4f2;
+  --color-mute: #7c8488;
+  --color-rose: #f4f4f2;
+  --color-wine: #1b2225;
+  --color-wine-deep: #0e1214;
+
+  --font-display: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-wordmark: 'Oswald', 'Space Grotesk', sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
 @layer base {
   * {
     box-sizing: border-box;
   }
-  
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
+  }
+
   html, body {
     margin: 0;
     padding: 0;
-    background-color: #07090d;
-    color: #e2e8f0;
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--color-ink);
+    color: #f4f4f2;
+    font-family: var(--font-sans);
     overflow-x: hidden;
   }
+}
 
-  h1, h2, h3, .font-display {
-    font-family: 'Montserrat', sans-serif;
+/* Marquee animation for the crossed tape ribbons */
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0%);
   }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee-left {
+  animation: marquee-left 28s linear infinite;
+}
+
+.animate-marquee-right {
+  animation: marquee-right 32s linear infinite;
 }
 
 /* Custom sleek scrollbar */
@@ -25,25 +70,26 @@
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #07090d;
+  background: var(--color-ink);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
-  border-radius: 9999px;
+  background: #262b2e;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #06b6d4;
+  background: #f4f4f2;
 }
 
-/* Cyan glows matching mockup */
-.cyan-glow {
-  box-shadow: 0 0 15px rgba(6, 182, 212, 0.45);
-}
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
-.cyan-glow-sm {
-  box-shadow: 0 0 8px rgba(6, 182, 212, 0.35);
-}
-
-.cyan-text-glow {
-  text-shadow: 0 0 12px rgba(6, 182, 212, 0.5);
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -8,6 +8,10 @@ export interface PersonalInfo {
   lastName: string;
   title: string;
   subtitle: string;
+  /** Short headline shown under the hero title. */
+  tagline: string;
+  /** One-line intro shown in the hero. */
+  intro: string;
   email: string;
   phone: string;
   location: LocationInfo;
@@ -59,6 +63,11 @@ export interface ProjectItem {
   description: string;
 }
 
+export interface ProcessStep {
+  title: string;
+  description: string;
+}
+
 export interface PortfolioData {
   personalInfo: PersonalInfo;
   socialLinks: SocialLink[];
@@ -70,7 +79,10 @@ export interface PortfolioData {
   whatCanIDo: string[];
   designSkills: string[];
   hobbies: HobbyItem[];
+  process: ProcessStep[];
   projects: ProjectItem[];
 }
 
-export type TabType = 'Home' | 'About' | 'Resume' | 'Portfolio' | 'Contact';
+export const SECTIONS = ['home', 'projects', 'process', 'about', 'contact'] as const;
+
+export type SectionId = (typeof SECTIONS)[number];

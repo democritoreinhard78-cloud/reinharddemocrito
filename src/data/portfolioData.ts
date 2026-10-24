@@ -4,107 +4,84 @@ export const portfolioData: PortfolioData = {
   personalInfo: {
     firstName: "REINHARD",
     lastName: "DEMOCRITO",
-    title: "Graphic Designer",
-    subtitle: "Art Director & Visual Strategist",
-    email: "reinhard.democrito@uptowork.com",
-    phone: "774-555-3021",
+    title: "Director, Video Editor & Visual Designer",
+    subtitle: "Director, Video Editor & Visual Designer",
+    tagline: "I direct, edit & design stories that connect.",
+    intro: "Every project is a partnership - I make sure I understand your story before diving in.",
+    email: "democritoreinhard78@gmail.com",
+    phone: "+63 917 145 6375",
     location: {
       city: "Digos City",
-      address: "12529 State Road 535"
+      address: "Davao del Sur, Philippines"
     },
     bio: [
-      "Graphic Designer with over 10 years of experience specializing in IT Department management for international logistics companies.",
-      "I can implement effective IT Strategies at local and global levels. My greatest strength is business awareness, which enables me to permanently streamline infrastructure and applications."
+      "Hi, I'm Reinhard Democrito. For me, good creative work simply comes down to curiosity and honest effort. As someone who directs, edits, and designs, I don't just take a brief and disappear—I like treating every project as a partnership, making sure I really understand your story and what you want to achieve before diving in.",
+      "I try to keep things simple: stay grounded, communicate clearly, and be someone people genuinely enjoy working with. I'm constantly eager to learn new tools, try different creative approaches, and pick up fresh experiences with every project. Whatever we're building together, I put real care into making sure the final piece feels right and actually connects with people."
     ]
   },
 
   socialLinks: [
-    { name: "Behance", icon: "behance", url: "https://behance.net" },
-    { name: "Facebook", icon: "facebook", url: "https://facebook.com" },
-    { name: "LinkedIn", icon: "linkedin", url: "https://linkedin.com" },
-    { name: "Instagram", icon: "instagram", url: "https://instagram.com" },
-    { name: "Pinterest", icon: "pinterest", url: "https://pinterest.com" },
-    { name: "Twitter", icon: "twitter", url: "https://twitter.com" },
-    { name: "WhatsApp", icon: "whatsapp", url: "https://whatsapp.com" }
+    { name: "Facebook", icon: "facebook", url: "https://facebook.com/ReinHard17" },
+    { name: "Gmail", icon: "gmail", url: "mailto:democritoreinhard78@gmail.com" },
+    { name: "Instagram", icon: "instagram", url: "https://instagram.com/nardongfotek/" },
+    { name: "WhatsApp", icon: "whatsapp", url: "https://wa.me/639171456375" }
   ],
 
+  // NOTE: proficiency levels are estimates - adjust to your real skill level.
   softwareSkills: [
-    { name: "Photoshop", code: "Ps", level: 95, color: "#31A8FF" },
-    { name: "Illustrator", code: "Ai", level: 90, color: "#FF9A00" },
-    { name: "InDesign", code: "Id", level: 85, color: "#FF3366" },
-    { name: "Premiere", code: "Pr", level: 80, color: "#9999FF" },
-    { name: "After Effect", code: "Ae", level: 88, color: "#9999FF" },
-    { name: "Figma", code: "Fg", level: 92, color: "#0ACF83" }
+    { name: "Photoshop", code: "Ps", level: 85, color: "#31A8FF" },
+    { name: "Premiere", code: "Pr", level: 90, color: "#9999FF" },
+    { name: "After Effects", code: "Ae", level: 75, color: "#CF96FD" },
+    { name: "CapCut", code: "Cc", level: 90, color: "#E2E8F0" },
+    { name: "Canva", code: "Cv", level: 85, color: "#00C4CC" },
+    { name: "PowerPoint", code: "Pp", level: 85, color: "#FF7A4D" }
   ],
 
+  // NOTE: levels are estimates - adjust as needed.
   languages: [
-    { name: "English", level: 95 },
-    { name: "Arabic", level: 80 },
-    { name: "Turkish", level: 65 }
+    { name: "Filipino", level: 100 },
+    { name: "English", level: 85 }
   ],
 
-  personalSkills: "Creativity - Team Work - organisation",
+  personalSkills: "Curiosity - Communication - Collaboration",
 
-  experience: [
-    {
-      period: "2017 to present",
-      company: "WHITE FISH ADVERTISING CO.",
-      role: "Art Director",
-      description: "Leading creative brand identity, art direction, and high-impact digital campaigns."
-    },
-    {
-      period: "2012 to 2017",
-      company: "PYRAMIDS SUN ADVERTISING CO.",
-      role: "Senior Graphic Designer",
-      description: "Spearheaded brand revamps, packaging design, and omnichannel visual systems."
-    },
-    {
-      period: "2007 to 2012",
-      company: "PLANET STATIONARY & PRITING SERVICES CO.",
-      role: "Graphic Designer",
-      description: "Executed high-precision prepress, editorial layouts, and corporate publications."
-    },
-    {
-      period: "2004 to 2007",
-      company: "PLAY GRAPHIC ADVERTISING AGENCY",
-      role: "Graphic Designer",
-      description: "Designed creative advertising collateral, outdoor billboards, and retail signage."
-    },
-    {
-      period: "2002 to 2004",
-      company: "MARCO FLORIDA INTERNET & COMPUTERS SERVICES CO.",
-      role: "Graphic Designer",
-      description: "Created early web interfaces, UI graphics, and interactive multimedia assets."
-    }
-  ],
+  // Add real work history here; the Experience block is hidden while this is empty.
+  experience: [],
 
   education: {
-    degree: "BS/MS in Computer Science",
-    school: "University of Maryland",
-    details: "Focus on Human-Computer Interaction & Digital Media Arts"
+    degree: "Computer Science",
+    school: "Cor Jesu College, Digos",
+    details: "Digos City, Davao del Sur"
   },
 
   whatCanIDo: [
-    "Logo - Stationery - Branding",
-    "Newsletter - Packaging - Catalog",
-    "Strategy - Advertisment",
-    "Digital UI/UX - Web Experiences"
+    "Direction - Storytelling - Concept",
+    "Video Editing - Motion Graphics",
+    "Visual Design - Social Media Graphics",
+    "Presentations - Canva & PowerPoint"
   ],
 
   designSkills: [
-    "Creativity - Planing & Strategy",
-    "Signs & Typography - Layout",
-    "Grid - Color sense - Inspiration",
-    "Interactive Design - Art Direction"
+    "Storytelling - Pacing & Rhythm",
+    "Video Editing - Color & Sound",
+    "Layout - Typography",
+    "Client Collaboration - Communication"
   ],
 
   hobbies: [
-    { name: "Reading", icon: "book" },
-    { name: "Photography", icon: "camera" },
     { name: "Drawing", icon: "palette" },
-    { name: "Travel", icon: "plane" }
+    { name: "Writing", icon: "pen" },
+    { name: "Editing", icon: "film" },
+    { name: "Speaking", icon: "mic" }
   ],
-
+  // Editable: describe your own workflow here.
+  process: [
+    { title: "Discover", description: "Understanding your story, goals and audience." },
+    { title: "Define", description: "Shaping the concept, tone and creative direction." },
+    { title: "Create", description: "Shooting, designing and building the first cut." },
+    { title: "Refine", description: "Editing, polishing and fine-tuning together with you." },
+    { title: "Deliver", description: "Final files, ready to connect with people." }
+  ],
   projects: [
     {
       id: 1,

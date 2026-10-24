@@ -1,108 +1,167 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Maximize2, Minimize2 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
+import { DoubleSquare } from './SectionLabel';
 
-interface AboutSectionProps {
-  isFullscreen: boolean;
-  toggleFullscreen: () => void;
-}
-
-export const AboutSection: React.FC<AboutSectionProps> = ({
-  isFullscreen,
-  toggleFullscreen
-}) => {
-  const { personalInfo } = portfolioData;
+export const AboutSection: React.FC = () => {
+  const { personalInfo, projects, education } = portfolioData;
+  const featured = projects.slice(0, 4);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeProject = featured[activeIndex] ?? featured[0];
 
   return (
-    <div className="relative min-h-[100svh] w-full flex flex-col justify-between pt-20 sm:pt-24 pb-8 sm:pb-10 px-5 sm:px-8 lg:px-16 overflow-x-hidden overflow-y-auto bg-[#07090d]">
-      <div className="relative z-10 max-w-7xl mx-auto w-full my-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-4">
-        {/* Left Column: Bio & Info */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="lg:col-span-6 space-y-6 sm:space-y-7 z-20"
+    <section
+      id="about"
+      className="relative w-full bg-ink border-b border-white/10 py-24 sm:py-36 overflow-hidden"
+    >
+      {/* Top Manifesto Statement with Flanking Hairlines & Stacked Twin Squares */}
+      <div className="relative flex items-center justify-center w-full py-6 sm:py-10">
+        {/* Left Horizontal Hairline + Stacked Squares */}
+        <div
+          aria-hidden="true"
+          className="hidden md:flex items-center flex-1 max-w-[14vw] lg:max-w-[16vw]"
         >
-          {/* Section Header */}
-          <div>
-            <div className="inline-block">
-              <h2 className="text-2xl sm:text-3xl font-extrabold uppercase tracking-wider text-white font-display">
-                About
-              </h2>
-              {/* Cyan Accent Bar under Heading */}
-              <div className="h-[2px] w-full bg-cyan-400 mt-1 shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
-            </div>
+          <div className="w-full h-px bg-white/30" />
+          <div className="flex flex-col gap-1.5 pl-2 shrink-0">
+            <span className="w-1.5 h-1.5 bg-white block" />
+            <span className="w-1.5 h-1.5 bg-white block" />
+          </div>
+        </div>
 
-            {/* Email Contact Subhead */}
-            <div className="mt-2">
-              <a
-                href={`mailto:${personalInfo.email}`}
-                className="text-xs sm:text-sm text-cyan-400 hover:text-cyan-300 font-mono tracking-wide transition-colors"
+        {/* Center Two-Tone Display Manifesto */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.7 }}
+          className="px-5 sm:px-10 text-center max-w-5xl mx-auto"
+        >
+          <h2 className="font-display font-normal uppercase text-[clamp(1.5rem,3.4vw,3.1rem)] leading-[1.12] tracking-[-0.02em]">
+            <span className="block text-white">WE REJECT THE SUPERFLUOUS.</span>
+            <span className="block text-white">CRAFTING VISUAL STORIES AND</span>
+            <span className="block">
+              <span className="text-white">CREATIVE DIRECTION </span>
+              <span className="text-white/40">GROUNDED</span>
+            </span>
+            <span className="block text-white/40">IN EXTREME CLARITY, PURPOSE,</span>
+            <span className="block text-white/40">AND UNCOMPROMISED CRAFT.</span>
+          </h2>
+        </motion.div>
+
+        {/* Right Stacked Squares + Horizontal Hairline */}
+        <div
+          aria-hidden="true"
+          className="hidden md:flex items-center flex-1 max-w-[14vw] lg:max-w-[16vw]"
+        >
+          <div className="flex flex-col gap-1.5 pr-2 shrink-0">
+            <span className="w-1.5 h-1.5 bg-white block" />
+            <span className="w-1.5 h-1.5 bg-white block" />
+          </div>
+          <div className="w-full h-px bg-white/30" />
+        </div>
+      </div>
+
+      {/* Interactive 4-Column Spotlight Strip + Bio Drawer (matching bottom of left reference panel) */}
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-10 pt-20 sm:pt-28">
+        <div className="grid grid-cols-1 lg:grid-cols-12 border-t border-white/15">
+          {featured.map((proj, idx) => {
+            const isActive = idx === activeIndex;
+            return (
+              <div
+                key={proj.id}
+                className={`lg:col-span-3 border-b lg:border-b-0 lg:border-r last:border-r-0 border-white/15 p-4 sm:p-5 flex flex-col justify-between transition-colors ${
+                  isActive ? 'bg-white/[0.03]' : 'hover:bg-white/[0.015]'
+                }`}
               >
-                {personalInfo.email}
-              </a>
+                {/* Top Selector Header */}
+                {isActive ? (
+                  <div className="flex items-center justify-between gap-2 pb-6">
+                    <span className="bg-white text-black font-mono text-[9px] font-medium uppercase tracking-[0.18em] px-2.5 py-1.5 truncate">
+                      {proj.title}
+                    </span>
+                    <DoubleSquare />
+                    <span className="font-mono text-[8.5px] uppercase tracking-[0.16em] text-white/60 truncate">
+                      {proj.category}
+                    </span>
+                  </div>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setActiveIndex(idx)}
+                    className="w-full border border-white/20 px-3 py-2 flex items-center justify-between gap-2 text-left hover:border-white/50 transition-colors cursor-pointer"
+                  >
+                    <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/75 truncate">
+                      {proj.title}
+                    </span>
+                    <span className="w-1.5 h-1.5 bg-white inline-block shrink-0" />
+                  </button>
+                )}
+
+                {/* Expanded Details Inside Active Column */}
+                {isActive ? (
+                  <div className="space-y-4 pt-2">
+                    <p className="font-mono text-[8.5px] uppercase tracking-[0.14em] text-white/65 leading-relaxed">
+                      {proj.description}
+                    </p>
+                    <div className="flex items-center justify-between text-[8px] font-mono uppercase tracking-[0.2em] text-white/45 pt-2 border-t border-white/10">
+                      <span>[ 00{proj.id} ]</span>
+                      <span>{proj.year}</span>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="hidden lg:flex items-center justify-between pt-10 text-[8px] font-mono uppercase tracking-[0.18em] text-white/30">
+                    <span>[ 00{proj.id} ]</span>
+                    <span>{proj.category}</span>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Reinhard Personal Bio & Credentials Bar */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-12 sm:pt-16 border-t border-white/10 items-start">
+          <div className="lg:col-span-4 space-y-2">
+            <div className="flex items-center gap-3">
+              <DoubleSquare />
+              <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.22em] text-white/80">
+                ABOUT {personalInfo.firstName} {personalInfo.lastName}
+              </span>
             </div>
+            <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/45 pl-6">
+              {personalInfo.title} · {personalInfo.location.city}
+            </p>
+            {activeProject && (
+              <p className="font-mono text-[8.5px] uppercase tracking-[0.18em] text-white/40 pl-6 pt-2">
+                [ FOCUS: {activeProject.title.toUpperCase()} ]
+              </p>
+            )}
           </div>
 
-          {/* Description Paragraphs */}
-          <div className="space-y-3.5 sm:space-y-4 text-slate-300 font-light text-xs sm:text-sm md:text-base leading-relaxed max-w-lg">
-            {personalInfo.bio.map((paragraph, idx) => (
-              <p key={idx}>{paragraph}</p>
+          <div className="lg:col-span-5 space-y-3">
+            {personalInfo.bio.map((paragraph, index) => (
+              <p
+                key={index}
+                className="font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.13em] text-white/70 leading-[1.7]"
+              >
+                {paragraph}
+              </p>
             ))}
           </div>
 
-          {/* Location Pin */}
-          <div className="pt-2 sm:pt-4">
-            <div className="inline-flex flex-col">
-              <div className="flex items-center space-x-2 text-xs sm:text-sm text-slate-300 tracking-wide">
-                <MapPin className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
-                <span>{personalInfo.location.city}</span>
-              </div>
-              <p className="text-xs text-slate-400 pl-5.5 pt-0.5">
-                {personalInfo.location.address}
-              </p>
-              {/* Cyan Accent Underline */}
-              <div className="h-[1px] w-full bg-cyan-500/60 mt-2" />
-            </div>
+          <div className="lg:col-span-3 space-y-1 lg:text-right">
+            <p className="font-mono text-[8.5px] uppercase tracking-[0.2em] text-white/45">
+              [ EDUCATION ]
+            </p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-white">
+              {education.degree}
+            </p>
+            <p className="font-mono text-[9px] uppercase tracking-[0.15em] text-white/60">
+              {education.school}
+            </p>
           </div>
-        </motion.div>
-
-        {/* Right Column: Moody Portrait Blending into Canvas */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
-          className="lg:col-span-6 relative flex justify-center lg:justify-end"
-        >
-          <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-lg h-72 sm:h-96 lg:h-[500px] overflow-hidden rounded-xl lg:rounded-none">
-            {/* The Low-Key Portrait */}
-            <img
-              src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1200&q=85"
-              alt={`${personalInfo.firstName} ${personalInfo.lastName}`}
-              className="w-full h-full object-cover object-top filter grayscale contrast-125 brightness-90"
-            />
-
-            {/* Seamless Vignette Fades to Background (#07090d) */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#07090d] via-transparent to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#07090d] via-transparent to-transparent hidden lg:block" />
-            <div className="absolute inset-0 bg-gradient-to-l from-[#07090d]/60 via-transparent to-transparent hidden lg:block" />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#07090d]/40 via-transparent to-[#07090d]" />
-          </div>
-        </motion.div>
+        </div>
       </div>
-
-      {/* Bottom Bar Fullscreen Button */}
-      <div className="relative z-10 flex justify-end pt-4 border-t border-white/5">
-        <button
-          onClick={toggleFullscreen}
-          aria-label={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
-          className="hidden sm:block text-slate-500 hover:text-cyan-400 transition-colors p-1 cursor-pointer"
-          title="Toggle Fullscreen (or press F)"
-        >
-          {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
-        </button>
-      </div>
-    </div>
+    </section>
   );
 };
