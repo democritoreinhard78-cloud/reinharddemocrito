@@ -13,6 +13,158 @@ const TAPE_ITEMS = [
   'VIDEO EDITOR & VISUAL DESIGNER'
 ];
 
+const SoftwareIcon: React.FC<{ code: string }> = ({ code }) => {
+  switch (code) {
+    case 'Ps':
+      return (
+        <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" aria-hidden="true">
+          <rect
+            x="1"
+            y="1"
+            width="22"
+            height="22"
+            rx="4"
+            fill="#001E36"
+            stroke="#31A8FF"
+            strokeWidth="1.4"
+          />
+          <text
+            x="12"
+            y="16"
+            textAnchor="middle"
+            fill="#31A8FF"
+            fontSize="10.5"
+            fontWeight="700"
+            fontFamily="Inter, sans-serif"
+          >
+            Ps
+          </text>
+        </svg>
+      );
+    case 'Pr':
+      return (
+        <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" aria-hidden="true">
+          <rect
+            x="1"
+            y="1"
+            width="22"
+            height="22"
+            rx="4"
+            fill="#00005B"
+            stroke="#9999FF"
+            strokeWidth="1.4"
+          />
+          <text
+            x="12"
+            y="16"
+            textAnchor="middle"
+            fill="#9999FF"
+            fontSize="10.5"
+            fontWeight="700"
+            fontFamily="Inter, sans-serif"
+          >
+            Pr
+          </text>
+        </svg>
+      );
+    case 'Ae':
+      return (
+        <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" aria-hidden="true">
+          <rect
+            x="1"
+            y="1"
+            width="22"
+            height="22"
+            rx="4"
+            fill="#00005B"
+            stroke="#CF96FD"
+            strokeWidth="1.4"
+          />
+          <text
+            x="12"
+            y="16"
+            textAnchor="middle"
+            fill="#CF96FD"
+            fontSize="10.5"
+            fontWeight="700"
+            fontFamily="Inter, sans-serif"
+          >
+            Ae
+          </text>
+        </svg>
+      );
+    case 'Cc':
+      // CapCut geometric scissor / bow-tie mark
+      return (
+        <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" aria-hidden="true">
+          <rect
+            x="1"
+            y="1"
+            width="22"
+            height="22"
+            rx="4"
+            fill="#111315"
+            stroke="#E2E8F0"
+            strokeWidth="1.3"
+          />
+          <path
+            d="M6 7.5h3.2L18 14.5v2H14.8L6 9.5v-2zm0 9v-2l8.8-7H18v2l-8.8 7H6z"
+            fill="#FFFFFF"
+          />
+          <rect x="15.5" y="6.8" width="2.5" height="1.5" fill="#FFFFFF" />
+          <rect x="15.5" y="15.7" width="2.5" height="1.5" fill="#FFFFFF" />
+        </svg>
+      );
+    case 'Cv':
+      // Canva gradient circle + C monogram
+      return (
+        <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" aria-hidden="true">
+          <defs>
+            <linearGradient id="canvaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#00C4CC" />
+              <stop offset="100%" stopColor="#7D2AE8" />
+            </linearGradient>
+          </defs>
+          <circle cx="12" cy="12" r="10.5" fill="url(#canvaGrad)" />
+          <path
+            d="M15.4 14.3c-.7 1.1-1.9 1.8-3.3 1.8-2.2 0-3.8-1.7-3.8-4.1s1.7-4.1 3.9-4.1c1.3 0 2.4.6 3.1 1.6l-1.4 1c-.4-.6-1-.9-1.7-.9-1.2 0-2.1 1-2.1 2.4s.9 2.4 2.1 2.4c.8 0 1.4-.4 1.8-1.1l1.4 1z"
+            fill="#FFFFFF"
+          />
+        </svg>
+      );
+    case 'Pp':
+    default:
+      // PowerPoint orange presentation pie-chart icon
+      return (
+        <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" aria-hidden="true">
+          <circle cx="13" cy="12" r="9.5" fill="#D24726" />
+          <path d="M13 2.5A9.5 9.5 0 0 1 22.5 12H13V2.5z" fill="#FF8F6B" />
+          <rect
+            x="2"
+            y="6.5"
+            width="11"
+            height="11"
+            rx="2"
+            fill="#B73618"
+            stroke="#FF7A4D"
+            strokeWidth="1"
+          />
+          <text
+            x="7.5"
+            y="15"
+            textAnchor="middle"
+            fill="#FFFFFF"
+            fontSize="8.5"
+            fontWeight="700"
+            fontFamily="Inter, sans-serif"
+          >
+            P
+          </text>
+        </svg>
+      );
+  }
+};
+
 export const ProcessToolsSection: React.FC = () => {
   const { personalInfo, softwareSkills, designSkills, hobbies } = portfolioData;
   const fullName = `${personalInfo.firstName} ${personalInfo.lastName}`;
@@ -281,16 +433,21 @@ export const ProcessToolsSection: React.FC = () => {
                 TOOLKIT &amp; SOFTWARE
               </span>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
               {softwareSkills.map((skill) => (
                 <div
                   key={skill.name}
-                  className="border border-white/15 bg-white/[0.02] px-3 py-2 flex items-center justify-between"
+                  className="group border border-white/15 hover:border-white/35 bg-white/[0.02] hover:bg-white/[0.05] px-3 py-2.5 flex items-center justify-between gap-2 transition-colors"
                 >
-                  <span className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-white">
-                    {skill.name}
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <SoftwareIcon code={skill.code} />
+                    <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] text-white truncate">
+                      {skill.name}
+                    </span>
+                  </div>
+                  <span className="font-mono text-[8.5px] text-white/45 shrink-0">
+                    [{skill.code}]
                   </span>
-                  <span className="font-mono text-[8.5px] text-white/45">[{skill.code}]</span>
                 </div>
               ))}
             </div>
