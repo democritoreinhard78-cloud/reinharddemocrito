@@ -5,6 +5,7 @@ import { portfolioData } from '../data/portfolioData';
 import { telHref } from '../utils/contact';
 import { ContactForm } from './ContactForm';
 import { DoubleSquare } from './SectionLabel';
+import { SocialIcon } from './SocialIcons';
 
 const NAV_LINKS = [
   { label: 'HOME', href: '#home' },
@@ -137,16 +138,20 @@ export const ContactSection: React.FC = () => {
               </ul>
 
               {/* Column 3: Real Social Channels */}
-              <ul className="space-y-2.5 col-span-2 sm:col-span-1">
+              <ul className="space-y-3 col-span-2 sm:col-span-1">
                 {socialLinks.map((social) => (
                   <li key={social.name}>
                     <a
                       href={social.url}
                       target={social.url.startsWith('http') ? '_blank' : undefined}
                       rel="noopener noreferrer"
-                      className="font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-white/65 hover:text-white transition-colors"
+                      className="inline-flex items-center gap-2.5 font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-white/75 hover:text-white transition-colors group"
                     >
-                      [{social.name.toUpperCase()}]
+                      <SocialIcon
+                        name={social.icon}
+                        className="w-4 h-4 shrink-0 transition-transform duration-200 group-hover:scale-110"
+                      />
+                      <span>[{social.name.toUpperCase()}]</span>
                     </a>
                   </li>
                 ))}
