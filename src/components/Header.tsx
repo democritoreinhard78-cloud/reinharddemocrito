@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { portfolioData } from '../data/portfolioData';
 
 const NAV_ITEMS = [
   { id: 'about', label: 'About' },
@@ -17,9 +16,6 @@ export const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const { firstName, lastName } = portfolioData.personalInfo;
-  const fullNameLower = `${firstName} ${lastName}`.toLowerCase();
-
   return (
     <header
       className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 ${
@@ -31,10 +27,10 @@ export const Header: React.FC = () => {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-12 flex flex-col items-center gap-2 sm:gap-4">
         <a
           href="#home"
-          aria-label={`${firstName} ${lastName} - Home`}
-          className="font-wordmark text-xl sm:text-[28px] font-bold tracking-[-0.03em] text-white lowercase leading-none hover:opacity-80 transition-opacity"
+          aria-label="NarCraft - Home"
+          className="font-wordmark text-xl sm:text-[28px] font-bold tracking-[-0.03em] text-white leading-none hover:opacity-80 transition-opacity"
         >
-          {fullNameLower}
+          NarCraft
         </a>
 
         <nav aria-label="Primary" className="flex items-center gap-5 sm:gap-14">

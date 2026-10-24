@@ -42,8 +42,6 @@ export const ContactSection: React.FC = () => {
     }
   };
 
-  const fullNameLower = `${personalInfo.firstName} ${personalInfo.lastName}`.toLowerCase();
-
   return (
     <footer id="contact" className="w-full bg-ink pt-20 sm:pt-28 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-5 sm:px-10 space-y-14">
@@ -183,13 +181,13 @@ export const ContactSection: React.FC = () => {
       <div className="relative mt-16 sm:mt-24 pt-10 select-none overflow-hidden">
         <div
           aria-hidden="true"
-          className="relative max-w-[1440px] mx-auto px-5 sm:px-10 text-center leading-none font-wordmark font-bold lowercase text-[clamp(2.5rem,10vw,9.8rem)] tracking-[-0.02em] text-[#454a4d]"
+          className="relative max-w-[1440px] mx-auto px-5 sm:px-10 text-center leading-none font-wordmark font-bold text-[clamp(3.2rem,13vw,12rem)] tracking-[-0.02em] text-[#454a4d]"
         >
-          {fullNameLower}
+          NarCraft
         </div>
 
         <div className="relative z-10 pb-3 pt-4 text-center font-mono text-[8px] sm:text-[9px] uppercase tracking-[0.26em] text-white/60">
-          ALL RIGHTS RESERVED · REINHARD DEMOCRITO
+          ALL RIGHTS RESERVED · NARCRAFT · REINHARD DEMOCRITO
         </div>
       </div>
     </footer>

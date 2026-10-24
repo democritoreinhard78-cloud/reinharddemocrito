@@ -57,8 +57,8 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         <DoubleSquare size="md" />
 
         <div className="text-center space-y-2">
-          <h1 className="font-wordmark text-2xl sm:text-3xl font-bold tracking-[-0.03em] text-white lowercase">
-            reinhard democrito
+          <h1 className="font-wordmark text-2xl sm:text-3xl font-bold tracking-[-0.03em] text-white">
+            NarCraft
           </h1>
           <p className="text-[9px] tracking-[0.28em] text-white/60 uppercase font-mono">
             [ DIRECTOR · VIDEO EDITOR · VISUAL DESIGNER ]
