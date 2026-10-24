@@ -1,23 +1,22 @@
 # Reinhard Democrito — Portfolio
 
-A sleek, dark, cinematic portfolio website built with modern web technologies.
+A high-contrast, monochrome Swiss-brutalist & editorial creative direction portfolio built with modern web technologies.
 
 ## Tech Stack
 
 - **Framework**: [React 19](https://react.dev/) + [Vite](https://vite.dev/)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/) + Custom 240-Slice 3D Canvas Cylinder Engine
 - **Icons**: [Lucide React](https://lucide.dev/)
 
 ## Features
 
-- **Cinematic Dark Aesthetic**: Low-key workspace photography, obsidian tones (`#07090d`), and neon cyan glow accents.
-- **Velocity Carousel**: Momentum-based infinite horizontal project stream with interactive drag, mouse wheel acceleration, and hover-to-pause.
-- **3-Column Resume Dashboard**: Software proficiency meters, language fluency indicators, vertical glowing experience timeline, and hobby badges.
-- **Preloader UI**: Real-time telemetry loading sequence with monogram animation and smooth curtain reveal.
-- **Custom Design Dropdown**: Accessible glassmorphism dropdown with smooth exit animations and checkmark indicators.
-- **Fully Responsive**: Optimized for desktop, tablet, and mobile devices with touch navigation and mobile drawers.
+- **Monochrome Editorial Hero**: Asymmetrical split layout on a pitch-black (`#080808`) stage with bold display typography (`WORK THAT BEGINS WITH STRATEGY.`), monospace micro-copy, bracketed editorial CTAs, and diagonal marquee tape.
+- **3D Curved Cylindrical Filmstrip**: Custom 240-slice 3D perspective cylindrical ribbon ([`CurvedFilmstrip.tsx`](src/components/CurvedFilmstrip.tsx)) that wraps seamlessly around the subject's torso—passing behind the body on the rear arc (`z-[5]`) and in front of the chest on the foreground arc (`z-20`) with interactive drag inertia and hover-to-pause.
+- **Interactive Spotlight & Case Study Index**: Tabular project index paired with a 12-card Swiss editorial bento grid and modal case study viewer.
+- **Process, Philosophy & Toolkit Stage**: Studio portrait stage with floating project spreads, criss-crossed marquee tapes, and structured toolkit directory.
+- **Fully Responsive**: Aspect-locked 3D stage (`1000×860`) calibrated for mobile phones, tablets, laptops (`1440px`), and ultrawide desktops (`1920px+`).
 
 ## Development
 
