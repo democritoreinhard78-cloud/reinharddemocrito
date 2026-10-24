@@ -106,14 +106,14 @@ export const Hero: React.FC = () => {
         />
 
         {/* LEFT / TOP EDITORIAL TYPOGRAPHY HIERARCHY (z-20 so always crisp and never covered on mobile) */}
-        <div className="relative z-20 max-w-[1400px] w-full h-full mx-auto px-5 sm:px-12 lg:pl-12 2xl:pl-24 pt-20 sm:pt-24 lg:pt-28 pb-6 flex flex-col justify-start lg:justify-center pointer-events-none">
+        <div className="relative z-20 max-w-[1400px] w-full h-full mx-auto px-5 sm:px-12 lg:pl-12 2xl:pl-24 pt-24 sm:pt-24 lg:pt-28 pb-6 flex flex-col justify-start lg:justify-center pointer-events-none">
           <div className="w-full lg:w-[48%] text-left">
             {/* Main Headline: Clean, formal left-aligned bold all-caps sans-serif */}
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.15 }}
-              className="font-display font-semibold uppercase text-white text-[2.2rem] sm:text-[3.25rem] lg:text-[clamp(3.25rem,6.2vw,5.6rem)] leading-[1.04] tracking-[-0.03em]"
+              className="font-display font-semibold uppercase text-white text-[2.4rem] sm:text-[3.25rem] lg:text-[clamp(3.25rem,6.2vw,5.6rem)] leading-[1.04] tracking-[-0.03em]"
             >
               <span className="block">
                 <span className="text-white">WORK </span>
@@ -131,7 +131,7 @@ export const Hero: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.35 }}
-              className="mt-4 sm:mt-8 lg:mt-10 space-y-4 sm:space-y-8 lg:space-y-10 pointer-events-auto"
+              className="mt-5 sm:mt-8 lg:mt-10 space-y-5 sm:space-y-8 lg:space-y-10 pointer-events-auto"
             >
               <p className="font-mono text-[9.5px] sm:text-[12px] uppercase tracking-[0.13em] sm:tracking-[0.14em] text-white/80 leading-[1.6] sm:leading-[1.7] max-w-[315px] sm:max-w-[440px]">
                 A SELECTION OF IDENTITY SYSTEMS, VIDEO EDITING, AND CREATIVE DIRECTION DEVELOPED FOR
@@ -189,7 +189,7 @@ export const Hero: React.FC = () => {
         onMouseLeave={() => {
           isHoveredRef.current = false;
         }}
-        className="pointer-events-none absolute bottom-0 top-auto w-[138vw] max-w-[550px] right-[-18vw] sm:w-[86vw] sm:max-w-[740px] sm:right-[0vw] lg:w-auto lg:max-w-none lg:h-full lg:top-0 lg:bottom-0 lg:right-[-3%] xl:right-[0%] 2xl:right-[5%] aspect-[1000/860]"
+        className="pointer-events-none absolute bottom-0 top-auto w-[158vw] max-w-[625px] right-[-28vw] sm:w-[86vw] sm:max-w-[740px] sm:right-[0vw] lg:w-auto lg:max-w-none lg:h-full lg:top-0 lg:bottom-0 lg:right-[-3%] xl:right-[0%] 2xl:right-[5%] aspect-[1000/860]"
       >
         {/* BACK RIBBON LAYER (z-[5], BEHIND SUBJECT): Smoothly curved rear half of the 3D filmstrip */}
         <canvas
@@ -205,7 +205,7 @@ export const Hero: React.FC = () => {
           initial={{ opacity: 0, scale: 0.98, y: 18 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.9, ease: 'easeOut' }}
-          className="absolute left-[-1.5%] top-[2%] w-[88%] bottom-[6.8%] z-10 overflow-hidden"
+          className="absolute left-[-1.5%] top-[2%] w-[88%] bottom-8 sm:bottom-14 lg:bottom-16 z-10 overflow-hidden"
         >
           <div className="w-full h-[155%] flex items-start justify-center origin-top">
             <Portrait
