@@ -28,6 +28,7 @@ interface CaseStudyCard {
   discipline: string;
   year: string;
   image: string;
+  video?: string;
   description: string;
 }
 
@@ -144,6 +145,18 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
     code: '07',
     categoryId: 'motion-2d',
     categoryLabel: 'Motion Graphics & 2D Animation',
+    client: 'CABE FINAL PROJECT',
+    discipline: '2D ANIMATION & STORYTELLING',
+    year: '2024',
+    image: '/projects/cabe-final-proj-thumb.jpg',
+    video: '/projects/CABE%20FINAL%20PROJ.mp4',
+    description:
+      'Full-length 2D animated narrative and character storytelling project featuring custom illustrated environments, lip-sync, and sound design.'
+  },
+  {
+    code: '08',
+    categoryId: 'motion-2d',
+    categoryLabel: 'Motion Graphics & 2D Animation',
     client: 'KINETIC TYPE REEL',
     discipline: 'MOTION GRAPHICS',
     year: '2025',
@@ -151,18 +164,6 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1000&q=85',
     description:
       'Beat-synced kinetic typography and modular Swiss grid motion graphics crafted in After Effects for digital brand campaigns.'
-  },
-  {
-    code: '08',
-    categoryId: 'motion-2d',
-    categoryLabel: 'Motion Graphics & 2D Animation',
-    client: '2D EXPLAINER STORY',
-    discipline: '2D ANIMATION',
-    year: '2025',
-    image:
-      'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1000&q=85',
-    description:
-      'Custom 2D vector illustration, scene transitions, and smooth frame-by-frame motion curves explaining complex product workflows.'
   },
   {
     code: '09',
@@ -769,6 +770,19 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
                   }}
                   className="absolute inset-0 overflow-hidden bg-[#121518] shadow-[0_20px_50px_rgba(0,0,0,0.75)] ring-1 ring-white/15"
                 >
+                  {/* Live Muted Video Preview when Video Card is in Center Slot */}
+                  {card.video && isCenter && (
+                    <video
+                      src={card.video}
+                      poster={card.image}
+                      muted
+                      loop
+                      playsInline
+                      autoPlay
+                      className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                    />
+                  )}
+
                   {/* Editorial Caption Overlay on Center Card */}
                   <div
                     style={{
@@ -795,7 +809,7 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
                         </p>
                       </div>
                       <span className="shrink-0 px-2.5 py-1 bg-white/15 backdrop-blur-xs border border-white/30 font-mono text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-white">
-                        [ VIEW ]
+                        {card.video ? '[ ▶ PLAY VIDEO ]' : '[ VIEW ]'}
                       </span>
                     </div>
                   </div>
@@ -893,6 +907,7 @@ export const ProjectsSection: React.FC = () => {
       category: `${card.categoryLabel} — ${card.discipline}`,
       year: card.year,
       image: card.image,
+      video: card.video,
       description: card.description
     });
   };

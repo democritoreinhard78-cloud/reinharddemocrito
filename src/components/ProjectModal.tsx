@@ -95,14 +95,27 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           </button>
         </div>
 
-        {/* Project Featured Image */}
-        <div className="relative h-64 sm:h-80 w-full overflow-hidden bg-black shrink-0 border-b border-white/15">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover object-center grayscale contrast-125"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0c0e10] via-transparent to-transparent" />
+        {/* Project Featured Video or Image */}
+        <div className="relative h-64 sm:h-[400px] w-full overflow-hidden bg-black shrink-0 border-b border-white/15">
+          {project.video ? (
+            <video
+              src={project.video}
+              poster={project.image}
+              controls
+              autoPlay
+              playsInline
+              className="w-full h-full object-contain bg-black"
+            />
+          ) : (
+            <>
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover object-center grayscale contrast-125"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0c0e10] via-transparent to-transparent" />
+            </>
+          )}
         </div>
 
         {/* Details Content */}

@@ -93,11 +93,12 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: 2,
-      title: "Kinetic Type & 2D Explainer Reel",
+      title: "CABE Final Project",
       category: "Motion Graphics & 2D Animation",
-      year: "2025",
-      image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80",
-      description: "Beat-synced kinetic typography, custom 2D vector illustration, and modular Swiss grid motion graphics crafted in After Effects."
+      year: "2024",
+      image: "/projects/cabe-final-proj-thumb.jpg",
+      video: "/projects/CABE%20FINAL%20PROJ.mp4",
+      description: "Full-length 2D animated narrative and character storytelling project featuring custom illustrated environments, lip-sync, and sound design."
     },
     {
       id: 3,

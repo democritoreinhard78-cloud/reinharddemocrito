@@ -60,6 +60,7 @@ export interface ProjectItem {
   category: string;
   year: string;
   image: string;
+  video?: string;
   description: string;
 }
 
