@@ -101,6 +101,15 @@ export const portfolioData: PortfolioData = {
       description: "Educational 2D animated explainer breaking down One-Way ANOVA statistical analysis with custom character rigging, illustrated environments, and motion design."
     },
     {
+      id: 6,
+      title: "Memorandum of Agreement: Car Trading",
+      category: "Motion Graphics & 2D Animation",
+      year: "2023",
+      image: "/projects/moa-car-trading-thumb.jpg",
+      video: "/projects/Memorandum%20of%20Agreement%20Car%20Trading.mp4",
+      description: "Commercial 2D animation explainer for M and L Car Trading detailing memorandum of agreement terms with custom vector assets and motion design."
+    },
+    {
       id: 3,
       title: "Editorial & Creator Highlight Reel",
       category: "Short Video Contents",

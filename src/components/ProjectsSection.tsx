@@ -140,7 +140,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Dynamic seasonal fashion film combining choreographed camera movement, outdoor natural light, and rhythmic editorial cuts.'
   },
 
-  // 02. MOTION GRAPHICS & 2D ANIMATION (6 Works)
+  // 02. MOTION GRAPHICS & 2D ANIMATION (2 Real Works)
   {
     code: '07',
     categoryId: 'motion-2d',
@@ -157,61 +157,13 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
     code: '08',
     categoryId: 'motion-2d',
     categoryLabel: 'Motion Graphics & 2D Animation',
-    client: 'KINETIC TYPE REEL',
-    discipline: 'MOTION GRAPHICS',
-    year: '2025',
-    image:
-      'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1000&q=85',
+    client: 'MEMORANDUM OF AGREEMENT: CAR TRADING',
+    discipline: '2D ANIMATION & MOTION GRAPHICS',
+    year: '2023',
+    image: '/projects/moa-car-trading-thumb.jpg',
+    video: '/projects/Memorandum%20of%20Agreement%20Car%20Trading.mp4',
     description:
-      'Beat-synced kinetic typography and modular Swiss grid motion graphics crafted in After Effects for digital brand campaigns.'
-  },
-  {
-    code: '09',
-    categoryId: 'motion-2d',
-    categoryLabel: 'Motion Graphics & 2D Animation',
-    client: 'PULSE VISUALIZER',
-    discipline: 'MOTION & 2D FX',
-    year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1000&q=85',
-    description:
-      'Audio-reactive 2D HUD systems, data-driven motion overlays, and seamless loop animations for music and tech releases.'
-  },
-  {
-    code: '10',
-    categoryId: 'motion-2d',
-    categoryLabel: 'Motion Graphics & 2D Animation',
-    client: 'VECTOR FLOW SERIES',
-    discipline: '2D CHARACTER & RIG',
-    year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=1000&q=85',
-    description:
-      'Expressive 2D character rigging, shape-layer morphing, and playful storytelling sequences built for social and web platforms.'
-  },
-  {
-    code: '11',
-    categoryId: 'motion-2d',
-    categoryLabel: 'Motion Graphics & 2D Animation',
-    client: 'CHROMA WAVE LOOP',
-    discipline: 'ABSTRACT MOTION',
-    year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=1000&q=85',
-    description:
-      'Psychedelic optical wave loops and procedural 2D shader animations designed for stage backdrops and digital exhibitions.'
-  },
-  {
-    code: '12',
-    categoryId: 'motion-2d',
-    categoryLabel: 'Motion Graphics & 2D Animation',
-    client: 'UI MOTION SYSTEM',
-    discipline: 'PRODUCT ANIMATION',
-    year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=85',
-    description:
-      'Micro-interaction library, animated dashboard walkthroughs, and slick UI motion components for SaaS product launches.'
+      'Commercial 2D animation explainer for M and L Car Trading detailing memorandum of agreement terms with custom vector assets and motion design.'
   },
 
   // 03. SHORT VIDEO CONTENTS (6 Works)
