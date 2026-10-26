@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { ProjectItem } from '../types/portfolio';
@@ -452,12 +452,42 @@ interface CategoryCoverflowProps {
  */
 const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCard }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
   const pointerStartX = useRef<number | null>(null);
+  const lastWheelTimeRef = useRef<number>(0);
+  const wheelAccumRef = useRef<number>(0);
   const len = cards.length;
 
   const stepBy = (delta: number) => {
     setActiveIndex((prev) => (((prev + delta) % len) + len) % len);
   };
+
+  // Mouse wheel & trackpad scroll shortcut for PREV / NEXT
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      const primaryDelta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      if (Math.abs(primaryDelta) < 4) return;
+
+      e.preventDefault();
+
+      const now = performance.now();
+      if (now - lastWheelTimeRef.current < 180) return;
+
+      wheelAccumRef.current += primaryDelta;
+      if (Math.abs(wheelAccumRef.current) >= 24) {
+        const direction = wheelAccumRef.current > 0 ? 1 : -1;
+        wheelAccumRef.current = 0;
+        lastWheelTimeRef.current = now;
+        setActiveIndex((prev) => (((prev + direction) % len) + len) % len);
+      }
+    };
+
+    el.addEventListener('wheel', handleWheel, { passive: false });
+    return () => el.removeEventListener('wheel', handleWheel);
+  }, [len]);
 
   const handlePointerDown = (e: React.PointerEvent) => {
     pointerStartX.current = e.clientX;
@@ -475,7 +505,7 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
   const activeCard = cards[activeIndex] ?? cards[0];
 
   return (
-    <div className="space-y-4">
+    <div ref={containerRef} className="space-y-4">
       {/* 3D PERSPECTIVE COVERFLOW STAGE */}
       <div
         onPointerDown={handlePointerDown}
