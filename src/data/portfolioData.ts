@@ -85,51 +85,43 @@ export const portfolioData: PortfolioData = {
   projects: [
     {
       id: 1,
-      title: "Lumina Brand Identity & Packaging",
-      category: "Branding",
-      year: "2024",
+      title: "Brand Launch Film",
+      category: "Directing",
+      year: "2025",
       image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-      description: "Comprehensive visual identity, packaging design, and editorial style guide for a luxury lifestyle apothecary."
+      description: "End-to-end creative direction, storyboarding, on-set blocking, and final narrative cut for a flagship brand launch film."
     },
     {
       id: 2,
-      title: "Aura Minimalist Watch Series",
-      category: "Product Design",
-      year: "2023",
-      image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
-      description: "Industrial design collaboration, tactile packaging, and high-contrast digital marketing campaigns."
+      title: "Kinetic Type & 2D Explainer Reel",
+      category: "Motion Graphics & 2D Animation",
+      year: "2025",
+      image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80",
+      description: "Beat-synced kinetic typography, custom 2D vector illustration, and modular Swiss grid motion graphics crafted in After Effects."
     },
     {
       id: 3,
-      title: "Nordic Architectural Magazine",
-      category: "Editorial",
-      year: "2023",
-      image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80",
-      description: "Curated 140-page biannual print editorial celebrating Scandinavian brutalism and sustainable interior spaces."
+      title: "Editorial & Creator Highlight Reel",
+      category: "Short Video Contents",
+      year: "2025",
+      image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80",
+      description: "High-retention vertical edit combining punchy hooks, dynamic speed ramps, custom captions, and crisp sound design."
     },
     {
       id: 4,
-      title: "Verve Next-Gen FinTech UI/UX",
-      category: "UI/UX Design",
-      year: "2024",
+      title: "Identity System & Editorial Posters",
+      category: "Graphics",
+      year: "2025",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-      description: "Dark-mode dashboard architecture, micro-interactions, and design tokens for algorithmic portfolio tracking."
+      description: "Cohesive visual identity system, social media graphics, and presentation layouts featuring custom typography rules and grid-based key visuals."
     },
     {
       id: 5,
-      title: "Vortex Spatial Audio Visualizer",
-      category: "Motion & 3D",
-      year: "2022",
-      image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80",
-      description: "Real-time generative sound reactive visuals and promotional 3D title sequences for international music festival."
-    },
-    {
-      id: 6,
-      title: "Komorebi Botanical Essence",
-      category: "Packaging",
-      year: "2023",
+      title: "NarCraft & Broadcast Title Openers",
+      category: "Intro Videos",
+      year: "2025",
       image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=800&q=80",
-      description: "Sustainable glass bottle typography, embossed unboxing experience, and bespoke logo mark."
+      description: "Custom signature logo reveals, channel intro sequences, and dark-room sonic stingers establishing immediate brand recognition."
     }
   ]
 };
