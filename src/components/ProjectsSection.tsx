@@ -538,28 +538,68 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
     };
   }, []);
 
-  const handlePointerDown = (e: React.PointerEvent) => {
+  const startDrag = (clientX: number) => {
     isDraggingRef.current = true;
     pointerMovedRef.current = false;
-    dragStartXRef.current = e.clientX;
+    dragStartXRef.current = clientX;
     dragStartTargetRef.current = targetPosRef.current;
     clearTimeout(snapTimerRef.current);
   };
 
-  const handlePointerMove = (e: React.PointerEvent) => {
+  const moveDrag = (clientX: number) => {
     if (!isDraggingRef.current) return;
-    const dx = e.clientX - dragStartXRef.current;
+    const dx = clientX - dragStartXRef.current;
     if (Math.abs(dx) > 6) {
       pointerMovedRef.current = true;
     }
-    // Dragging left (dx < 0) moves forward (+), dragging right (dx > 0) moves backward (-)
-    targetPosRef.current = dragStartTargetRef.current - dx / (260 * scaleFactor);
+    // Dragging/swiping left (dx < 0) slides forward (+), right (dx > 0) slides backward (-)
+    targetPosRef.current = dragStartTargetRef.current - dx / (170 * scaleFactor);
   };
 
-  const handlePointerUp = () => {
+  const endDrag = (clientX?: number) => {
     if (!isDraggingRef.current) return;
     isDraggingRef.current = false;
-    targetPosRef.current = Math.round(targetPosRef.current);
+
+    const dx = clientX !== undefined ? clientX - dragStartXRef.current : 0;
+    const startRounded = Math.round(dragStartTargetRef.current);
+    const currentRounded = Math.round(targetPosRef.current);
+
+    // If user flick-swiped left or right at least 22px on mobile/desktop, advance at least 1 card
+    if (Math.abs(dx) >= 22 && currentRounded === startRounded) {
+      targetPosRef.current = startRounded + (dx < 0 ? 1 : -1);
+    } else {
+      targetPosRef.current = currentRounded;
+    }
+  };
+
+  const handlePointerDown = (e: React.PointerEvent) => {
+    if (e.pointerType === 'touch') return; // Handled by native touch events for mobile reliability
+    startDrag(e.clientX);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (e.pointerType === 'touch') return;
+    moveDrag(e.clientX);
+  };
+
+  const handlePointerUp = (e: React.PointerEvent) => {
+    if (e.pointerType === 'touch') return;
+    endDrag(e.clientX);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length !== 1) return;
+    startDrag(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (e.touches.length !== 1) return;
+    moveDrag(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const touch = e.changedTouches[0];
+    endDrag(touch ? touch.clientX : undefined);
   };
 
   const baseIndex = Math.round(renderPos);
@@ -575,12 +615,44 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
-        onPointerLeave={handlePointerUp}
+        onPointerCancel={() => endDrag()}
+        onPointerLeave={(e) => {
+          if (e.pointerType !== 'touch') endDrag(e.clientX);
+        }}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onTouchCancel={() => endDrag()}
         style={{
-          perspective: `${400 * scaleFactor}px`
+          perspective: `${400 * scaleFactor}px`,
+          touchAction: 'pan-y'
         }}
         className="case-study-artwork relative w-full h-[250px] sm:h-[340px] lg:h-[420px] flex items-center justify-center overflow-hidden select-none cursor-grab active:cursor-grabbing"
       >
+        {/* Mobile On-Stage Slide Left / Slide Right Floating Buttons */}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            stepBy(-1);
+          }}
+          aria-label="Slide left (previous project)"
+          className="sm:hidden absolute left-2 top-1/2 -translate-y-1/2 z-[1200] w-8 h-8 rounded-full bg-black/75 border border-white/25 text-white flex items-center justify-center active:scale-95 transition-transform"
+        >
+          <ChevronLeft className="w-4 h-4" />
+        </button>
+
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            stepBy(1);
+          }}
+          aria-label="Slide right (next project)"
+          className="sm:hidden absolute right-2 top-1/2 -translate-y-1/2 z-[1200] w-8 h-8 rounded-full bg-black/75 border border-white/25 text-white flex items-center justify-center active:scale-95 transition-transform"
+        >
+          <ChevronRight className="w-4 h-4" />
+        </button>
         {/* Subtle Vertical Grid Lines matching the reference background */}
         <div
           aria-hidden="true"
