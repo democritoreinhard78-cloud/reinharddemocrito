@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { ProjectItem } from '../types/portfolio';
@@ -436,7 +436,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
   }
 ];
 
-const VISIBLE_OFFSETS = [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5] as const;
+const SLOTS = [-8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8] as const;
 
 interface CategoryCoverflowProps {
   cards: CaseStudyCard[];
@@ -444,73 +444,142 @@ interface CategoryCoverflowProps {
 }
 
 /**
- * 3D Perspective Coverflow Carousel replicating the reference fan layout:
- * - Large rounded front-facing center card (`offset = 0`)
- * - 5 angled perspective cards fanning out on the left and 5 on the right (`offset = ±1..±5`)
- *   with inner edges taller and outer edges receding into atmospheric depth
- * - Subtle vertical grid lines + soft ambient mist glow behind the side wings
+ * Exact 3D Perspective Coverflow Carousel matching https://forme.framer.media/:
+ * - Outer stage with `perspective: 400px * scale` and `transform-style: preserve-3d` center anchor
+ * - Center card (`d = 0`): `500×285`, `translateX(0) translateZ(0) rotateY(0deg)`
+ * - Side cards (`|d| >= 1`): `320×280`, `translateX(±(474 + (|d|-1)*326.4)) translateZ(-|d|*200) rotateY(±min(90, |d|*35)deg)`
+ * - Continuous 60fps/120fps spring-lerp sliding animation (`requestAnimationFrame`) driven by
+ *   mouse wheel scroll, drag/swipe, side-card click, or PREV/NEXT buttons.
  */
 const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCard }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const pointerStartX = useRef<number | null>(null);
-  const lastWheelTimeRef = useRef<number>(0);
-  const wheelAccumRef = useRef<number>(0);
   const len = cards.length;
+  const containerRef = useRef<HTMLDivElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
 
-  const stepBy = (delta: number) => {
-    setActiveIndex((prev) => (((prev + delta) % len) + len) % len);
-  };
+  // Continuous floating-point scroll position for silky 60/120fps 3D sliding
+  const targetPosRef = useRef<number>(0);
+  const currentPosRef = useRef<number>(0);
+  const [renderPos, setRenderPos] = useState<number>(0);
+  const [scaleFactor, setScaleFactor] = useState<number>(1);
 
-  // Mouse wheel & trackpad scroll shortcut for PREV / NEXT
+  // Drag / pointer tracking
+  const isDraggingRef = useRef<boolean>(false);
+  const dragStartXRef = useRef<number>(0);
+  const dragStartTargetRef = useRef<number>(0);
+  const pointerMovedRef = useRef<boolean>(false);
+  const snapTimerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
+
+  // Responsive scale factor so the 400px perspective geometry scales proportionally on mobile/tablet
+  useEffect(() => {
+    const updateScale = () => {
+      const w = stageRef.current?.clientWidth ?? window.innerWidth;
+      if (w < 520) {
+        setScaleFactor(0.5);
+      } else if (w < 768) {
+        setScaleFactor(0.68);
+      } else if (w < 1100) {
+        setScaleFactor(0.84);
+      } else {
+        setScaleFactor(1);
+      }
+    };
+    updateScale();
+    window.addEventListener('resize', updateScale);
+    return () => window.removeEventListener('resize', updateScale);
+  }, []);
+
+  // Continuous requestAnimationFrame loop interpolating currentPos -> targetPos
+  useEffect(() => {
+    let rafId = 0;
+    const tick = () => {
+      const diff = targetPosRef.current - currentPosRef.current;
+      if (Math.abs(diff) > 0.0008) {
+        currentPosRef.current += diff * 0.11;
+        setRenderPos(currentPosRef.current);
+      } else if (currentPosRef.current !== targetPosRef.current) {
+        currentPosRef.current = targetPosRef.current;
+        setRenderPos(currentPosRef.current);
+      }
+      rafId = requestAnimationFrame(tick);
+    };
+    rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
+  }, []);
+
+  const stepBy = useCallback((delta: number) => {
+    targetPosRef.current = Math.round(targetPosRef.current + delta);
+  }, []);
+
+  // Mouse wheel & trackpad continuous scroll with smooth snap-to-card
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
 
     const handleWheel = (e: WheelEvent) => {
       const primaryDelta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
-      if (Math.abs(primaryDelta) < 4) return;
+      if (Math.abs(primaryDelta) < 2) return;
 
       e.preventDefault();
 
-      const now = performance.now();
-      if (now - lastWheelTimeRef.current < 180) return;
+      // Advance target position proportionally to wheel/trackpad delta
+      const step = Math.max(-1.2, Math.min(1.2, primaryDelta * 0.0055));
+      targetPosRef.current += step;
 
-      wheelAccumRef.current += primaryDelta;
-      if (Math.abs(wheelAccumRef.current) >= 24) {
-        const direction = wheelAccumRef.current > 0 ? 1 : -1;
-        wheelAccumRef.current = 0;
-        lastWheelTimeRef.current = now;
-        setActiveIndex((prev) => (((prev + direction) % len) + len) % len);
-      }
+      clearTimeout(snapTimerRef.current);
+      snapTimerRef.current = setTimeout(() => {
+        targetPosRef.current = Math.round(targetPosRef.current);
+      }, 140);
     };
 
     el.addEventListener('wheel', handleWheel, { passive: false });
-    return () => el.removeEventListener('wheel', handleWheel);
-  }, [len]);
+    return () => {
+      el.removeEventListener('wheel', handleWheel);
+      clearTimeout(snapTimerRef.current);
+    };
+  }, []);
 
   const handlePointerDown = (e: React.PointerEvent) => {
-    pointerStartX.current = e.clientX;
+    isDraggingRef.current = true;
+    pointerMovedRef.current = false;
+    dragStartXRef.current = e.clientX;
+    dragStartTargetRef.current = targetPosRef.current;
+    clearTimeout(snapTimerRef.current);
   };
 
-  const handlePointerUp = (e: React.PointerEvent) => {
-    if (pointerStartX.current === null) return;
-    const dx = e.clientX - pointerStartX.current;
-    pointerStartX.current = null;
-    if (Math.abs(dx) > 36) {
-      stepBy(dx < 0 ? 1 : -1);
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (!isDraggingRef.current) return;
+    const dx = e.clientX - dragStartXRef.current;
+    if (Math.abs(dx) > 6) {
+      pointerMovedRef.current = true;
     }
+    // Dragging left (dx < 0) moves forward (+), dragging right (dx > 0) moves backward (-)
+    targetPosRef.current = dragStartTargetRef.current - dx / (260 * scaleFactor);
   };
 
-  const activeCard = cards[activeIndex] ?? cards[0];
+  const handlePointerUp = () => {
+    if (!isDraggingRef.current) return;
+    isDraggingRef.current = false;
+    targetPosRef.current = Math.round(targetPosRef.current);
+  };
+
+  const baseIndex = Math.round(renderPos);
+  const frac = renderPos - baseIndex; // in [-0.5, +0.5]
+  const activeIdx = ((baseIndex % len) + len) % len;
+  const activeCard = cards[activeIdx] ?? cards[0];
 
   return (
     <div ref={containerRef} className="space-y-4">
-      {/* 3D PERSPECTIVE COVERFLOW STAGE */}
+      {/* 3D PERSPECTIVE COVERFLOW STAGE (Exact forme.framer.media 400px perspective geometry) */}
       <div
+        ref={stageRef}
         onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
-        className="case-study-artwork relative w-full h-[270px] sm:h-[360px] lg:h-[430px] flex items-center justify-center overflow-hidden select-none cursor-grab active:cursor-grabbing rounded-sm"
+        onPointerLeave={handlePointerUp}
+        style={{
+          perspective: `${400 * scaleFactor}px`
+        }}
+        className="case-study-artwork relative w-full h-[250px] sm:h-[340px] lg:h-[420px] flex items-center justify-center overflow-hidden select-none cursor-grab active:cursor-grabbing"
       >
         {/* Subtle Vertical Grid Lines matching the reference background */}
         <div
@@ -529,122 +598,112 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              'radial-gradient(ellipse 18% 42% at 21% 50%, rgba(205, 222, 232, 0.16) 0%, transparent 75%), radial-gradient(ellipse 18% 42% at 79% 50%, rgba(205, 222, 232, 0.16) 0%, transparent 75%)'
+              'radial-gradient(ellipse 18% 42% at 21% 50%, rgba(205, 222, 232, 0.15) 0%, transparent 75%), radial-gradient(ellipse 18% 42% at 79% 50%, rgba(205, 222, 232, 0.15) 0%, transparent 75%)'
           }}
         />
 
-        {/* 11-Slot Symmetric 3D Fan (-5 .. 0 .. +5) */}
-        <div className="relative w-full h-full flex items-center justify-center">
-          {VISIBLE_OFFSETS.map((offset) => {
-            const itemIndex = (((activeIndex + offset) % len) + len) % len;
+        {/* Zero-sized 3D Preserve-3D Center Anchor (matches forme.framer.media DOM) */}
+        <div
+          style={{
+            position: 'relative',
+            width: 0,
+            height: 0,
+            transformStyle: 'preserve-3d'
+          }}
+        >
+          {SLOTS.map((slotOffset) => {
+            // Continuous 3D offset d from center
+            const d = slotOffset - frac;
+            const absD = Math.abs(d);
+            if (absD >= 7.2) return null;
+
+            const sign = d === 0 ? 0 : d > 0 ? 1 : -1;
+            const itemIndex = (((baseIndex + slotOffset) % len) + len) % len;
             const card = cards[itemIndex];
-            const abs = Math.abs(offset);
-            const sign = Math.sign(offset);
 
-            // Exact slot metrics calibrated to the reference image
-            let widthCss = 'clamp(230px, 38vw, 456px)';
-            let heightCss = 'clamp(148px, 24.4vw, 292px)';
-            let txCss = '0px';
-            let rotateY = 0;
-            let zIndex = 30;
-            let opacity = 1;
-            let brightness = 1;
+            // Exact forme.framer.media interpolation:
+            // Center (d=0): 500x285; Side (|d|>=1): 320x280
+            const t = Math.min(1, absD);
+            const w = (500 + (320 - 500) * t) * scaleFactor;
+            const h = (285 + (280 - 285) * t) * scaleFactor;
 
-            if (abs === 1) {
-              widthCss = 'clamp(56px, 8.6vw, 104px)';
-              heightCss = 'clamp(116px, 19vw, 226px)';
-              txCss = `${sign} * clamp(154px, 24.8vw, 296px)`;
-              rotateY = sign * 38;
-              zIndex = 25;
-              opacity = 0.98;
-              brightness = 0.94;
-            } else if (abs === 2) {
-              widthCss = 'clamp(52px, 8vw, 96px)';
-              heightCss = 'clamp(88px, 14.5vw, 174px)';
-              txCss = `${sign} * clamp(198px, 31.8vw, 380px)`;
-              rotateY = sign * 36;
-              zIndex = 20;
-              opacity = 0.9;
-              brightness = 0.84;
-            } else if (abs === 3) {
-              widthCss = 'clamp(44px, 6.8vw, 82px)';
-              heightCss = 'clamp(68px, 11.2vw, 134px)';
-              txCss = `${sign} * clamp(232px, 37.4vw, 446px)`;
-              rotateY = sign * 34;
-              zIndex = 15;
-              opacity = 0.76;
-              brightness = 0.75;
-            } else if (abs === 4) {
-              widthCss = 'clamp(36px, 5.4vw, 64px)';
-              heightCss = 'clamp(54px, 8.8vw, 104px)';
-              txCss = `${sign} * clamp(254px, 41vw, 488px)`;
-              rotateY = sign * 32;
-              zIndex = 10;
-              opacity = 0.54;
-              brightness = 0.66;
-            } else if (abs === 5) {
-              widthCss = 'clamp(28px, 4.2vw, 50px)';
-              heightCss = 'clamp(44px, 7.2vw, 86px)';
-              txCss = `${sign} * clamp(268px, 43.4vw, 516px)`;
-              rotateY = sign * 30;
-              zIndex = 5;
-              opacity = 0.34;
-              brightness = 0.58;
-            }
+            // translateX: 0 -> 474 at |d|=1, then +326.4 per unit of |d|
+            const txMag = absD <= 1 ? absD * 474 : 474 + (absD - 1) * 326.4;
+            const tx = sign * txMag * scaleFactor;
+
+            // translateZ: -200px per unit of |d|
+            const tz = -absD * 200 * scaleFactor;
+
+            // rotateY: 35deg per unit of d, clamped at ±90deg for |d| >= 2.57
+            const ry = sign * Math.min(90, absD * 35);
+
+            // Opacity: 1 up to |d|=5, 0.5 at |d|=6, 0 at |d|>=7
+            const opacity =
+              absD <= 5 ? 1 : absD >= 7 ? 0 : Math.max(0, 1 - (absD - 5) * 0.5);
+
+            // zIndex: 1000 at center, stepping down by 10 per unit
+            const zIndex = Math.round(1000 - absD * 10);
+
+            const isCenter = absD < 0.35;
 
             return (
               <div
-                key={offset}
+                key={slotOffset}
                 role="button"
-                tabIndex={offset === 0 ? 0 : -1}
+                tabIndex={slotOffset === 0 ? 0 : -1}
                 aria-label={`${card.client} — ${card.discipline}`}
                 onClick={() => {
-                  if (offset === 0) {
+                  if (pointerMovedRef.current) return;
+                  if (Math.abs(d) < 0.25) {
                     onSelectCard(card);
                   } else {
-                    stepBy(offset);
+                    targetPosRef.current = baseIndex + slotOffset;
                   }
                 }}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    if (offset === 0) {
+                    if (slotOffset === 0) {
                       onSelectCard(card);
                     } else {
-                      stepBy(offset);
+                      targetPosRef.current = baseIndex + slotOffset;
                     }
                   }
                 }}
                 style={{
-                  width: widthCss,
-                  height: heightCss,
+                  position: 'absolute',
+                  left: 0,
+                  top: 0,
+                  transformStyle: 'preserve-3d',
+                  width: `${w}px`,
+                  height: `${h}px`,
+                  marginLeft: `${-w / 2}px`,
+                  marginTop: `${-h / 2}px`,
                   zIndex,
-                  opacity,
-                  filter: `brightness(${brightness})`,
                   transform:
-                    offset === 0
-                      ? 'translate3d(-50%, -50%, 0) perspective(520px) rotateY(0deg)'
-                      : `translate3d(calc(-50% + (${txCss})), -50%, 0) perspective(360px) rotateY(${rotateY}deg)`
+                    absD < 0.001
+                      ? 'none'
+                      : `translateX(${tx.toFixed(1)}px) translateZ(${tz.toFixed(1)}px) rotateY(${ry.toFixed(2)}deg)`
                 }}
-                className={`group absolute left-1/2 top-1/2 overflow-hidden bg-[#121518] transition-all duration-500 ease-out cursor-pointer ${
-                  offset === 0
-                    ? 'rounded-[10px] sm:rounded-[14px] shadow-[0_24px_60px_rgba(0,0,0,0.85)] ring-1 ring-white/20 hover:ring-white/50'
-                    : 'rounded-[6px] sm:rounded-[9px] shadow-[0_14px_34px_rgba(0,0,0,0.75)] ring-1 ring-white/15 hover:brightness-110'
-                }`}
+                className="group cursor-pointer"
               >
-                <img
-                  src={card.image}
-                  alt={card.client}
-                  loading="lazy"
-                  draggable={false}
-                  className={`w-full h-full object-cover object-center transition-transform duration-700 ${
-                    offset === 0 ? 'group-hover:scale-105' : ''
-                  }`}
-                />
-
-                {/* Subtle Editorial Overlay on Center Active Card */}
-                {offset === 0 && (
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent p-3.5 sm:p-5 flex flex-col justify-between">
+                <div
+                  style={{
+                    backgroundImage: `url(${card.image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    borderRadius: '10px',
+                    opacity
+                  }}
+                  className="absolute inset-0 overflow-hidden bg-[#121518] shadow-[0_20px_50px_rgba(0,0,0,0.75)] ring-1 ring-white/15"
+                >
+                  {/* Editorial Caption Overlay on Center Card */}
+                  <div
+                    style={{
+                      opacity: isCenter ? Math.max(0, 1 - absD * 3) : 0
+                    }}
+                    className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent p-3.5 sm:p-5 flex flex-col justify-between pointer-events-none"
+                  >
                     <div className="flex items-center justify-between">
                       <span className="px-2 py-0.5 bg-black/65 backdrop-blur-xs border border-white/20 font-mono text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-white">
                         [ {card.code} // {card.year} ]
@@ -663,12 +722,12 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
                           {card.description}
                         </p>
                       </div>
-                      <span className="shrink-0 px-2.5 py-1 bg-white/15 hover:bg-white hover:text-black backdrop-blur-xs border border-white/30 font-mono text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-white transition-colors">
+                      <span className="shrink-0 px-2.5 py-1 bg-white/15 backdrop-blur-xs border border-white/30 font-mono text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-white">
                         [ VIEW ]
                       </span>
                     </div>
                   </div>
-                )}
+                </div>
               </div>
             );
           })}
@@ -707,10 +766,15 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
               <button
                 key={c.code}
                 type="button"
-                onClick={() => setActiveIndex(idx)}
+                onClick={() => {
+                  let diff = idx - activeIdx;
+                  if (diff > len / 2) diff -= len;
+                  if (diff < -len / 2) diff += len;
+                  targetPosRef.current = baseIndex + diff;
+                }}
                 aria-label={`Go to ${c.client}`}
                 className={`h-1.5 transition-all cursor-pointer ${
-                  idx === activeIndex
+                  idx === activeIdx
                     ? 'w-5 bg-white'
                     : 'w-1.5 bg-white/25 hover:bg-white/50'
                 }`}
