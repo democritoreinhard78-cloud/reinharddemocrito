@@ -145,13 +145,13 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
     code: '07',
     categoryId: 'motion-2d',
     categoryLabel: 'Motion Graphics & 2D Animation',
-    client: 'CABE FINAL PROJECT',
+    client: 'STATISTICS: ONE-WAY ANOVA',
     discipline: '2D ANIMATION & STORYTELLING',
     year: '2024',
     image: '/projects/cabe-final-proj-thumb.jpg',
     video: '/projects/CABE%20FINAL%20PROJ.mp4',
     description:
-      'Full-length 2D animated narrative and character storytelling project featuring custom illustrated environments, lip-sync, and sound design.'
+      'Educational 2D animated explainer breaking down One-Way ANOVA statistical analysis with custom character rigging, illustrated environments, and motion design.'
   },
   {
     code: '08',

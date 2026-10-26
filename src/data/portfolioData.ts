@@ -93,12 +93,12 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: 2,
-      title: "CABE Final Project",
+      title: "Statistics: One-Way ANOVA",
       category: "Motion Graphics & 2D Animation",
       year: "2024",
       image: "/projects/cabe-final-proj-thumb.jpg",
       video: "/projects/CABE%20FINAL%20PROJ.mp4",
-      description: "Full-length 2D animated narrative and character storytelling project featuring custom illustrated environments, lip-sync, and sound design."
+      description: "Educational 2D animated explainer breaking down One-Way ANOVA statistical analysis with custom character rigging, illustrated environments, and motion design."
     },
     {
       id: 3,
