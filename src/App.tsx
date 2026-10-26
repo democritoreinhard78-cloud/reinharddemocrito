@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
+import { ThemeProvider } from './context/ThemeContext';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
@@ -12,22 +13,24 @@ export const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   return (
-    <div className="min-h-[100svh] bg-ink text-white flex flex-col">
-      <AnimatePresence>
-        {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
-      </AnimatePresence>
+    <ThemeProvider>
+      <div className="min-h-[100svh] bg-ink text-white flex flex-col transition-colors duration-300">
+        <AnimatePresence>
+          {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
+        </AnimatePresence>
 
-      <Header />
+        <Header />
 
-      <main className="flex-1">
-        <Hero />
-        <AboutSection />
-        <ProjectsSection />
-        <ProcessToolsSection />
-      </main>
+        <main className="flex-1">
+          <Hero />
+          <AboutSection />
+          <ProjectsSection />
+          <ProcessToolsSection />
+        </main>
 
-      <ContactSection />
-    </div>
+        <ContactSection />
+      </div>
+    </ThemeProvider>
   );
 };
 

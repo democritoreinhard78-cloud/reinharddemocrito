@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Sun, Moon } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 const NAV_ITEMS = [
   { id: 'about', label: 'About' },
@@ -8,6 +10,8 @@ const NAV_ITEMS = [
 
 export const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
+  const { theme, toggleTheme } = useTheme();
+  const isLight = theme === 'light';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 32);
@@ -24,7 +28,7 @@ export const Header: React.FC = () => {
           : 'bg-transparent py-6 sm:py-8'
       }`}
     >
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-12 flex flex-col items-center gap-2 sm:gap-4">
+      <div className="relative max-w-[1440px] mx-auto px-4 sm:px-12 flex flex-col items-center gap-2 sm:gap-4">
         <a
           href="#home"
           aria-label="NarCraft - Home"
@@ -48,6 +52,27 @@ export const Header: React.FC = () => {
             </React.Fragment>
           ))}
         </nav>
+
+        {/* Swiss-Brutalist Theme Toggle Button */}
+        <button
+          type="button"
+          onClick={toggleTheme}
+          aria-label={isLight ? 'Switch to dark theme' : 'Switch to light theme'}
+          title={isLight ? 'Switch to dark theme' : 'Switch to light theme'}
+          className="theme-toggle-btn absolute right-4 sm:right-12 top-1 sm:top-1/2 sm:-translate-y-1/2 inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 border border-white/20 hover:border-white/60 bg-ink/60 backdrop-blur-xs font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.18em] text-white/85 hover:text-white transition-all cursor-pointer"
+        >
+          {isLight ? (
+            <>
+              <Moon className="w-3 h-3 shrink-0" aria-hidden="true" />
+              <span className="hidden xs:inline sm:inline">[ DARK ]</span>
+            </>
+          ) : (
+            <>
+              <Sun className="w-3 h-3 shrink-0" aria-hidden="true" />
+              <span className="hidden xs:inline sm:inline">[ LIGHT ]</span>
+            </>
+          )}
+        </button>
       </div>
     </header>
   );

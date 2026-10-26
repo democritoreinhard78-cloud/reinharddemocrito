@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { portfolioData } from '../data/portfolioData';
+import { useTheme } from '../context/ThemeContext';
 import { renderCurvedCylinder, useCurvedFilmstrip } from './CurvedFilmstrip';
 import { Portrait } from './Portrait';
 import { DoubleSquare } from './SectionLabel';
@@ -19,6 +20,8 @@ const BASE_SPEED = -0.24;
 export const Hero: React.FC = () => {
   const { personalInfo } = portfolioData;
   const fullName = `${personalInfo.firstName} ${personalInfo.lastName}`;
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
 
   const frontCanvasRef = useRef<HTMLCanvasElement>(null);
   const backCanvasRef = useRef<HTMLCanvasElement>(null);
@@ -87,22 +90,29 @@ export const Hero: React.FC = () => {
         handlePointerUp();
         isHoveredRef.current = false;
       }}
-      className="relative h-[100svh] min-h-[700px] max-h-[1000px] w-full overflow-hidden flex flex-col justify-between select-none bg-[#080808] cursor-grab active:cursor-grabbing"
+      className={`relative h-[100svh] min-h-[700px] max-h-[1000px] w-full overflow-hidden flex flex-col justify-between select-none cursor-grab active:cursor-grabbing transition-colors duration-300 ${
+        isLight ? 'bg-[#f2f0e8]' : 'bg-[#080808]'
+      }`}
     >
-      {/* UPPER STAGE (above the solid pitch-black bottom bar) */}
+      {/* UPPER STAGE (above the solid bottom floor bar) */}
       <div className="relative flex-1 w-full overflow-hidden">
-        {/* BASE LAYER (z-0): Pitch-black (#080808) negative-space void on left + studio rim glow on right */}
+        {/* BASE LAYER (z-0): Negative-space void on left + studio rim glow on right */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-0"
+          className="pointer-events-none absolute inset-0 z-0 transition-all duration-300"
           style={{
-            background:
-              'radial-gradient(ellipse 55% 84% at 76% 46%, #9ea5a8 0%, #5c6468 34%, #1e2326 62%, #080808 88%), radial-gradient(circle at 12% 84%, rgba(135,142,146,0.22) 0%, transparent 42%), #080808'
+            background: isLight
+              ? 'radial-gradient(ellipse 55% 84% at 76% 46%, #ffffff 0%, #d4d1c7 38%, #e4e1d7 66%, #f2f0e8 88%), radial-gradient(circle at 12% 84%, rgba(0,0,0,0.05) 0%, transparent 42%), #f2f0e8'
+              : 'radial-gradient(ellipse 55% 84% at 76% 46%, #9ea5a8 0%, #5c6468 34%, #1e2326 62%, #080808 88%), radial-gradient(circle at 12% 84%, rgba(135,142,146,0.22) 0%, transparent 42%), #080808'
           }}
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(102deg,#080808_0%,rgba(8,8,8,0.9)_36%,rgba(8,8,8,0.28)_58%,transparent_78%)]"
+          className={`pointer-events-none absolute inset-0 z-0 ${
+            isLight
+              ? 'bg-[linear-gradient(102deg,#f2f0e8_0%,rgba(242,240,232,0.92)_36%,rgba(242,240,232,0.32)_58%,transparent_78%)]'
+              : 'bg-[linear-gradient(102deg,#080808_0%,rgba(8,8,8,0.9)_36%,rgba(8,8,8,0.28)_58%,transparent_78%)]'
+          }`}
         />
 
         {/* LEFT / TOP EDITORIAL TYPOGRAPHY HIERARCHY (z-20 so always crisp and never covered on mobile) */}
@@ -178,8 +188,12 @@ export const Hero: React.FC = () => {
         </div>
       </div>
 
-      {/* SOLID PITCH-BLACK BOTTOM FLOOR BAR */}
-      <div className="relative z-[15] h-8 sm:h-14 lg:h-16 w-full bg-[#080808] shrink-0" />
+      {/* SOLID BOTTOM FLOOR BAR */}
+      <div
+        className={`relative z-[15] h-8 sm:h-14 lg:h-16 w-full shrink-0 transition-colors duration-300 ${
+          isLight ? 'bg-[#f2f0e8]' : 'bg-[#080808]'
+        }`}
+      />
 
       {/* UNIFIED RIGHT-SIDE 3D STAGE (1000x860 aspect lock scaled for mobile bottom half & desktop right half) */}
       <div

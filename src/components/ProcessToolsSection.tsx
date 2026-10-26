@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { portfolioData } from '../data/portfolioData';
+import { useTheme } from '../context/ThemeContext';
 import { Portrait } from './Portrait';
 import { DoubleSquare } from './SectionLabel';
 
@@ -182,9 +183,14 @@ const SoftwareIcon: React.FC<{ code?: string }> = ({ code }) => {
 export const ProcessToolsSection: React.FC = () => {
   const { personalInfo, softwareSkills, designSkills, hobbies } = portfolioData;
   const fullName = `${personalInfo.firstName} ${personalInfo.lastName}`;
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
 
   return (
-    <section id="process" className="relative w-full bg-[#080808] border-b border-white/10 overflow-hidden">
+    <section
+      id="process"
+      className="relative w-full bg-ink border-b border-white/10 overflow-hidden transition-colors duration-300"
+    >
       {/* 1. UPPER PHILOSOPHY STATEMENT WITH FLANKING EDGE-TO-EDGE HAIRLINES & STACKED SQUARES */}
       <div className="relative flex items-center justify-between w-full pt-24 sm:pt-32 pb-2 z-10">
         {/* Left Edge Hairline + Stacked Squares */}
@@ -234,14 +240,15 @@ export const ProcessToolsSection: React.FC = () => {
       </div>
 
       {/* 2. PORTRAIT STAGE WITH 6 EDITORIAL SPREAD CARDS & CRISS-CROSSED TAPE RIBBONS */}
-      <div className="relative w-full h-[490px] sm:h-[600px] lg:h-[670px] -mt-5 sm:-mt-8 lg:-mt-10 overflow-hidden">
+      <div className="spread-card-stage relative w-full h-[490px] sm:h-[600px] lg:h-[670px] -mt-5 sm:-mt-8 lg:-mt-10 overflow-hidden">
         {/* Studio Horizon Backdrop (starts below cap level so cap & upper cards straddle the horizon) */}
         <div
           aria-hidden="true"
-          className="absolute inset-x-0 top-[95px] sm:top-[125px] lg:top-[142px] bottom-0 z-[1]"
+          className="absolute inset-x-0 top-[95px] sm:top-[125px] lg:top-[142px] bottom-0 z-[1] transition-all duration-300"
           style={{
-            background:
-              'radial-gradient(ellipse 64% 92% at 76% 56%, #8f969a 0%, #585f63 38%, #1d2124 68%, #080808 92%)'
+            background: isLight
+              ? 'radial-gradient(ellipse 64% 92% at 76% 56%, #ffffff 0%, #dcd9cf 40%, #cbc7bc 70%, #e4e1d7 94%)'
+              : 'radial-gradient(ellipse 64% 92% at 76% 56%, #8f969a 0%, #585f63 38%, #1d2124 68%, #080808 92%)'
           }}
         />
 

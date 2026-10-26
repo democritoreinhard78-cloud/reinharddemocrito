@@ -464,7 +464,7 @@ export const ProjectsSection: React.FC = () => {
                       </div>
 
                       {/* Case Study Split Thumbnail Frame */}
-                      <div className="relative aspect-[16/10] w-full border border-white/15 bg-[#0c0e10] overflow-hidden p-2 grid grid-cols-12 gap-1.5 group-hover:border-white/45 transition-colors">
+                      <div className="case-study-artwork relative aspect-[16/10] w-full border border-white/15 bg-[#0c0e10] overflow-hidden p-2 grid grid-cols-12 gap-1.5 group-hover:border-white/45 transition-colors">
                         {card.variant === 'cream-split' && (
                           <>
                             <div className="col-span-8 bg-[#e7e5dc] text-black p-2.5 flex flex-col justify-between">
