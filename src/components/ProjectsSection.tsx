@@ -115,7 +115,6 @@ const CASE_STUDY_GRID: CaseStudyCard[] = [
 
 export const ProjectsSection: React.FC = () => {
   const { projects } = portfolioData;
-  const [activeIndex, setActiveIndex] = useState<number>(0);
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
   return (
@@ -123,78 +122,9 @@ export const ProjectsSection: React.FC = () => {
       id="projects"
       className="relative w-full bg-ink border-b border-white/10 py-20 sm:py-28 overflow-hidden"
     >
-      <div className="max-w-[1440px] mx-auto px-5 sm:px-10 space-y-20 sm:space-y-28">
-        {/* TOP ROW: "A SELECTION OF RECENT COLLABORATIONS." + Tabular Index */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-          {/* Left Column Title */}
-          <div className="lg:col-span-4 space-y-4">
-            <DoubleSquare />
-            <h2 className="font-display text-xl sm:text-2xl font-normal uppercase tracking-[-0.02em] leading-[1.15] text-white">
-              <span className="block">A SELECTION OF</span>
-              <span className="block">RECENT</span>
-              <span className="block">COLLABORATIONS.</span>
-            </h2>
-          </div>
-
-          {/* Right Column Interactive Collaborations Table */}
-          <div className="lg:col-span-8 border-t border-white/15">
-            {CASE_STUDY_GRID.slice(0, 10).map((row, index) => {
-              const isActive = index === activeIndex;
-              const linkedProject = projects[row.projectIndex] ?? projects[0];
-              return (
-                <button
-                  key={row.code}
-                  type="button"
-                  onMouseEnter={() => setActiveIndex(index)}
-                  onFocus={() => setActiveIndex(index)}
-                  onClick={() => linkedProject && setSelectedProject(linkedProject)}
-                  className={`w-full text-left transition-colors duration-150 border-b border-white/15 px-3 sm:px-5 py-2.5 sm:py-3 grid grid-cols-12 items-center gap-2 cursor-pointer ${
-                    isActive
-                      ? 'bg-white text-black'
-                      : 'bg-transparent text-white/75 hover:bg-white/5 hover:text-white'
-                  }`}
-                >
-                  <div className="col-span-2 sm:col-span-2 flex items-center gap-2.5">
-                    {isActive ? (
-                      <DoubleSquare dark />
-                    ) : (
-                      <span className="inline-flex items-center gap-1 opacity-30">
-                        <span className="w-1 h-1 bg-white inline-block" />
-                        <span className="w-1 h-1 bg-white inline-block" />
-                      </span>
-                    )}
-                    <span className="font-mono text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.18em]">
-                      [ 0{row.code} ]
-                    </span>
-                  </div>
-
-                  <div className="col-span-5 sm:col-span-5 font-mono text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.18em] font-medium truncate">
-                    {row.client}
-                  </div>
-
-                  <div
-                    className={`col-span-3 sm:col-span-3 font-mono text-[8px] sm:text-[9px] uppercase tracking-[0.16em] truncate ${
-                      isActive ? 'text-black/80' : 'text-white/50'
-                    }`}
-                  >
-                    {row.discipline}
-                  </div>
-
-                  <div
-                    className={`col-span-2 sm:col-span-2 text-right font-mono text-[8px] sm:text-[9px] uppercase tracking-[0.18em] ${
-                      isActive ? 'text-black' : 'text-white/50'
-                    }`}
-                  >
-                    {row.year}
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* BOTTOM 4x3 BENTO CASE STUDY THUMBNAIL GRID (12 Cards matching right reference panel) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-8 pt-4">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-10">
+        {/* 4x3 BENTO CASE STUDY THUMBNAIL GRID (12 Cards) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-8">
           {CASE_STUDY_GRID.map((card, idx) => {
             const linkedProject = projects[card.projectIndex] ?? projects[0];
             return (
