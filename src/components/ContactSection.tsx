@@ -15,14 +15,6 @@ const NAV_LINKS = [
   { label: 'CONTACT', href: '#contact' }
 ];
 
-const CAPABILITY_LINKS = [
-  'CREATIVE DIRECTION',
-  'VIDEO EDITING',
-  'VISUAL DESIGN',
-  'MOTION GRAPHICS',
-  'STORYTELLING'
-];
-
 export const ContactSection: React.FC = () => {
   const { personalInfo, socialLinks } = portfolioData;
   const [showForm, setShowForm] = useState(false);
@@ -108,7 +100,7 @@ export const ContactSection: React.FC = () => {
               </button>
             </div>
 
-            <div className="w-full lg:max-w-xl grid grid-cols-2 sm:grid-cols-3 gap-8 pt-2">
+            <div className="w-full lg:max-w-sm grid grid-cols-2 gap-8 pt-2">
               {/* Column 1: Navigation */}
               <ul className="space-y-2.5">
                 {NAV_LINKS.map((item) => (
@@ -123,20 +115,8 @@ export const ContactSection: React.FC = () => {
                 ))}
               </ul>
 
-              {/* Column 2: Capabilities */}
-              <ul className="space-y-2.5">
-                {CAPABILITY_LINKS.map((cap) => (
-                  <li
-                    key={cap}
-                    className="font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.18em] text-white/65"
-                  >
-                    [{cap}]
-                  </li>
-                ))}
-              </ul>
-
-              {/* Column 3: Real Social Channels */}
-              <ul className="space-y-3 col-span-2 sm:col-span-1">
+              {/* Column 2: Real Social Channels */}
+              <ul className="space-y-3">
                 {socialLinks.map((social) => (
                   <li key={social.name}>
                     <a

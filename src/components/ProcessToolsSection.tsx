@@ -181,7 +181,7 @@ const SoftwareIcon: React.FC<{ code?: string }> = ({ code }) => {
 };
 
 export const ProcessToolsSection: React.FC = () => {
-  const { personalInfo, softwareSkills, designSkills, hobbies } = portfolioData;
+  const { personalInfo, softwareSkills } = portfolioData;
   const fullName = `${personalInfo.firstName} ${personalInfo.lastName}`;
   const { theme } = useTheme();
   const isLight = theme === 'light';
@@ -546,76 +546,32 @@ export const ProcessToolsSection: React.FC = () => {
         </div>
       </div>
 
-      {/* 3. COMPACT TOOLKIT, CRAFT & INTERESTS BAR */}
+      {/* 3. COMPACT TOOLKIT & SOFTWARE BAR */}
       <div className="max-w-[1440px] mx-auto px-5 sm:px-10 py-14 sm:py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Software Tools */}
-          <div className="lg:col-span-6 space-y-3">
-            <div className="flex items-center gap-3">
-              <DoubleSquare />
-              <span className="font-mono text-[9.5px] uppercase tracking-[0.22em] text-white/70">
-                TOOLKIT &amp; SOFTWARE
-              </span>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-              {softwareSkills.map((skill) => (
-                <div
-                  key={skill.name}
-                  className="group border border-white/15 hover:border-white/35 bg-white/[0.02] hover:bg-white/[0.05] px-3 py-2.5 flex items-center justify-between gap-2 transition-colors"
-                >
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <SoftwareIcon code={skill.code} />
-                    <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] text-white truncate">
-                      {skill.name}
-                    </span>
-                  </div>
-                  <span className="font-mono text-[8.5px] text-white/45 shrink-0">
-                    [{skill.code}]
+        <div className="space-y-3">
+          <div className="flex items-center gap-3">
+            <DoubleSquare />
+            <span className="font-mono text-[9.5px] uppercase tracking-[0.22em] text-white/70">
+              TOOLKIT &amp; SOFTWARE
+            </span>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
+            {softwareSkills.map((skill) => (
+              <div
+                key={skill.name}
+                className="group border border-white/15 hover:border-white/35 bg-white/[0.02] hover:bg-white/[0.05] px-3 py-2.5 flex items-center justify-between gap-2 transition-colors"
+              >
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <SoftwareIcon code={skill.code} />
+                  <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] text-white truncate">
+                    {skill.name}
                   </span>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Craft & Personal Interests */}
-          <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <DoubleSquare />
-                <span className="font-mono text-[9.5px] uppercase tracking-[0.22em] text-white/70">
-                  CRAFT &amp; FOCUS
+                <span className="font-mono text-[8.5px] text-white/45 shrink-0">
+                  [{skill.code}]
                 </span>
               </div>
-              <ul className="space-y-1.5">
-                {designSkills.map((skill) => (
-                  <li
-                    key={skill}
-                    className="font-mono text-[9px] uppercase tracking-[0.16em] text-white/75"
-                  >
-                    [ {skill} ]
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <DoubleSquare />
-                <span className="font-mono text-[9.5px] uppercase tracking-[0.22em] text-white/70">
-                  BEYOND THE TIMELINE
-                </span>
-              </div>
-              <ul className="space-y-1.5">
-                {hobbies.map((hobby) => (
-                  <li
-                    key={hobby.name}
-                    className="font-mono text-[9px] uppercase tracking-[0.16em] text-white/75"
-                  >
-                    [ {hobby.name} ]
-                  </li>
-                ))}
-              </ul>
-            </div>
+            ))}
           </div>
         </div>
       </div>
