@@ -127,11 +127,11 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: 6,
-      title: "Academic & Creative Media Honors",
+      title: "Directing & Filmmaking Honors (PSITS & Sine Kabataan)",
       category: "Certificates & Awards",
-      year: "2024",
-      image: "https://images.unsplash.com/photo-1578269174936-2709b6aeb913?auto=format&fit=crop&w=800&q=80",
-      description: "Academic excellence honors and professional creative certifications in film editing, direction, and motion storytelling."
+      year: "2024–2025",
+      image: "/projects/cert-5.jpg",
+      description: "PSITS Region 11 Champion & Best Director / Best Editing awards, Sine Kabataan Best Director ('Four-Saken Truths'), and CCIS-LGU Governor leadership distinction."
     }
   ]
 };

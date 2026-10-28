@@ -314,78 +314,116 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Bold typographic poster artwork, stage banners, and digital pass graphics for a contemporary music and arts event.'
   },
 
-  // 05. CERTIFICATES & AWARDS (6 Works)
+  // 05. CERTIFICATES & AWARDS (10 Real Certificates & Awards)
   {
     code: '21',
     categoryId: 'certificates-awards',
     categoryLabel: 'Certificates & Awards',
-    client: 'ACADEMIC EXCELLENCE AWARD',
-    discipline: 'COR JESU COLLEGE',
-    year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1578269174936-2709b6aeb913?auto=format&fit=crop&w=1000&q=85',
+    client: 'PSITS REGIONAL CHAMPION',
+    discipline: 'BEST SHORT FILM, DIRECTOR & EDITING',
+    year: '2025',
+    image: '/projects/cert-5.jpg',
     description:
-      'Recognized for outstanding academic achievement, dedication, and leadership in Computer Science and creative technology.'
+      "Champion & multi-award sweep at the PSITS Region 11 Contest: Best Short Film, People's Choice Award, Best Director, Best Editing, Best Musical Scoring, and Best Trailer."
   },
   {
     code: '22',
     categoryId: 'certificates-awards',
     categoryLabel: 'Certificates & Awards',
-    client: 'CREATIVE MEDIA ACCREDITATION',
-    discipline: 'VIDEO EDITING & DIRECTION',
+    client: 'BEST DIRECTOR — "LUNAN"',
+    discipline: 'PSITS REGION 11 FILM FESTIVAL',
     year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1000&q=85',
+    image: '/projects/cert-8.jpg',
     description:
-      'Certified competency in professional film editing, narrative pacing, color correction, and post-production audio craft.'
+      'Awarded Best Director for the short film "Lunan" at the PSITS Region 11 Interschool Short Film Festival, celebrating exceptional cinematic vision and narrative execution.'
   },
   {
     code: '23',
     categoryId: 'certificates-awards',
     categoryLabel: 'Certificates & Awards',
-    client: 'OUTSTANDING MOTION DESIGNER',
-    discipline: 'REGIONAL MEDIA FESTIVAL',
-    year: '2023',
-    image:
-      'https://images.unsplash.com/photo-1569683795645-b62e50fbf103?auto=format&fit=crop&w=1000&q=85',
+    client: 'BEST DIRECTOR — "FOUR-SAKEN TRUTHS"',
+    discipline: 'SINE KABATAAN FILM FESTIVAL',
+    year: '2024',
+    image: '/projects/cert-9.jpg',
     description:
-      'Honored with regional distinction for 2D animation, character design, and innovative educational visual storytelling.'
+      'Awarded Best Director for "Four-Saken Truths" (MRC Films) at the Sine Kabataan Short Film Festival, hosted by the Sangguniang Kabataan Provincial Federation of Davao del Sur.'
   },
   {
     code: '24',
     categoryId: 'certificates-awards',
     categoryLabel: 'Certificates & Awards',
-    client: 'BEST SHORT FILM DIRECTION',
-    discipline: 'STUDENT CREATIVE SHOWCASE',
-    year: '2023',
-    image:
-      'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1000&q=85',
+    client: 'BEST SHORT FILM — "FOUR-SAKEN TRUTHS"',
+    discipline: 'SIP SHORT FILM FESTIVAL',
+    year: '2024',
+    image: '/projects/cert-6.jpg',
     description:
-      'First place honors for narrative concept, camera blocking, atmospheric lighting, and collaborative editorial direction.'
+      'First Place / Best Short Film winner for "Four-Saken Truths" at the Cor Jesu College SIP Short Film Festival 2024.'
   },
   {
     code: '25',
     categoryId: 'certificates-awards',
     categoryLabel: 'Certificates & Awards',
-    client: 'GRAPHIC DESIGN CERTIFICATION',
-    discipline: 'BRAND & VISUAL IDENTITY',
-    year: '2023',
-    image:
-      'https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?auto=format&fit=crop&w=1000&q=85',
+    client: '2ND RUNNER-UP — "FOUR-SAKEN TRUTHS"',
+    discipline: 'SINE KABATAAN FILM FESTIVAL',
+    year: '2024',
+    image: '/projects/cert-10.jpg',
     description:
-      'Professional accreditation in typographic hierarchy, Swiss brutalist aesthetics, layout systems, and brand guidelines.'
+      'Awarded 2nd Runner-Up overall for the short film "Four-Saken Truths" at the Sine Kabataan Short Film Festival (Davao del Sur Provincial Federation).'
   },
   {
     code: '26',
     categoryId: 'certificates-awards',
     categoryLabel: 'Certificates & Awards',
-    client: 'COMMENDATION IN STORYTELLING',
-    discipline: 'DIGITAL ARTS & MEDIA',
-    year: '2022',
-    image:
-      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=85',
+    client: '1ST RUNNER-UP — SHORT FILM',
+    discipline: 'CPAR RECITAL SHOWCASE',
+    year: '2023',
+    image: '/projects/cert-2.jpg',
     description:
-      'Special commendation for compelling narrative structure, visual clarity, and creative multimedia production.'
+      '1st Runner-Up distinction in the Short Film Category at the CPAR Recital 2023, showcasing early narrative directing and cinematography craft.'
+  },
+  {
+    code: '27',
+    categoryId: 'certificates-awards',
+    categoryLabel: 'Certificates & Awards',
+    client: 'GOVERNOR LEADERSHIP RECOGNITION',
+    discipline: 'CCIS-LGU COR JESU COLLEGE',
+    year: '2026',
+    image: '/projects/cert-4.jpg',
+    description:
+      'Certificate of Recognition for dedicated executive leadership serving as Governor of the College of Computer and Information Sciences Local Government Unit (CCIS-LGU, A.Y. 2025–2026).'
+  },
+  {
+    code: '28',
+    categoryId: 'certificates-awards',
+    categoryLabel: 'Certificates & Awards',
+    client: 'FILM FESTIVAL JURY JUDGE',
+    discipline: 'SIP SHORT FILM FESTIVAL 2025',
+    year: '2025',
+    image: '/projects/cert-7.jpg',
+    description:
+      'Invited as official adjudicator and film judge evaluating student short film entries at the Cor Jesu College SIP Short Film Festival 2025.'
+  },
+  {
+    code: '29',
+    categoryId: 'certificates-awards',
+    categoryLabel: 'Certificates & Awards',
+    client: 'TECHNICAL OPERATOR COMMENDATION',
+    discipline: 'DASURECO 44TH AGMA',
+    year: '2025',
+    image: '/projects/cert-3.jpg',
+    description:
+      'Certificate of Appreciation from Davao del Sur Electric Cooperative (DASURECO) for outstanding technical contribution as Registration Operator during the 44th Annual General Membership Assembly.'
+  },
+  {
+    code: '30',
+    categoryId: 'certificates-awards',
+    categoryLabel: 'Certificates & Awards',
+    client: 'AUGMENTED REALITY SEMINAR',
+    discipline: 'ACSS & CCIS COR JESU COLLEGE',
+    year: '2022',
+    image: '/projects/cert-1.jpg',
+    description:
+      'Certificate of Participation in the Augmented Reality Seminar-Workshop organized by the Association of Computer Studies Students at Cor Jesu College.'
   }
 ];
 
