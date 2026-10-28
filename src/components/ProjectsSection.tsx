@@ -388,7 +388,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
     client: 'GOVERNOR LEADERSHIP RECOGNITION',
     discipline: 'CCIS-LGU COR JESU COLLEGE',
     year: '2026',
-    image: '/projects/cert-4.jpg',
+    image: '/projects/cert-4.png',
     description:
       'Certificate of Recognition for dedicated executive leadership serving as Governor of the College of Computer and Information Sciences Local Government Unit (CCIS-LGU, A.Y. 2025–2026).'
   },
@@ -421,7 +421,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
     client: 'AUGMENTED REALITY SEMINAR',
     discipline: 'ACSS & CCIS COR JESU COLLEGE',
     year: '2022',
-    image: '/projects/cert-1.jpg',
+    image: '/projects/cert-1.png',
     description:
       'Certificate of Participation in the Augmented Reality Seminar-Workshop organized by the Association of Computer Studies Students at Cor Jesu College.'
   }
