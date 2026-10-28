@@ -424,6 +424,17 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
     image: '/projects/cert-1.png',
     description:
       'Certificate of Participation in the Augmented Reality Seminar-Workshop organized by the Association of Computer Studies Students at Cor Jesu College.'
+  },
+  {
+    code: '31',
+    categoryId: 'certificates-awards',
+    categoryLabel: 'Certificates & Awards',
+    client: 'BEST RESEARCH PROJECT AWARD',
+    discipline: 'GAMIFICATION & RESEARCH',
+    year: '2024',
+    image: '/projects/cert-11.png',
+    description:
+      'Awarded Best Research Project for "Provision of Information Through Gamification: Sacred Heart Chronicles" at Cor Jesu College, recognizing innovative interactive research and design.'
   }
 ];
 

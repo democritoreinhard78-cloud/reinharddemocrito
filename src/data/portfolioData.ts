@@ -131,7 +131,7 @@ export const portfolioData: PortfolioData = {
       category: "Certificates & Awards",
       year: "2024–2025",
       image: "/projects/cert-5.jpg",
-      description: "PSITS Region 11 Champion & Best Director / Best Editing awards, Sine Kabataan Best Director ('Four-Saken Truths'), and CCIS-LGU Governor leadership distinction."
+      description: "PSITS Region 11 Champion & Best Director / Best Editing awards, Sine Kabataan Best Director ('Four-Saken Truths'), Best Research Project Award, and CCIS-LGU Governor leadership distinction."
     }
   ]
 };
