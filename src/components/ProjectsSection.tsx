@@ -7,11 +7,11 @@ import { ProjectModal } from './ProjectModal';
 
 type CategoryId =
   | 'all'
-  | 'directing'
+  | 'directing-outputs'
   | 'motion-2d'
-  | 'short-video'
+  | 'intro-short-videos'
   | 'graphics'
-  | 'intro-videos';
+  | 'certificates-awards';
 
 interface PortfolioCategory {
   id: Exclude<CategoryId, 'all'>;
@@ -34,22 +34,22 @@ interface CaseStudyCard {
 
 const CATEGORIES: PortfolioCategory[] = [
   {
-    id: 'directing',
+    id: 'directing-outputs',
     index: '01',
-    label: 'Directing',
-    subtitle: 'CREATIVE DIRECTION, COMMERCIAL FILMS & VISUAL STORYTELLING'
+    label: 'Directing Outputs',
+    subtitle: 'COMMERCIAL FILMS, NARRATIVES & DIRECTION SHOWCASES'
   },
   {
     id: 'motion-2d',
     index: '02',
     label: 'Motion Graphics & 2D Animation',
-    subtitle: 'KINETIC TYPOGRAPHY, 2D CHARACTER ANIMATION & VISUAL FX'
+    subtitle: '2D ANIMATION, KINETIC TYPOGRAPHY & CHARACTER STORYTELLING'
   },
   {
-    id: 'short-video',
+    id: 'intro-short-videos',
     index: '03',
-    label: 'Short Video Contents',
-    subtitle: 'HIGH-RETENTION REELS, SOCIAL CUTS & FAST-PACED STORYTELLING'
+    label: 'Intro Videos & Short Video Contents',
+    subtitle: 'OPENERS, HIGH-RETENTION REELS & SOCIAL STORYTELLING'
   },
   {
     id: 'graphics',
@@ -58,19 +58,19 @@ const CATEGORIES: PortfolioCategory[] = [
     subtitle: 'BRAND IDENTITY, SOCIAL MEDIA GRAPHICS, POSTERS & DECKS'
   },
   {
-    id: 'intro-videos',
+    id: 'certificates-awards',
     index: '05',
-    label: 'Intro Videos',
-    subtitle: 'LOGO STINGERS, CHANNEL OPENERS & BROADCAST TITLE SEQUENCES'
+    label: 'Certificates & Awards',
+    subtitle: 'HONORS, RECOGNITIONS & PROFESSIONAL ACCREDITATIONS'
   }
 ];
 
 const CASE_STUDY_CARDS: CaseStudyCard[] = [
-  // 01. DIRECTING (6 Works)
+  // 01. DIRECTING OUTPUTS (6 Works)
   {
     code: '01',
-    categoryId: 'directing',
-    categoryLabel: 'Directing',
+    categoryId: 'directing-outputs',
+    categoryLabel: 'Directing Outputs',
     client: 'BRAND LAUNCH FILM',
     discipline: 'DIRECTION & EDITING',
     year: '2025',
@@ -81,8 +81,8 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
   },
   {
     code: '02',
-    categoryId: 'directing',
-    categoryLabel: 'Directing',
+    categoryId: 'directing-outputs',
+    categoryLabel: 'Directing Outputs',
     client: 'MNLTH VISUALS',
     discipline: 'CREATIVE DIRECTION',
     year: '2025',
@@ -93,8 +93,8 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
   },
   {
     code: '03',
-    categoryId: 'directing',
-    categoryLabel: 'Directing',
+    categoryId: 'directing-outputs',
+    categoryLabel: 'Directing Outputs',
     client: 'DOCUMENTARY SHORT',
     discipline: 'DIRECTION & SOUND',
     year: '2024',
@@ -105,8 +105,8 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
   },
   {
     code: '04',
-    categoryId: 'directing',
-    categoryLabel: 'Directing',
+    categoryId: 'directing-outputs',
+    categoryLabel: 'Directing Outputs',
     client: 'COLLISON CAMPAIGN',
     discipline: 'FILM DIRECTION',
     year: '2024',
@@ -117,8 +117,8 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
   },
   {
     code: '05',
-    categoryId: 'directing',
-    categoryLabel: 'Directing',
+    categoryId: 'directing-outputs',
+    categoryLabel: 'Directing Outputs',
     client: 'NOCTURNE NARRATIVE',
     discipline: 'WRITING & DIRECTING',
     year: '2024',
@@ -129,8 +129,8 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
   },
   {
     code: '06',
-    categoryId: 'directing',
-    categoryLabel: 'Directing',
+    categoryId: 'directing-outputs',
+    categoryLabel: 'Directing Outputs',
     client: 'SOLARIS LOOKBOOK FILM',
     discipline: 'FASHION DIRECTION',
     year: '2024',
@@ -166,11 +166,23 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Commercial 2D animation explainer for M and L Car Trading detailing memorandum of agreement terms with custom vector assets and motion design.'
   },
 
-  // 03. SHORT VIDEO CONTENTS (6 Works)
+  // 03. INTRO VIDEOS & SHORT VIDEO CONTENTS (6 Works)
   {
-    code: '13',
-    categoryId: 'short-video',
-    categoryLabel: 'Short Video Contents',
+    code: '09',
+    categoryId: 'intro-short-videos',
+    categoryLabel: 'Intro Videos & Short Video Contents',
+    client: 'NARCRAFT OPENER',
+    discipline: 'LOGO STINGER & INTRO',
+    year: '2025',
+    image:
+      'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1000&q=85',
+    description:
+      'Custom signature logo reveal and dark-room sonic stinger establishing immediate brand recognition in the first 5 seconds.'
+  },
+  {
+    code: '10',
+    categoryId: 'intro-short-videos',
+    categoryLabel: 'Intro Videos & Short Video Contents',
     client: 'EDITORIAL REEL',
     discipline: 'SHORT-FORM PACING',
     year: '2025',
@@ -180,9 +192,21 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'High-retention vertical edit combining punchy hooks, dynamic speed ramps, custom captions, and crisp sound design.'
   },
   {
-    code: '14',
-    categoryId: 'short-video',
-    categoryLabel: 'Short Video Contents',
+    code: '11',
+    categoryId: 'intro-short-videos',
+    categoryLabel: 'Intro Videos & Short Video Contents',
+    client: 'CHANNEL INTRO SEQ',
+    discipline: 'TITLE OPENER',
+    year: '2025',
+    image:
+      'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1000&q=85',
+    description:
+      'Dynamic YouTube and creator channel intro sequence combining layered cut-outs, kinetic titles, and custom sound hits.'
+  },
+  {
+    code: '12',
+    categoryId: 'intro-short-videos',
+    categoryLabel: 'Intro Videos & Short Video Contents',
     client: 'CREATOR HIGHLIGHT',
     discipline: 'RETENTION EDITING',
     year: '2025',
@@ -192,9 +216,9 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Short-form storytelling tailored for Reels, TikTok, and YouTube Shorts with clean visual callouts and seamless B-roll integration.'
   },
   {
-    code: '15',
-    categoryId: 'short-video',
-    categoryLabel: 'Short Video Contents',
+    code: '13',
+    categoryId: 'intro-short-videos',
+    categoryLabel: 'Intro Videos & Short Video Contents',
     client: 'PRODUCT DROP CUT',
     discipline: 'SOCIAL VIDEO ADS',
     year: '2024',
@@ -204,45 +228,21 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Fast-paced 30-second commercial cut engineered for social conversion with rhythmic cuts and bold typography.'
   },
   {
-    code: '16',
-    categoryId: 'short-video',
-    categoryLabel: 'Short Video Contents',
-    client: 'EVENT RECAP SHORT',
-    discipline: 'FAST-CUT STORY',
+    code: '14',
+    categoryId: 'intro-short-videos',
+    categoryLabel: 'Intro Videos & Short Video Contents',
+    client: 'AVENOR STUDIO INTRO',
+    discipline: 'BROADCAST OPENER',
     year: '2024',
     image:
-      'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1000&q=85',
+      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1000&q=85',
     description:
-      'High-energy highlight reel capturing live event atmosphere through match-cuts, riser SFX, and stylized color grading.'
-  },
-  {
-    code: '17',
-    categoryId: 'short-video',
-    categoryLabel: 'Short Video Contents',
-    client: 'ATHLETE PROMO REEL',
-    discipline: 'SPORTS SHORT CUT',
-    year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1000&q=85',
-    description:
-      'Adrenaline-fueled sports training reel featuring whip-pans, impact sound effects, and frame-accurate beat cutting.'
-  },
-  {
-    code: '18',
-    categoryId: 'short-video',
-    categoryLabel: 'Short Video Contents',
-    client: 'FOUNDER STORY REEL',
-    discipline: 'PODCAST & TALKING HEAD',
-    year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=85',
-    description:
-      'Engaging executive storytelling clip enhanced with animated lower-thirds, kinetic subtitles, and contextual B-roll overlays.'
+      'Editorial title sequence and show package opener with lower-thirds, transition mattes, and atmospheric pacing.'
   },
 
   // 04. GRAPHICS (6 Works)
   {
-    code: '19',
+    code: '15',
     categoryId: 'graphics',
     categoryLabel: 'Graphics',
     client: 'IDENTITY SYSTEM',
@@ -254,7 +254,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Cohesive visual identity system featuring custom typography rules, brand marks, and grid-based key visuals.'
   },
   {
-    code: '20',
+    code: '16',
     categoryId: 'graphics',
     categoryLabel: 'Graphics',
     client: 'PORTRAIT SERIES',
@@ -266,7 +266,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Swiss-brutalist poster series and social media carousel graphics built in Photoshop and Canva with bold editorial hierarchy.'
   },
   {
-    code: '21',
+    code: '17',
     categoryId: 'graphics',
     categoryLabel: 'Graphics',
     client: 'AUREL VANCE',
@@ -278,7 +278,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Print and digital lookbook layouts balancing high-contrast photography with structured micro-typography.'
   },
   {
-    code: '22',
+    code: '18',
     categoryId: 'graphics',
     categoryLabel: 'Graphics',
     client: 'RENOVA DECK',
@@ -290,7 +290,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Executive pitch deck and visual presentation system crafted in PowerPoint and Canva for investor storytelling.'
   },
   {
-    code: '23',
+    code: '19',
     categoryId: 'graphics',
     categoryLabel: 'Graphics',
     client: 'SOCIAL CAMPAIGN KIT',
@@ -302,7 +302,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Modular social media template suite, announcement graphics, and ad creatives built for consistent multi-channel branding.'
   },
   {
-    code: '24',
+    code: '20',
     categoryId: 'graphics',
     categoryLabel: 'Graphics',
     client: 'FESTIVAL KEY VISUAL',
@@ -314,78 +314,78 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Bold typographic poster artwork, stage banners, and digital pass graphics for a contemporary music and arts event.'
   },
 
-  // 05. INTRO VIDEOS (6 Works)
+  // 05. CERTIFICATES & AWARDS (6 Works)
+  {
+    code: '21',
+    categoryId: 'certificates-awards',
+    categoryLabel: 'Certificates & Awards',
+    client: 'ACADEMIC EXCELLENCE AWARD',
+    discipline: 'COR JESU COLLEGE',
+    year: '2024',
+    image:
+      'https://images.unsplash.com/photo-1578269174936-2709b6aeb913?auto=format&fit=crop&w=1000&q=85',
+    description:
+      'Recognized for outstanding academic achievement, dedication, and leadership in Computer Science and creative technology.'
+  },
+  {
+    code: '22',
+    categoryId: 'certificates-awards',
+    categoryLabel: 'Certificates & Awards',
+    client: 'CREATIVE MEDIA ACCREDITATION',
+    discipline: 'VIDEO EDITING & DIRECTION',
+    year: '2024',
+    image:
+      'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1000&q=85',
+    description:
+      'Certified competency in professional film editing, narrative pacing, color correction, and post-production audio craft.'
+  },
+  {
+    code: '23',
+    categoryId: 'certificates-awards',
+    categoryLabel: 'Certificates & Awards',
+    client: 'OUTSTANDING MOTION DESIGNER',
+    discipline: 'REGIONAL MEDIA FESTIVAL',
+    year: '2023',
+    image:
+      'https://images.unsplash.com/photo-1569683795645-b62e50fbf103?auto=format&fit=crop&w=1000&q=85',
+    description:
+      'Honored with regional distinction for 2D animation, character design, and innovative educational visual storytelling.'
+  },
+  {
+    code: '24',
+    categoryId: 'certificates-awards',
+    categoryLabel: 'Certificates & Awards',
+    client: 'BEST SHORT FILM DIRECTION',
+    discipline: 'STUDENT CREATIVE SHOWCASE',
+    year: '2023',
+    image:
+      'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1000&q=85',
+    description:
+      'First place honors for narrative concept, camera blocking, atmospheric lighting, and collaborative editorial direction.'
+  },
   {
     code: '25',
-    categoryId: 'intro-videos',
-    categoryLabel: 'Intro Videos',
-    client: 'NARCRAFT OPENER',
-    discipline: 'LOGO STINGER & INTRO',
-    year: '2025',
+    categoryId: 'certificates-awards',
+    categoryLabel: 'Certificates & Awards',
+    client: 'GRAPHIC DESIGN CERTIFICATION',
+    discipline: 'BRAND & VISUAL IDENTITY',
+    year: '2023',
     image:
-      'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1000&q=85',
+      'https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?auto=format&fit=crop&w=1000&q=85',
     description:
-      'Custom signature logo reveal and dark-room sonic stinger establishing immediate brand recognition in the first 5 seconds.'
+      'Professional accreditation in typographic hierarchy, Swiss brutalist aesthetics, layout systems, and brand guidelines.'
   },
   {
     code: '26',
-    categoryId: 'intro-videos',
-    categoryLabel: 'Intro Videos',
-    client: 'CHANNEL INTRO SEQ',
-    discipline: 'TITLE OPENER',
-    year: '2025',
+    categoryId: 'certificates-awards',
+    categoryLabel: 'Certificates & Awards',
+    client: 'COMMENDATION IN STORYTELLING',
+    discipline: 'DIGITAL ARTS & MEDIA',
+    year: '2022',
     image:
-      'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1000&q=85',
+      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=85',
     description:
-      'Dynamic YouTube and creator channel intro sequence combining layered cut-outs, kinetic titles, and custom sound hits.'
-  },
-  {
-    code: '27',
-    categoryId: 'intro-videos',
-    categoryLabel: 'Intro Videos',
-    client: 'AVENOR STUDIO INTRO',
-    discipline: 'BROADCAST OPENER',
-    year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1000&q=85',
-    description:
-      'Editorial title sequence and show package opener with lower-thirds, transition mattes, and atmospheric pacing.'
-  },
-  {
-    code: '28',
-    categoryId: 'intro-videos',
-    categoryLabel: 'Intro Videos',
-    client: 'CINEMATIC CUT INTRO',
-    discipline: 'SHOWREEL OPENER',
-    year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1000&q=85',
-    description:
-      'High-impact showreel and event intro video built to command attention with bold countdown frames and rapid montage cuts.'
-  },
-  {
-    code: '29',
-    categoryId: 'intro-videos',
-    categoryLabel: 'Intro Videos',
-    client: 'PODCAST SHOW OPENER',
-    discipline: 'AUDIO-VISUAL INTRO',
-    year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1000&q=85',
-    description:
-      'Custom animated title sequence and voiceover bumper introducing episodes with a memorable visual signature.'
-  },
-  {
-    code: '30',
-    categoryId: 'intro-videos',
-    categoryLabel: 'Intro Videos',
-    client: 'ESPORTS TEAM OPENER',
-    discipline: 'GAMING & STREAM INTRO',
-    year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1000&q=85',
-    description:
-      'High-voltage 3D-feel title card, glitch transitions, and bass-heavy sound design for tournament broadcasts.'
+      'Special commendation for compelling narrative structure, visual clarity, and creative multimedia production.'
   }
 ];
 

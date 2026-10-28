@@ -86,7 +86,7 @@ export const portfolioData: PortfolioData = {
     {
       id: 1,
       title: "Brand Launch Film",
-      category: "Directing",
+      category: "Directing Outputs",
       year: "2025",
       image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
       description: "End-to-end creative direction, storyboarding, on-set blocking, and final narrative cut for a flagship brand launch film."
@@ -101,7 +101,7 @@ export const portfolioData: PortfolioData = {
       description: "Educational 2D animated explainer breaking down One-Way ANOVA statistical analysis with custom character rigging, illustrated environments, and motion design."
     },
     {
-      id: 6,
+      id: 3,
       title: "Memorandum of Agreement: Car Trading",
       category: "Motion Graphics & 2D Animation",
       year: "2023",
@@ -110,15 +110,15 @@ export const portfolioData: PortfolioData = {
       description: "Commercial 2D animation explainer for M and L Car Trading detailing memorandum of agreement terms with custom vector assets and motion design."
     },
     {
-      id: 3,
-      title: "Editorial & Creator Highlight Reel",
-      category: "Short Video Contents",
+      id: 4,
+      title: "Editorial Reel & NarCraft Opener",
+      category: "Intro Videos & Short Video Contents",
       year: "2025",
       image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80",
-      description: "High-retention vertical edit combining punchy hooks, dynamic speed ramps, custom captions, and crisp sound design."
+      description: "High-retention vertical edits and custom signature logo stingers establishing immediate brand recognition."
     },
     {
-      id: 4,
+      id: 5,
       title: "Identity System & Editorial Posters",
       category: "Graphics",
       year: "2025",
@@ -126,12 +126,12 @@ export const portfolioData: PortfolioData = {
       description: "Cohesive visual identity system, social media graphics, and presentation layouts featuring custom typography rules and grid-based key visuals."
     },
     {
-      id: 5,
-      title: "NarCraft & Broadcast Title Openers",
-      category: "Intro Videos",
-      year: "2025",
-      image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=800&q=80",
-      description: "Custom signature logo reveals, channel intro sequences, and dark-room sonic stingers establishing immediate brand recognition."
+      id: 6,
+      title: "Academic & Creative Media Honors",
+      category: "Certificates & Awards",
+      year: "2024",
+      image: "https://images.unsplash.com/photo-1578269174936-2709b6aeb913?auto=format&fit=crop&w=800&q=80",
+      description: "Academic excellence honors and professional creative certifications in film editing, direction, and motion storytelling."
     }
   ]
 };
