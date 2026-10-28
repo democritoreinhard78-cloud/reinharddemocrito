@@ -9,10 +9,85 @@ interface CurvedFilmstripProps {
 const ATLAS_W = 3600;
 const ATLAS_H = 240;
 
+interface FilmstripProject {
+  image: string;
+  category: string;
+  title: string;
+  subtitle: string;
+  year: string;
+  isLightCard: boolean;
+}
+
+const PROJECT_OUTPUTS: FilmstripProject[] = [
+  {
+    image: '/projects/cabe-final-proj-thumb.jpg',
+    category: '[ 02 // MOTION 2D ]',
+    title: 'ONE-WAY ANOVA',
+    subtitle: 'Educational 2D Animation',
+    year: '2024',
+    isLightCard: false
+  },
+  {
+    image: '/projects/cert-5.jpg',
+    category: '[ 05 // CHAMPION ]',
+    title: 'PSITS REGION 11',
+    subtitle: 'Champion • Best Director & Edit',
+    year: '2025',
+    isLightCard: true
+  },
+  {
+    image: '/projects/cert-9.jpg',
+    category: '[ 01 // DIRECTING ]',
+    title: 'FOUR-SAKEN TRUTHS',
+    subtitle: 'Best Director • MRC Films',
+    year: '2024',
+    isLightCard: false
+  },
+  {
+    image: '/projects/moa-car-trading-thumb.jpg',
+    category: '[ 02 // 2D ANIMATION ]',
+    title: 'CAR TRADING',
+    subtitle: 'Commercial Motion Explainer',
+    year: '2023',
+    isLightCard: true
+  },
+  {
+    image: '/projects/cert-8.jpg',
+    category: '[ 01 // FILM DIRECTION ]',
+    title: 'LUNAN',
+    subtitle: 'Best Director • Interschool',
+    year: '2024',
+    isLightCard: false
+  },
+  {
+    image: '/projects/cert-11.png',
+    category: '[ 05 // RESEARCH AWARD ]',
+    title: 'BEST RESEARCH',
+    subtitle: 'Sacred Heart Chronicles',
+    year: '2024',
+    isLightCard: true
+  },
+  {
+    image: '/projects/cert-4.png',
+    category: '[ 05 // LEADERSHIP ]',
+    title: 'CCIS GOVERNOR',
+    subtitle: 'Cor Jesu College CCIS-LGU',
+    year: '2026',
+    isLightCard: false
+  },
+  {
+    image: '/projects/cert-6.jpg',
+    category: '[ 01 // BEST FILM ]',
+    title: 'SIP SHORT FILM',
+    subtitle: 'Best Short Film Winner',
+    year: '2024',
+    isLightCard: true
+  }
+];
+
 /**
- * Builds a high-resolution (3600x240) editorial filmstrip texture with open transparent gaps
- * between each project spread so the cards float with clear separation ("dili dikit") just
- * like the reference image.
+ * Builds a high-resolution (3600x240) editorial filmstrip texture populated with
+ * Reinhard's actual project outputs and awards across all 5 portfolio categories.
  */
 function createFilmstripAtlas(onImageLoad: () => void): HTMLCanvasElement {
   const atlas = document.createElement('canvas');
@@ -22,12 +97,12 @@ function createFilmstripAtlas(onImageLoad: () => void): HTMLCanvasElement {
   if (!ctx) return atlas;
 
   const drawSpreads = (loadedImgs: (HTMLImageElement | null)[]) => {
-    // Keep the base atlas transparent so gaps between cards are open space (not stuck together)
+    // Keep the base atlas transparent so gaps between cards are open space
     ctx.clearRect(0, 0, ATLAS_W, ATLAS_H);
 
-    const numCards = 8;
+    const numCards = PROJECT_OUTPUTS.length;
     const slotW = ATLAS_W / numCards; // 450px per slot
-    const gap = 82; // open transparent gap between spreads so cards are clearly separated
+    const gap = 82; // open transparent gap between spreads
     const cardW = slotW - gap; // 368px per spread card
     const cardY = 6;
     const cardH = ATLAS_H - 12; // 228px
@@ -36,207 +111,167 @@ function createFilmstripAtlas(onImageLoad: () => void): HTMLCanvasElement {
       ctx.fillStyle = color;
       for (let r = 0; r < rows; r++) {
         const lw = r === rows - 1 ? w * 0.62 : w;
-        ctx.fillRect(x, y + r * 6, lw, 2.5);
+        ctx.fillRect(x, y + r * 6, Math.max(1, lw), 2);
+      }
+    };
+
+    const drawBarcode = (x: number, y: number, w: number, h: number, color: string) => {
+      ctx.fillStyle = color;
+      const bars = [2, 1, 3, 1, 2, 4, 1, 2, 1, 3, 2, 1, 3, 2];
+      let curX = x;
+      for (let b = 0; b < bars.length && curX < x + w; b++) {
+        const bw = bars[b];
+        if (b % 2 === 0) {
+          ctx.fillRect(curX, y, bw, h);
+        }
+        curX += bw + 1.5;
       }
     };
 
     for (let i = 0; i < numCards; i++) {
+      const item = PROJECT_OUTPUTS[i];
       const cx = i * slotW + gap / 2;
-      const imgA = loadedImgs[i % loadedImgs.length];
-      const imgB = loadedImgs[(i + 1) % loadedImgs.length];
+      const img = loadedImgs[i];
+      const isLight = item.isLightCard;
 
       ctx.save();
       ctx.beginPath();
       ctx.rect(cx, cardY, cardW, cardH);
       ctx.clip();
 
-      // Dark card backing inside each individual spread card only
-      ctx.fillStyle = '#0c0e10';
+      // Card Background
+      ctx.fillStyle = isLight ? '#f4f3ed' : '#0c0e10';
       ctx.fillRect(cx, cardY, cardW, cardH);
 
-      if (i % 4 === 0) {
-        // SPREAD TYPE 1: "Aurel Vance" (matches front-left card in reference)
-        const leftW = cardW * 0.51;
-        ctx.fillStyle = '#141618';
-        ctx.fillRect(cx, cardY, leftW, cardH * 0.56);
-        if (imgA) {
-          ctx.filter = 'grayscale(100%) contrast(135%) brightness(85%)';
-          ctx.drawImage(imgA, cx, cardY, leftW, cardH * 0.56);
-          ctx.filter = 'none';
-        }
-        ctx.fillStyle = '#f4f3ef';
-        ctx.fillRect(cx, cardY + cardH * 0.56, leftW, cardH * 0.44);
+      // Card subtle brutalist border
+      ctx.strokeStyle = isLight ? 'rgba(0,0,0,0.14)' : 'rgba(255,255,255,0.16)';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(cx + 0.5, cardY + 0.5, cardW - 1, cardH - 1);
 
-        // Large "Aurel Vance" title straddling the horizontal split
+      // Left media box: 53% of card width
+      const mediaW = Math.round(cardW * 0.53);
+      const mediaH = cardH - 16;
+      const mediaX = cx + 8;
+      const mediaY = cardY + 8;
+
+      ctx.fillStyle = isLight ? '#1a1d20' : '#141618';
+      ctx.fillRect(mediaX, mediaY, mediaW, mediaH);
+
+      if (img && img.complete && img.naturalWidth > 0) {
+        // Draw the real output image cleanly inside the media frame
+        const iw = img.naturalWidth;
+        const ih = img.naturalHeight;
+        const imgRatio = iw / ih;
+        const boxRatio = mediaW / mediaH;
+
+        let sx = 0;
+        let sy = 0;
+        let sw = iw;
+        let sh = ih;
+
+        if (imgRatio > boxRatio) {
+          sw = ih * boxRatio;
+          sx = (iw - sw) / 2;
+        } else {
+          sh = iw / boxRatio;
+          sy = (ih - sh) / 2;
+        }
+
+        ctx.drawImage(img, sx, sy, sw, sh, mediaX, mediaY, mediaW, mediaH);
+
+        // Subtle gradient overlay at bottom of image for label readability
+        const grad = ctx.createLinearGradient(0, mediaY + mediaH * 0.65, 0, mediaY + mediaH);
+        grad.addColorStop(0, 'rgba(0,0,0,0)');
+        grad.addColorStop(1, 'rgba(0,0,0,0.85)');
+        ctx.fillStyle = grad;
+        ctx.fillRect(mediaX, mediaY + mediaH * 0.5, mediaW, mediaH * 0.5);
+
+        // Micro-badge on bottom-left of image
         ctx.fillStyle = '#ffffff';
-        ctx.font = '600 28px "Space Grotesk", sans-serif';
-        ctx.fillText('Aurel Vance', cx + 10, cardY + cardH * 0.54);
-
-        // Sub-caption & small dark portrait box at bottom-left
-        drawHelperLines(cx + 10, cardY + cardH * 0.63, 76, 4, '#222');
-        ctx.fillStyle = '#111315';
-        ctx.fillRect(cx + 42, cardY + cardH * 0.78, 32, 40);
-        drawHelperLines(cx + 98, cardY + cardH * 0.84, 56, 4, '#444');
-
-        // Right half: white top header + dark dramatic B&W photo bottom
-        const rx = cx + cardW * 0.53;
-        const rw = cardW * 0.47;
-        ctx.fillStyle = '#f4f3ef';
-        ctx.fillRect(rx, cardY, rw, cardH * 0.42);
-        ctx.fillStyle = '#111315';
-        ctx.fillRect(rx + rw * 0.5, cardY + 16, rw * 0.44, cardH * 0.28);
-        if (imgB) {
-          ctx.filter = 'grayscale(100%) contrast(140%)';
-          ctx.drawImage(imgB, rx + rw * 0.5, cardY + 16, rw * 0.44, cardH * 0.28);
-          ctx.filter = 'none';
-        }
-        drawHelperLines(rx + 10, cardY + 22, 58, 4, '#333');
-
-        ctx.fillStyle = '#0c0e10';
-        ctx.fillRect(rx, cardY + cardH * 0.44, rw, cardH * 0.56);
-        if (imgA) {
-          ctx.filter = 'grayscale(100%) contrast(155%) brightness(75%)';
-          ctx.drawImage(imgA, rx + 6, cardY + cardH * 0.46, rw - 12, cardH * 0.48);
-          ctx.filter = 'none';
-        }
-      } else if (i % 4 === 1) {
-        // SPREAD TYPE 2: "Peter Marino Architect" (matches front-center card in reference)
-        const lw = cardW * 0.53;
-        ctx.fillStyle = '#e8e7e2';
-        ctx.fillRect(cx, cardY, lw, cardH);
-
-        // Top brutalist architecture photo
-        ctx.fillStyle = '#181b1e';
-        ctx.fillRect(cx, cardY, lw, cardH * 0.68);
-        if (imgB) {
-          ctx.filter = 'grayscale(100%) contrast(135%)';
-          ctx.drawImage(imgB, cx, cardY, lw, cardH * 0.68);
-          ctx.filter = 'none';
-        }
-        ctx.fillStyle = 'rgba(0,0,0,0.42)';
-        ctx.fillRect(cx, cardY + cardH * 0.32, lw, cardH * 0.36);
-
-        ctx.fillStyle = '#ffffff';
-        ctx.font = '600 16px "Space Grotesk", sans-serif';
-        ctx.fillText('Peter  Marino', cx + 10, cardY + cardH * 0.49);
-        ctx.font = '500 15px "Space Grotesk", sans-serif';
-        ctx.fillText('Architect', cx + 10, cardY + cardH * 0.58);
-
-        // 5-thumbnail contact strip along the bottom-left
-        for (let t = 0; t < 5; t++) {
-          ctx.fillStyle = t % 2 === 0 ? '#1b1e21' : '#3a3f44';
-          ctx.fillRect(cx + 8 + t * 32, cardY + cardH * 0.72, 28, 24);
-        }
-        drawHelperLines(cx + 96, cardY + cardH * 0.86, 68, 3, '#333');
-
-        // Right half: crisp white editorial specification sheet
-        const rx = cx + lw + 5;
-        const rw = cardW - lw - 5;
-        ctx.fillStyle = '#f5f4f0';
-        ctx.fillRect(rx, cardY, rw, cardH);
-        drawHelperLines(rx + 20, cardY + 26, rw - 38, 6, '#1a1a1a');
-        ctx.fillStyle = '#121416';
-        ctx.fillRect(rx + 12, cardY + cardH * 0.54, 42, 54);
-        if (imgA) {
-          ctx.filter = 'grayscale(100%) contrast(145%)';
-          ctx.drawImage(imgA, rx + 12, cardY + cardH * 0.54, 42, 54);
-          ctx.filter = 'none';
-        }
-        drawHelperLines(rx + 64, cardY + cardH * 0.68, rw - 76, 5, '#444');
-      } else if (i % 4 === 2) {
-        // SPREAD TYPE 3: "make work" white editorial spread (matches far-left curving card)
-        ctx.fillStyle = '#f5f4f0';
-        ctx.fillRect(cx, cardY, cardW * 0.51, cardH);
-        ctx.fillStyle = '#111315';
-        ctx.font = '700 18px "Space Grotesk", sans-serif';
-        ctx.fillText('make', cx + 12, cardY + 38);
-        ctx.fillText('work', cx + 118, cardY + 58);
-
-        // Center silhouette cutout block
-        ctx.fillStyle = '#16191c';
-        ctx.fillRect(cx + 52, cardY + 46, 56, 78);
-        if (imgA) {
-          ctx.filter = 'grayscale(100%) contrast(150%)';
-          ctx.drawImage(imgA, cx + 52, cardY + 46, 56, 78);
-          ctx.filter = 'none';
-        }
-        drawHelperLines(cx + 12, cardY + cardH * 0.66, 68, 5, '#222');
-        drawHelperLines(cx + 94, cardY + cardH * 0.66, 62, 5, '#555');
-
-        // Right half: white grid with dark B&W photography blocks
-        const rx = cx + cardW * 0.53;
-        const rw = cardW * 0.47;
-        ctx.fillStyle = '#f2f1ec';
-        ctx.fillRect(rx, cardY, rw, cardH);
-        drawHelperLines(rx + 10, cardY + 22, rw - 20, 4, '#222');
-        ctx.fillStyle = '#121518';
-        ctx.fillRect(rx + 10, cardY + 58, rw - 20, 64);
-        if (imgB) {
-          ctx.filter = 'grayscale(100%) contrast(140%)';
-          ctx.drawImage(imgB, rx + 10, cardY + 58, rw - 20, 64);
-          ctx.filter = 'none';
-        }
-        ctx.fillStyle = '#181a1d';
-        ctx.fillRect(rx + 10, cardY + 138, 42, 54);
-        drawHelperLines(rx + 62, cardY + 150, rw - 72, 5, '#333');
+        ctx.font = '600 7.5px "Space Mono", monospace';
+        ctx.fillText(`[ OUTPUT // ${item.year} ]`, mediaX + 6, mediaY + mediaH - 6);
       } else {
-        // SPREAD TYPE 4: High-contrast vertical architectural columns + cream badge
-        ctx.fillStyle = '#0d0f11';
-        ctx.fillRect(cx, cardY, cardW, cardH);
-
-        const colW = cardW / 4;
-        for (let c = 0; c < 4; c++) {
-          const xCol = cx + c * colW;
-          ctx.fillStyle = c % 2 === 0 ? '#e8e7e1' : '#171a1d';
-          ctx.fillRect(xCol + 3, cardY + 6, colW - 6, cardH - 12);
-          if (c % 2 === 1 && imgB) {
-            ctx.filter = 'grayscale(100%) contrast(155%) brightness(80%)';
-            ctx.drawImage(imgB, xCol + 3, cardY + 6, colW - 6, cardH * 0.65);
-            ctx.filter = 'none';
-          }
-          drawHelperLines(
-            xCol + 8,
-            cardY + 24,
-            colW - 16,
-            5,
-            c % 2 === 0 ? '#1a1a1a' : '#d0d0cb'
-          );
-        }
-
-        // Warm cream/yellow editorial card at bottom-right
-        ctx.fillStyle = '#e7e2b8';
-        ctx.fillRect(cx + cardW * 0.52, cardY + cardH * 0.56, cardW * 0.24, cardH * 0.38);
-        drawHelperLines(
-          cx + cardW * 0.54,
-          cardY + cardH * 0.64,
-          cardW * 0.18,
-          4,
-          '#1b1b18'
-        );
+        // Wireframe indicator while image is loading
+        ctx.fillStyle = isLight ? '#2a2e33' : '#1a1d20';
+        ctx.fillRect(mediaX + 10, mediaY + 10, mediaW - 20, mediaH - 20);
+        ctx.fillStyle = 'rgba(255,255,255,0.4)';
+        ctx.font = '500 9px "Space Grotesk", sans-serif';
+        ctx.fillText('OUTPUT PREVIEW', mediaX + 16, mediaY + mediaH * 0.5);
       }
+
+      // Right editorial specification column
+      const specX = cx + mediaW + 16;
+      const specW = cardW - mediaW - 24;
+
+      // Top category badge
+      ctx.fillStyle = isLight ? '#111315' : '#e7e5dc';
+      ctx.font = '700 8px "Space Mono", monospace';
+      ctx.fillText(item.category, specX, cardY + 22);
+
+      // Title
+      ctx.fillStyle = isLight ? '#08090a' : '#ffffff';
+      ctx.font = '700 15px "Space Grotesk", sans-serif';
+      const words = item.title.split(' ');
+      if (words.length > 2) {
+        ctx.fillText(words.slice(0, 2).join(' '), specX, cardY + 44);
+        ctx.fillText(words.slice(2).join(' '), specX, cardY + 62);
+      } else {
+        ctx.fillText(item.title, specX, cardY + 46);
+      }
+
+      // Subtitle
+      ctx.fillStyle = isLight ? '#4a5059' : '#9da3aa';
+      ctx.font = '500 8.5px "Space Grotesk", sans-serif';
+      ctx.fillText(item.subtitle, specX, cardY + 78);
+
+      // Separation rule
+      ctx.fillStyle = isLight ? 'rgba(0,0,0,0.12)' : 'rgba(255,255,255,0.15)';
+      ctx.fillRect(specX, cardY + 90, specW, 1);
+
+      // Editorial lines
+      drawHelperLines(
+        specX,
+        cardY + 100,
+        specW,
+        4,
+        isLight ? 'rgba(0,0,0,0.35)' : 'rgba(255,255,255,0.3)'
+      );
+
+      // 4-cell contact strip / thumbnail blocks
+      for (let t = 0; t < 4; t++) {
+        ctx.fillStyle = isLight
+          ? t % 2 === 0 ? '#1b1e21' : '#c9c7be'
+          : t % 2 === 0 ? '#1f2327' : '#33383f';
+        ctx.fillRect(specX + t * 24, cardY + 134, 20, 16);
+      }
+
+      // Bottom Barcode & Registration
+      drawBarcode(specX, cardY + 168, 56, 16, isLight ? '#111315' : '#e7e5dc');
+
+      ctx.fillStyle = isLight ? '#555b63' : '#7b828c';
+      ctx.font = '500 7px "Space Mono", monospace';
+      ctx.fillText(`CJC // ${item.year}`, specX + 64, cardY + 180);
 
       ctx.restore();
     }
   };
 
-  drawSpreads([null, null]);
-
-  const urls = [
-    'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80',
-    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80',
-    'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=500&q=80'
-  ];
-  const imgs: (HTMLImageElement | null)[] = [null, null, null];
-  urls.forEach((u, idx) => {
+  const loadedImgs: (HTMLImageElement | null)[] = new Array(PROJECT_OUTPUTS.length).fill(null);
+  PROJECT_OUTPUTS.forEach((item, idx) => {
     const im = new Image();
     im.crossOrigin = 'anonymous';
     im.onload = () => {
-      imgs[idx] = im;
-      drawSpreads(imgs);
+      loadedImgs[idx] = im;
+      drawSpreads(loadedImgs);
       onImageLoad();
     };
-    im.src = u;
+    im.onerror = () => {
+      console.warn('Failed to load filmstrip output image:', item.image);
+    };
+    im.src = item.image;
   });
+
+  drawSpreads(loadedImgs);
 
   return atlas;
 }
