@@ -142,7 +142,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
 
   // 02. MOTION GRAPHICS & 2D ANIMATION (2 Real Works)
   {
-    code: '07',
+    code: '01',
     categoryId: 'motion-2d',
     categoryLabel: 'Motion Graphics & 2D Animation',
     client: 'STATISTICS: ONE-WAY ANOVA',
@@ -154,7 +154,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Educational 2D animated explainer breaking down One-Way ANOVA statistical analysis with custom character rigging, illustrated environments, and motion design.'
   },
   {
-    code: '08',
+    code: '02',
     categoryId: 'motion-2d',
     categoryLabel: 'Motion Graphics & 2D Animation',
     client: 'MEMORANDUM OF AGREEMENT: CAR TRADING',
@@ -168,7 +168,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
 
   // 03. INTRO VIDEOS & SHORT VIDEO CONTENTS (6 Works)
   {
-    code: '09',
+    code: '01',
     categoryId: 'intro-short-videos',
     categoryLabel: 'Intro Videos & Short Video Contents',
     client: 'NARCRAFT OPENER',
@@ -180,7 +180,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Custom signature logo reveal and dark-room sonic stinger establishing immediate brand recognition in the first 5 seconds.'
   },
   {
-    code: '10',
+    code: '02',
     categoryId: 'intro-short-videos',
     categoryLabel: 'Intro Videos & Short Video Contents',
     client: 'EDITORIAL REEL',
@@ -192,7 +192,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'High-retention vertical edit combining punchy hooks, dynamic speed ramps, custom captions, and crisp sound design.'
   },
   {
-    code: '11',
+    code: '03',
     categoryId: 'intro-short-videos',
     categoryLabel: 'Intro Videos & Short Video Contents',
     client: 'CHANNEL INTRO SEQ',
@@ -204,7 +204,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Dynamic YouTube and creator channel intro sequence combining layered cut-outs, kinetic titles, and custom sound hits.'
   },
   {
-    code: '12',
+    code: '04',
     categoryId: 'intro-short-videos',
     categoryLabel: 'Intro Videos & Short Video Contents',
     client: 'CREATOR HIGHLIGHT',
@@ -216,7 +216,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Short-form storytelling tailored for Reels, TikTok, and YouTube Shorts with clean visual callouts and seamless B-roll integration.'
   },
   {
-    code: '13',
+    code: '05',
     categoryId: 'intro-short-videos',
     categoryLabel: 'Intro Videos & Short Video Contents',
     client: 'PRODUCT DROP CUT',
@@ -228,7 +228,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Fast-paced 30-second commercial cut engineered for social conversion with rhythmic cuts and bold typography.'
   },
   {
-    code: '14',
+    code: '06',
     categoryId: 'intro-short-videos',
     categoryLabel: 'Intro Videos & Short Video Contents',
     client: 'AVENOR STUDIO INTRO',
@@ -242,7 +242,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
 
   // 04. GRAPHICS (6 Works)
   {
-    code: '15',
+    code: '01',
     categoryId: 'graphics',
     categoryLabel: 'Graphics',
     client: 'IDENTITY SYSTEM',
@@ -254,7 +254,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Cohesive visual identity system featuring custom typography rules, brand marks, and grid-based key visuals.'
   },
   {
-    code: '16',
+    code: '02',
     categoryId: 'graphics',
     categoryLabel: 'Graphics',
     client: 'PORTRAIT SERIES',
@@ -266,7 +266,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Swiss-brutalist poster series and social media carousel graphics built in Photoshop and Canva with bold editorial hierarchy.'
   },
   {
-    code: '17',
+    code: '03',
     categoryId: 'graphics',
     categoryLabel: 'Graphics',
     client: 'AUREL VANCE',
@@ -278,7 +278,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Print and digital lookbook layouts balancing high-contrast photography with structured micro-typography.'
   },
   {
-    code: '18',
+    code: '04',
     categoryId: 'graphics',
     categoryLabel: 'Graphics',
     client: 'RENOVA DECK',
@@ -290,7 +290,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Executive pitch deck and visual presentation system crafted in PowerPoint and Canva for investor storytelling.'
   },
   {
-    code: '19',
+    code: '05',
     categoryId: 'graphics',
     categoryLabel: 'Graphics',
     client: 'SOCIAL CAMPAIGN KIT',
@@ -302,7 +302,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Modular social media template suite, announcement graphics, and ad creatives built for consistent multi-channel branding.'
   },
   {
-    code: '20',
+    code: '06',
     categoryId: 'graphics',
     categoryLabel: 'Graphics',
     client: 'FESTIVAL KEY VISUAL',
@@ -314,9 +314,9 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Bold typographic poster artwork, stage banners, and digital pass graphics for a contemporary music and arts event.'
   },
 
-  // 05. CERTIFICATES & AWARDS (10 Real Certificates & Awards)
+  // 05. CERTIFICATES & AWARDS (11 Real Certificates & Awards)
   {
-    code: '21',
+    code: '01',
     categoryId: 'certificates-awards',
     categoryLabel: 'Certificates & Awards',
     client: 'PSITS REGIONAL CHAMPION',
@@ -327,7 +327,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       "Champion & multi-award sweep at the PSITS Region 11 Contest: Best Short Film, People's Choice Award, Best Director, Best Editing, Best Musical Scoring, and Best Trailer."
   },
   {
-    code: '22',
+    code: '02',
     categoryId: 'certificates-awards',
     categoryLabel: 'Certificates & Awards',
     client: 'BEST DIRECTOR — "LUNAN"',
@@ -338,7 +338,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Awarded Best Director for the short film "Lunan" at the PSITS Region 11 Interschool Short Film Festival, celebrating exceptional cinematic vision and narrative execution.'
   },
   {
-    code: '23',
+    code: '03',
     categoryId: 'certificates-awards',
     categoryLabel: 'Certificates & Awards',
     client: 'BEST DIRECTOR — "FOUR-SAKEN TRUTHS"',
@@ -349,7 +349,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Awarded Best Director for "Four-Saken Truths" (MRC Films) at the Sine Kabataan Short Film Festival, hosted by the Sangguniang Kabataan Provincial Federation of Davao del Sur.'
   },
   {
-    code: '24',
+    code: '04',
     categoryId: 'certificates-awards',
     categoryLabel: 'Certificates & Awards',
     client: 'BEST SHORT FILM — "FOUR-SAKEN TRUTHS"',
@@ -360,7 +360,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'First Place / Best Short Film winner for "Four-Saken Truths" at the Cor Jesu College SIP Short Film Festival 2024.'
   },
   {
-    code: '25',
+    code: '05',
     categoryId: 'certificates-awards',
     categoryLabel: 'Certificates & Awards',
     client: '2ND RUNNER-UP — "FOUR-SAKEN TRUTHS"',
@@ -371,7 +371,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Awarded 2nd Runner-Up overall for the short film "Four-Saken Truths" at the Sine Kabataan Short Film Festival (Davao del Sur Provincial Federation).'
   },
   {
-    code: '26',
+    code: '06',
     categoryId: 'certificates-awards',
     categoryLabel: 'Certificates & Awards',
     client: '1ST RUNNER-UP — SHORT FILM',
@@ -382,7 +382,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       '1st Runner-Up distinction in the Short Film Category at the CPAR Recital 2023, showcasing early narrative directing and cinematography craft.'
   },
   {
-    code: '27',
+    code: '07',
     categoryId: 'certificates-awards',
     categoryLabel: 'Certificates & Awards',
     client: 'GOVERNOR LEADERSHIP RECOGNITION',
@@ -393,7 +393,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Certificate of Recognition for dedicated executive leadership serving as Governor of the College of Computer and Information Sciences Local Government Unit (CCIS-LGU, A.Y. 2025–2026).'
   },
   {
-    code: '28',
+    code: '08',
     categoryId: 'certificates-awards',
     categoryLabel: 'Certificates & Awards',
     client: 'FILM FESTIVAL JURY JUDGE',
@@ -404,7 +404,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Invited as official adjudicator and film judge evaluating student short film entries at the Cor Jesu College SIP Short Film Festival 2025.'
   },
   {
-    code: '29',
+    code: '09',
     categoryId: 'certificates-awards',
     categoryLabel: 'Certificates & Awards',
     client: 'TECHNICAL OPERATOR COMMENDATION',
@@ -415,7 +415,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Certificate of Appreciation from Davao del Sur Electric Cooperative (DASURECO) for outstanding technical contribution as Registration Operator during the 44th Annual General Membership Assembly.'
   },
   {
-    code: '30',
+    code: '10',
     categoryId: 'certificates-awards',
     categoryLabel: 'Certificates & Awards',
     client: 'AUGMENTED REALITY SEMINAR',
@@ -426,7 +426,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Certificate of Participation in the Augmented Reality Seminar-Workshop organized by the Association of Computer Studies Students at Cor Jesu College.'
   },
   {
-    code: '31',
+    code: '11',
     categoryId: 'certificates-awards',
     categoryLabel: 'Certificates & Awards',
     client: 'BEST RESEARCH PROJECT AWARD',
@@ -442,7 +442,7 @@ const SLOTS = [-8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8] as con
 
 interface CategoryCoverflowProps {
   cards: CaseStudyCard[];
-  onSelectCard: (card: CaseStudyCard) => void;
+  onSelectCard: (card: CaseStudyCard, itemIndex?: number) => void;
 }
 
 /**
@@ -608,6 +608,8 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
   const frac = renderPos - baseIndex; // in [-0.5, +0.5]
   const activeIdx = ((baseIndex % len) + len) % len;
   const activeCard = cards[activeIdx] ?? cards[0];
+  const activeDisplayNum = String(activeIdx + 1).padStart(2, '0');
+  const totalDisplayNum = String(len).padStart(2, '0');
 
   return (
     <div ref={containerRef} className="space-y-4">
@@ -720,6 +722,8 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
 
             const isCenter = absD < 0.35;
 
+            const itemDisplayNum = String(itemIndex + 1).padStart(2, '0');
+
             return (
               <div
                 key={slotOffset}
@@ -729,7 +733,7 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
                 onClick={() => {
                   if (pointerMovedRef.current) return;
                   if (Math.abs(d) < 0.25) {
-                    onSelectCard(card);
+                    onSelectCard(card, itemIndex + 1);
                   } else {
                     targetPosRef.current = baseIndex + slotOffset;
                   }
@@ -738,7 +742,7 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
                     if (slotOffset === 0) {
-                      onSelectCard(card);
+                      onSelectCard(card, itemIndex + 1);
                     } else {
                       targetPosRef.current = baseIndex + slotOffset;
                     }
@@ -793,7 +797,7 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
                   >
                     <div className="flex items-center justify-between">
                       <span className="px-2 py-0.5 bg-black/65 backdrop-blur-xs border border-white/20 font-mono text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-white">
-                        [ {card.code} // {card.year} ]
+                        [ {itemDisplayNum} // {card.year} ]
                       </span>
                       <span className="px-2 py-0.5 bg-[#e7e5dc] text-black font-mono text-[7.5px] sm:text-[8.5px] font-semibold uppercase tracking-[0.18em]">
                         {card.discipline}
@@ -825,8 +829,8 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
       <div className="flex flex-wrap items-center justify-between gap-4 pt-1 border-t border-white/10">
         <div className="flex items-center gap-3 min-w-0">
           <DoubleSquare />
-          <span className="font-mono text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.2em] text-white/45">
-            [ {activeCard.code} ]
+          <span className="font-mono text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.2em] text-white/60">
+            [ {activeDisplayNum} / {totalDisplayNum} ]
           </span>
           <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.18em] text-white truncate">
             {activeCard.client}
@@ -851,7 +855,7 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
           <div className="hidden sm:flex items-center gap-1.5 px-2">
             {cards.map((c, idx) => (
               <button
-                key={c.code}
+                key={`${c.categoryId}-${idx}`}
                 type="button"
                 onClick={() => {
                   let diff = idx - activeIdx;
@@ -882,7 +886,7 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
 
         <button
           type="button"
-          onClick={() => onSelectCard(activeCard)}
+          onClick={() => onSelectCard(activeCard, activeIdx + 1)}
           className="font-mono text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.2em] text-white/70 hover:text-white transition-colors shrink-0 cursor-pointer"
         >
           [ SEE DETAILS ]
@@ -901,9 +905,10 @@ export const ProjectsSection: React.FC = () => {
       ? CATEGORIES
       : CATEGORIES.filter((cat) => cat.id === activeCategory);
 
-  const handleSelectCard = (card: CaseStudyCard) => {
+  const handleSelectCard = (card: CaseStudyCard, itemIndex?: number) => {
+    const itemNum = itemIndex !== undefined ? itemIndex : (Number(card.code) || 1);
     setSelectedProject({
-      id: Number(card.code),
+      id: itemNum,
       title: card.client,
       category: `${card.categoryLabel} — ${card.discipline}`,
       year: card.year,
