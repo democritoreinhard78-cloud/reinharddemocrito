@@ -28,24 +28,20 @@ export const AboutSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Center Two-Tone Display Manifesto */}
+        {/* Center Display Manifesto */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7 }}
-          className="px-5 sm:px-10 text-center max-w-5xl mx-auto"
+          className="px-5 sm:px-10 text-center max-w-4xl mx-auto space-y-5 sm:space-y-6"
         >
-          <h2 className="font-display font-normal uppercase text-[clamp(1.5rem,3.4vw,3.1rem)] leading-[1.12] tracking-[-0.02em]">
-            <span className="block text-white">WE REJECT THE SUPERFLUOUS.</span>
-            <span className="block text-white">CRAFTING VISUAL STORIES AND</span>
-            <span className="block">
-              <span className="text-white">CREATIVE DIRECTION </span>
-              <span className="text-white/40">GROUNDED</span>
-            </span>
-            <span className="block text-white/40">IN EXTREME CLARITY, PURPOSE,</span>
-            <span className="block text-white/40">AND UNCOMPROMISED CRAFT.</span>
+          <h2 className="font-display font-bold uppercase text-[clamp(2.2rem,5.2vw,4.4rem)] leading-[1.05] tracking-[-0.03em] text-white">
+            CRAFTED WITH CARE.
           </h2>
+          <p className="text-white/70 text-[clamp(1.05rem,2vw,1.45rem)] leading-relaxed max-w-3xl mx-auto font-normal tracking-[-0.01em]">
+            Stripping away the noise to bring visual stories to life through thoughtful editing and clean visuals that speak for themselves.
+          </p>
         </motion.div>
 
         {/* Right Stacked Squares + Horizontal Hairline */}
