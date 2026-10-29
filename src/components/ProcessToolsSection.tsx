@@ -213,16 +213,15 @@ export const ProcessToolsSection: React.FC = () => {
           transition={{ duration: 0.7 }}
           className="px-4 sm:px-8 text-center mx-auto"
         >
-          <h2 className="font-display font-normal uppercase text-[clamp(1.45rem,3.65vw,3.35rem)] leading-[1.06] tracking-[-0.02em]">
-            <span className="block text-[#f2f2f2]">GOOD WORK IS BUILT ON GOOD</span>
-            <span className="block text-[#f2f2f2]">QUESTIONS. STRATEGY PROVIDES</span>
-            <span className="block text-[#f2f2f2]">THE DIRECTION, DESIGN GIVES IT</span>
+          <h2 className="font-display font-normal uppercase text-[clamp(1.45rem,3.65vw,3.35rem)] leading-[1.08] tracking-[-0.02em]">
+            <span className="block text-[#f2f2f2]">WE SIMPLY ENJOY THE PROCESS.</span>
+            <span className="block text-[#f2f2f2]">HELPING BRING STORIES ALIVE</span>
             <span className="block">
-              <span className="text-[#f2f2f2]">FORM, AND REFINEMENT </span>
-              <span className="text-[#6e7376]">ENSURES</span>
+              <span className="text-[#f2f2f2]">WITH PATIENT EFFORT, </span>
+              <span className="text-[#6e7376]">OPEN</span>
             </span>
-            <span className="block text-[#6e7376]">EVERY DETAIL SUPPORTS THE</span>
-            <span className="block text-[#6e7376]">BIGGER PICTURE</span>
+            <span className="block text-[#6e7376]">LISTENING, AND QUIET FOCUS</span>
+            <span className="block text-[#6e7376]">ON STEADY, MEANINGFUL WORK.</span>
           </h2>
         </motion.div>
 
