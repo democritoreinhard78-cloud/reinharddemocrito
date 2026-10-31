@@ -204,78 +204,61 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Fast-paced vertical talking-head edit featuring dynamic punch-zooms, kinetic text captions, and sound design for maximum audience retention.'
   },
 
-  // 04. GRAPHICS (6 Works)
+  // 04. GRAPHICS (5 Real Works)
   {
     code: '01',
     categoryId: 'graphics',
     categoryLabel: 'Graphics',
-    client: 'IDENTITY SYSTEM',
-    discipline: 'VISUAL DESIGN',
-    year: '2025',
-    image:
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=85',
+    client: 'DHENYHOS FAMILY RESORT',
+    discipline: 'COMMERCIAL MENU & EDITORIAL LAYOUT',
+    year: '2024',
+    image: '/projects/graphics-dhenyhos-menu.jpg',
     description:
-      'Cohesive visual identity system featuring custom typography rules, brand marks, and grid-based key visuals.'
+      'Complete restaurant menu design and food presentation layout crafted for Dhenyhos Family Resort, highlighting signature dishes with structured typographic hierarchy.'
   },
   {
     code: '02',
     categoryId: 'graphics',
     categoryLabel: 'Graphics',
-    client: 'PORTRAIT SERIES',
-    discipline: 'ART DIRECTION & GRAPHICS',
+    client: 'SACRED HEART CHRONICLES: CAMPUS FACADE',
+    discipline: '2D PIXEL ART & ENVIRONMENT DESIGN',
     year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1000&q=85',
+    image: '/projects/graphics-shc-facade.png',
     description:
-      'Swiss-brutalist poster series and social media carousel graphics built in Photoshop and Canva with bold editorial hierarchy.'
+      'Detailed 2D pixel art recreation of the Cor Jesu College campus facade, architectural entrance, and landscape for the gamified information system Sacred Heart Chronicles.'
   },
   {
     code: '03',
     categoryId: 'graphics',
     categoryLabel: 'Graphics',
-    client: 'AUREL VANCE',
-    discipline: 'EDITORIAL DESIGN',
+    client: 'SACRED HEART CHRONICLES: LIRC CENTER',
+    discipline: 'PIXEL ART & GAME ASSET DESIGN',
     year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=85',
+    image: '/projects/graphics-shc-lirc.png',
     description:
-      'Print and digital lookbook layouts balancing high-contrast photography with structured micro-typography.'
+      'Pixel art environment design of the Learning & Information Resource Center (LIRC) entrance, showcasing interior perspective, glass doors, and custom game textures.'
   },
   {
     code: '04',
     categoryId: 'graphics',
     categoryLabel: 'Graphics',
-    client: 'RENOVA DECK',
-    discipline: 'PRESENTATION DESIGN',
+    client: 'SACRED HEART CHRONICLES: CLASSROOM WING',
+    discipline: 'PIXEL ART & LEVEL DESIGN',
     year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=1000&q=85',
+    image: '/projects/graphics-shc-hallway.png',
     description:
-      'Executive pitch deck and visual presentation system crafted in PowerPoint and Canva for investor storytelling.'
+      'Modular 2D pixel art hallway environment featuring school classrooms R-120 and R-119, custom brick pathway, safety fixtures, and atmospheric sky.'
   },
   {
     code: '05',
     categoryId: 'graphics',
     categoryLabel: 'Graphics',
-    client: 'SOCIAL CAMPAIGN KIT',
-    discipline: 'SOCIAL MEDIA GRAPHICS',
+    client: 'SACRED HEART CHRONICLES: GYM STAGE',
+    discipline: 'PIXEL ART & SCENIC DESIGN',
     year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1000&q=85',
+    image: '/projects/graphics-shc-gym-stage.png',
     description:
-      'Modular social media template suite, announcement graphics, and ad creatives built for consistent multi-channel branding.'
-  },
-  {
-    code: '06',
-    categoryId: 'graphics',
-    categoryLabel: 'Graphics',
-    client: 'FESTIVAL KEY VISUAL',
-    discipline: 'POSTER & MERCH DESIGN',
-    year: '2023',
-    image:
-      'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=1000&q=85',
-    description:
-      'Bold typographic poster artwork, stage banners, and digital pass graphics for a contemporary music and arts event.'
+      'Pixel art stage layout illustrating the CJC gymnasium stage, religious patron statues, podium, basketball backboard, and dual entrance stairs.'
   },
 
   // 05. CERTIFICATES & AWARDS (11 Real Certificates & Awards)

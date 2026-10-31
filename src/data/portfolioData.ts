@@ -120,11 +120,11 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: 5,
-      title: "Identity System & Editorial Posters",
+      title: "Dhenyhos Menu & Sacred Heart Pixel Art",
       category: "Graphics",
-      year: "2025",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-      description: "Cohesive visual identity system, social media graphics, and presentation layouts featuring custom typography rules and grid-based key visuals."
+      year: "2024",
+      image: "/projects/graphics-dhenyhos-menu.jpg",
+      description: "Commercial restaurant menu layouts for Dhenyhos Family Resort and custom 2D pixel art campus environments for Sacred Heart Chronicles."
     },
     {
       id: 6,

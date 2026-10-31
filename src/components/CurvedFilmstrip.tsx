@@ -52,10 +52,10 @@ const PROJECT_OUTPUTS: FilmstripProject[] = [
     isLightCard: true
   },
   {
-    image: '/projects/cert-8.jpg',
-    category: '[ 01 // FILM DIRECTION ]',
-    title: 'LUNAN',
-    subtitle: 'Best Director • Interschool',
+    image: '/projects/graphics-dhenyhos-menu.jpg',
+    category: '[ 04 // GRAPHICS ]',
+    title: 'DHENYHOS RESORT',
+    subtitle: 'Commercial Menu Layout',
     year: '2024',
     isLightCard: false
   },
@@ -68,19 +68,19 @@ const PROJECT_OUTPUTS: FilmstripProject[] = [
     isLightCard: true
   },
   {
+    image: '/projects/graphics-shc-facade.png',
+    category: '[ 04 // PIXEL ART ]',
+    title: 'SACRED HEART',
+    subtitle: '2D Pixel Art Environment',
+    year: '2024',
+    isLightCard: false
+  },
+  {
     image: '/projects/cert-4.png',
     category: '[ 05 // LEADERSHIP ]',
     title: 'CCIS GOVERNOR',
     subtitle: 'Cor Jesu College CCIS-LGU',
     year: '2026',
-    isLightCard: false
-  },
-  {
-    image: '/projects/cert-6.jpg',
-    category: '[ 01 // BEST FILM ]',
-    title: 'SIP SHORT FILM',
-    subtitle: 'Best Short Film Winner',
-    year: '2024',
     isLightCard: true
   }
 ];
