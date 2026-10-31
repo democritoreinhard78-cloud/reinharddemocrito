@@ -75,12 +75,12 @@ export const AboutSection: React.FC = () => {
               >
                 {/* Top Selector Header */}
                 {isActive ? (
-                  <div className="flex items-center justify-between gap-2 pb-6">
-                    <span className="bg-white text-black font-mono text-[9px] font-medium uppercase tracking-[0.18em] px-2.5 py-1.5 truncate">
+                  <div className="flex flex-wrap items-center justify-between gap-2 pb-5">
+                    <span className="bg-white text-black font-mono text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.16em] px-3 py-1.5">
                       {proj.title}
                     </span>
                     <DoubleSquare />
-                    <span className="font-mono text-[8.5px] uppercase tracking-[0.16em] text-white/60 truncate">
+                    <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.15em] text-white/70">
                       {proj.category}
                     </span>
                   </div>
@@ -88,9 +88,9 @@ export const AboutSection: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setActiveIndex(idx)}
-                    className="w-full border border-white/20 px-3 py-2 flex items-center justify-between gap-2 text-left hover:border-white/50 transition-colors cursor-pointer"
+                    className="w-full border border-white/20 px-3.5 py-2.5 flex items-center justify-between gap-2 text-left hover:border-white/50 hover:bg-white/[0.02] transition-colors cursor-pointer"
                   >
-                    <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/75 truncate">
+                    <span className="font-mono text-[11px] sm:text-[12px] uppercase tracking-[0.15em] text-white/80">
                       {proj.title}
                     </span>
                     <span className="w-1.5 h-1.5 bg-white inline-block shrink-0" />
@@ -99,17 +99,17 @@ export const AboutSection: React.FC = () => {
 
                 {/* Expanded Details Inside Active Column */}
                 {isActive ? (
-                  <div className="space-y-4 pt-2">
-                    <p className="font-mono text-[8.5px] uppercase tracking-[0.14em] text-white/65 leading-relaxed">
+                  <div className="space-y-4 pt-3">
+                    <p className="font-mono text-[11.5px] sm:text-[12.5px] uppercase tracking-[0.10em] text-white/75 leading-[1.65]">
                       {proj.description}
                     </p>
-                    <div className="flex items-center justify-between text-[8px] font-mono uppercase tracking-[0.2em] text-white/45 pt-2 border-t border-white/10">
+                    <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.18em] text-white/50 pt-3 border-t border-white/10">
                       <span>[ 00{proj.id} ]</span>
                       <span>{proj.year}</span>
                     </div>
                   </div>
                 ) : (
-                  <div className="hidden lg:flex items-center justify-between pt-10 text-[8px] font-mono uppercase tracking-[0.18em] text-white/30">
+                  <div className="hidden lg:flex items-center justify-between pt-12 text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.16em] text-white/40">
                     <span>[ 00{proj.id} ]</span>
                     <span>{proj.category}</span>
                   </div>
@@ -120,43 +120,43 @@ export const AboutSection: React.FC = () => {
         </div>
 
         {/* Reinhard Personal Bio & Credentials Bar */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-12 sm:pt-16 border-t border-white/10 items-start">
-          <div className="lg:col-span-4 space-y-2">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 pt-12 sm:pt-16 border-t border-white/10 items-start">
+          <div className="lg:col-span-3 space-y-2.5">
             <div className="flex items-center gap-3">
               <DoubleSquare />
-              <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.22em] text-white/80">
+              <span className="font-mono text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.2em] text-white">
                 ABOUT {personalInfo.firstName} {personalInfo.lastName}
               </span>
             </div>
-            <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/45 pl-6">
+            <p className="font-mono text-[11px] sm:text-[11.5px] uppercase tracking-[0.16em] text-white/60 pl-6">
               {personalInfo.title} · {personalInfo.location.city}
             </p>
             {activeProject && (
-              <p className="font-mono text-[8.5px] uppercase tracking-[0.18em] text-white/40 pl-6 pt-2">
+              <p className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.16em] text-white/50 pl-6 pt-1">
                 [ FOCUS: {activeProject.title.toUpperCase()} ]
               </p>
             )}
           </div>
 
-          <div className="lg:col-span-5 space-y-3">
+          <div className="lg:col-span-6 space-y-4">
             {personalInfo.bio.map((paragraph, index) => (
               <p
                 key={index}
-                className="font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.13em] text-white/70 leading-[1.7]"
+                className="font-mono text-[12px] sm:text-[13.5px] lg:text-[14px] uppercase tracking-[0.09em] text-white/85 leading-[1.75]"
               >
                 {paragraph}
               </p>
             ))}
           </div>
 
-          <div className="lg:col-span-3 space-y-1 lg:text-right">
-            <p className="font-mono text-[8.5px] uppercase tracking-[0.2em] text-white/45">
+          <div className="lg:col-span-3 space-y-2 lg:text-right">
+            <p className="font-mono text-[10.5px] sm:text-[11.5px] uppercase tracking-[0.2em] text-white/50">
               [ EDUCATION ]
             </p>
-            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-white">
+            <p className="font-mono text-[12.5px] sm:text-[13.5px] font-semibold uppercase tracking-[0.16em] text-white">
               {education.degree}
             </p>
-            <p className="font-mono text-[9px] uppercase tracking-[0.15em] text-white/60">
+            <p className="font-mono text-[11px] sm:text-[12px] uppercase tracking-[0.14em] text-white/65">
               {education.school}
             </p>
           </div>
