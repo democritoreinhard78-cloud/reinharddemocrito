@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { DoubleSquare } from './SectionLabel';
+import { NarCraftLogo } from './NarCraftLogo';
 
 interface LoadingScreenProps {
   onComplete?: () => void;
@@ -53,8 +53,8 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
       }}
       className="fixed inset-0 z-[100] bg-ink flex flex-col items-center justify-center px-6 select-none overflow-hidden"
     >
-      <div className="relative z-10 w-full max-w-sm flex flex-col items-center space-y-7">
-        <DoubleSquare size="md" />
+      <div className="relative z-10 w-full max-w-sm flex flex-col items-center space-y-6">
+        <NarCraftLogo className="w-11 h-11 sm:w-12 sm:h-12 shadow-[0_10px_25px_rgba(0,0,0,0.5)]" />
 
         <div className="text-center space-y-2">
           <h1 className="font-wordmark text-2xl sm:text-3xl font-bold tracking-[-0.03em] text-white">

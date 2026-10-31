@@ -6,6 +6,7 @@ import { telHref } from '../utils/contact';
 import { ContactForm } from './ContactForm';
 import { DoubleSquare } from './SectionLabel';
 import { SocialIcon } from './SocialIcons';
+import { NarCraftLogo } from './NarCraftLogo';
 
 const NAV_LINKS = [
   { label: 'HOME', href: '#home' },
@@ -161,9 +162,12 @@ export const ContactSection: React.FC = () => {
       <div className="relative mt-16 sm:mt-24 pt-10 select-none overflow-hidden">
         <div
           aria-hidden="true"
-          className="relative max-w-[1440px] mx-auto px-5 sm:px-10 text-center leading-none font-wordmark font-bold text-[clamp(3.2rem,13vw,12rem)] tracking-[-0.02em] text-[#454a4d]"
+          className="relative max-w-[1440px] mx-auto px-5 sm:px-10 flex flex-col items-center justify-center text-center leading-none"
         >
-          NarCraft
+          <NarCraftLogo className="w-10 h-10 sm:w-14 sm:h-14 mb-4 opacity-40" />
+          <span className="font-wordmark font-bold text-[clamp(3.2rem,13vw,12rem)] tracking-[-0.02em] text-[#454a4d]">
+            NarCraft
+          </span>
         </div>
 
         <div className="relative z-10 pb-3 pt-4 text-center font-mono text-[8px] sm:text-[9px] uppercase tracking-[0.26em] text-white/60">

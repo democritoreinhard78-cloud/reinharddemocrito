@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Sun, Moon } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
+import { NarCraftLogo } from './NarCraftLogo';
 
 const NAV_ITEMS = [
   { id: 'about', label: 'About' },
@@ -32,9 +33,15 @@ export const Header: React.FC = () => {
         <a
           href="#home"
           aria-label="NarCraft - Home"
-          className="font-wordmark text-xl sm:text-[28px] font-bold tracking-[-0.03em] text-white leading-none hover:opacity-80 transition-opacity"
+          className="inline-flex items-center gap-2 sm:gap-2.5 group cursor-pointer hover:opacity-85 transition-opacity"
         >
-          NarCraft
+          <NarCraftLogo
+            className="w-5 h-5 sm:w-6 sm:h-6 transition-transform group-hover:scale-105"
+            inverted={isLight}
+          />
+          <span className="font-wordmark text-xl sm:text-[28px] font-bold tracking-[-0.03em] text-white leading-none">
+            NarCraft
+          </span>
         </a>
 
         <nav aria-label="Primary" className="flex items-center gap-5 sm:gap-14">
