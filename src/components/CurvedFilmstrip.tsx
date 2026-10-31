@@ -309,7 +309,7 @@ export function renderCurvedCylinder(
   const pitchRad = (-19.5 * Math.PI) / 180;
   const rollRad = (17.5 * Math.PI) / 180;
 
-  const slices = 240;
+  const slices = 120;
   const baseRad = (angleDeg * Math.PI) / 180;
 
   const projectPoint = (theta: number, yLocal: number) => {
@@ -374,8 +374,8 @@ export function renderCurvedCylinder(
     const dx = t1.x - t0.x;
     const dy = t1.y - t0.y;
     const len = Math.hypot(dx, dy) || 1;
-    const padX = (dx / len) * 0.65;
-    const padY = (dy / len) * 0.65;
+    const padX = (dx / len) * 0.95;
+    const padY = (dy / len) * 0.95;
 
     ctx.beginPath();
     ctx.moveTo(t0.x - padX, t0.y - padY);

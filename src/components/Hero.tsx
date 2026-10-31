@@ -23,6 +23,7 @@ export const Hero: React.FC = () => {
   const { theme } = useTheme();
   const isLight = theme === 'light';
 
+  const sectionRef = useRef<HTMLElement>(null);
   const frontCanvasRef = useRef<HTMLCanvasElement>(null);
   const backCanvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -32,6 +33,9 @@ export const Hero: React.FC = () => {
   const isHoveredRef = useRef(false);
   const lastXRef = useRef(0);
 
+  const isVisibleRef = useRef(true);
+  const rafIdRef = useRef<number>(0);
+
   const atlasRef = useCurvedFilmstrip({
     frontCanvasRef,
     backCanvasRef,
@@ -39,27 +43,69 @@ export const Hero: React.FC = () => {
   });
 
   useEffect(() => {
-    let rafId = 0;
-    const animate = () => {
-      if (!isDraggingRef.current) {
-        const target = isHoveredRef.current ? 0 : BASE_SPEED;
-        velocityRef.current = velocityRef.current * 0.94 + target * 0.06;
-        angleRef.current = (angleRef.current + velocityRef.current) % 360;
-      }
+    const startAnimate = () => {
+      if (rafIdRef.current) return;
 
-      if (frontCanvasRef.current && backCanvasRef.current && atlasRef.current) {
-        renderCurvedCylinder(
-          frontCanvasRef.current,
-          backCanvasRef.current,
-          atlasRef.current,
-          angleRef.current
-        );
-      }
+      const animate = () => {
+        if (!isVisibleRef.current) {
+          rafIdRef.current = 0;
+          return;
+        }
 
-      rafId = requestAnimationFrame(animate);
+        if (!isDraggingRef.current) {
+          const target = isHoveredRef.current ? 0 : BASE_SPEED;
+          velocityRef.current = velocityRef.current * 0.94 + target * 0.06;
+          angleRef.current = (angleRef.current + velocityRef.current) % 360;
+        }
+
+        if (frontCanvasRef.current && backCanvasRef.current && atlasRef.current) {
+          renderCurvedCylinder(
+            frontCanvasRef.current,
+            backCanvasRef.current,
+            atlasRef.current,
+            angleRef.current
+          );
+        }
+
+        rafIdRef.current = requestAnimationFrame(animate);
+      };
+
+      rafIdRef.current = requestAnimationFrame(animate);
     };
-    rafId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(rafId);
+
+    const el = sectionRef.current;
+    if (!el) {
+      startAnimate();
+      return () => {
+        if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
+      };
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting;
+        if (entry.isIntersecting) {
+          startAnimate();
+        } else if (rafIdRef.current) {
+          cancelAnimationFrame(rafIdRef.current);
+          rafIdRef.current = 0;
+        }
+      },
+      { rootMargin: '60px 0px' }
+    );
+    observer.observe(el);
+
+    if (isVisibleRef.current) {
+      startAnimate();
+    }
+
+    return () => {
+      observer.disconnect();
+      if (rafIdRef.current) {
+        cancelAnimationFrame(rafIdRef.current);
+        rafIdRef.current = 0;
+      }
+    };
   }, [atlasRef]);
 
   const handlePointerDown = (e: React.PointerEvent) => {
@@ -83,6 +129,7 @@ export const Hero: React.FC = () => {
   return (
     <section
       id="home"
+      ref={sectionRef}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}

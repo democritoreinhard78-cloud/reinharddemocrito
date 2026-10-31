@@ -385,7 +385,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
   }
 ];
 
-const SLOTS = [-8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8] as const;
+const SLOTS = [-4, -3, -2, -1, 0, 1, 2, 3, 4] as const;
 
 interface CategoryCoverflowProps {
   cards: CaseStudyCard[];
@@ -397,13 +397,17 @@ interface CategoryCoverflowProps {
  * - Outer stage with `perspective: 400px * scale` and `transform-style: preserve-3d` center anchor
  * - Center card (`d = 0`): `500×285`, `translateX(0) translateZ(0) rotateY(0deg)`
  * - Side cards (`|d| >= 1`): `320×280`, `translateX(±(474 + (|d|-1)*326.4)) translateZ(-|d|*200) rotateY(±min(90, |d|*35)deg)`
- * - Continuous 60fps/120fps spring-lerp sliding animation (`requestAnimationFrame`) driven by
- *   mouse wheel scroll, drag/swipe, side-card click, or PREV/NEXT buttons.
+ * - High-performance demand-driven 60fps/120fps spring animation (`requestAnimationFrame`),
+ *   pausing completely when stationary (0% idle CPU) or offscreen.
  */
 const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCard }) => {
   const len = cards.length;
   const containerRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
+
+  // Viewport visibility to halt offscreen video decoding & render pipelines
+  const [isInView, setIsInView] = useState<boolean>(false);
+  const isInViewRef = useRef<boolean>(false);
 
   // Continuous floating-point scroll position for silky 60/120fps 3D sliding
   const targetPosRef = useRef<number>(0);
@@ -411,12 +415,40 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
   const [renderPos, setRenderPos] = useState<number>(0);
   const [scaleFactor, setScaleFactor] = useState<number>(1);
 
+  // Demand-driven RAF loop control
+  const rafIdRef = useRef<number>(0);
+  const isAnimatingRef = useRef<boolean>(false);
+
   // Drag / pointer tracking
   const isDraggingRef = useRef<boolean>(false);
   const dragStartXRef = useRef<number>(0);
   const dragStartTargetRef = useRef<number>(0);
   const pointerMovedRef = useRef<boolean>(false);
   const snapTimerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
+
+  // Starts or continues the spring-lerp animation until currentPos reaches targetPos
+  const startAnimation = useCallback(() => {
+    if (isAnimatingRef.current) return;
+    isAnimatingRef.current = true;
+
+    const tick = () => {
+      const diff = targetPosRef.current - currentPosRef.current;
+      if (Math.abs(diff) > 0.0008) {
+        currentPosRef.current += diff * 0.12;
+        setRenderPos(currentPosRef.current);
+        rafIdRef.current = requestAnimationFrame(tick);
+      } else {
+        if (currentPosRef.current !== targetPosRef.current) {
+          currentPosRef.current = targetPosRef.current;
+          setRenderPos(currentPosRef.current);
+        }
+        isAnimatingRef.current = false;
+        rafIdRef.current = 0;
+      }
+    };
+
+    rafIdRef.current = requestAnimationFrame(tick);
+  }, []);
 
   // Responsive scale factor so the 400px perspective geometry scales proportionally on mobile/tablet
   useEffect(() => {
@@ -437,27 +469,38 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
     return () => window.removeEventListener('resize', updateScale);
   }, []);
 
-  // Continuous requestAnimationFrame loop interpolating currentPos -> targetPos
+  // IntersectionObserver to pause offscreen work and start animation when scrolled into view
   useEffect(() => {
-    let rafId = 0;
-    const tick = () => {
-      const diff = targetPosRef.current - currentPosRef.current;
-      if (Math.abs(diff) > 0.0008) {
-        currentPosRef.current += diff * 0.11;
-        setRenderPos(currentPosRef.current);
-      } else if (currentPosRef.current !== targetPosRef.current) {
-        currentPosRef.current = targetPosRef.current;
-        setRenderPos(currentPosRef.current);
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const inView = entry.isIntersecting;
+        setIsInView(inView);
+        isInViewRef.current = inView;
+        if (inView && Math.abs(targetPosRef.current - currentPosRef.current) > 0.0008) {
+          startAnimation();
+        }
+      },
+      { rootMargin: '120px 0px' }
+    );
+    observer.observe(el);
+
+    return () => {
+      observer.disconnect();
+      if (rafIdRef.current) {
+        cancelAnimationFrame(rafIdRef.current);
+        rafIdRef.current = 0;
+        isAnimatingRef.current = false;
       }
-      rafId = requestAnimationFrame(tick);
     };
-    rafId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafId);
-  }, []);
+  }, [startAnimation]);
 
   const stepBy = useCallback((delta: number) => {
     targetPosRef.current = Math.round(targetPosRef.current + delta);
-  }, []);
+    startAnimation();
+  }, [startAnimation]);
 
   // Mouse wheel & trackpad continuous scroll with smooth snap-to-card
   useEffect(() => {
@@ -473,10 +516,12 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
       // Advance target position proportionally to wheel/trackpad delta
       const step = Math.max(-1.2, Math.min(1.2, primaryDelta * 0.0055));
       targetPosRef.current += step;
+      startAnimation();
 
       clearTimeout(snapTimerRef.current);
       snapTimerRef.current = setTimeout(() => {
         targetPosRef.current = Math.round(targetPosRef.current);
+        startAnimation();
       }, 140);
     };
 
@@ -485,7 +530,7 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
       el.removeEventListener('wheel', handleWheel);
       clearTimeout(snapTimerRef.current);
     };
-  }, []);
+  }, [startAnimation]);
 
   const startDrag = (clientX: number) => {
     isDraggingRef.current = true;
@@ -503,6 +548,7 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
     }
     // Dragging/swiping left (dx < 0) slides forward (+), right (dx > 0) slides backward (-)
     targetPosRef.current = dragStartTargetRef.current - dx / (170 * scaleFactor);
+    startAnimation();
   };
 
   const endDrag = (clientX?: number) => {
@@ -519,6 +565,7 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
     } else {
       targetPosRef.current = currentRounded;
     }
+    startAnimation();
   };
 
   const handlePointerDown = (e: React.PointerEvent) => {
@@ -638,7 +685,7 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
             // Continuous 3D offset d from center
             const d = slotOffset - frac;
             const absD = Math.abs(d);
-            if (absD >= 7.2) return null;
+            if (absD >= 5.0) return null;
 
             const sign = d === 0 ? 0 : d > 0 ? 1 : -1;
             const itemIndex = (((baseIndex + slotOffset) % len) + len) % len;
@@ -683,6 +730,7 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
                     onSelectCard(card, itemIndex + 1);
                   } else {
                     targetPosRef.current = baseIndex + slotOffset;
+                    startAnimation();
                   }
                 }}
                 onKeyDown={(e) => {
@@ -692,6 +740,7 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
                       onSelectCard(card, itemIndex + 1);
                     } else {
                       targetPosRef.current = baseIndex + slotOffset;
+                      startAnimation();
                     }
                   }
                 }}
@@ -722,8 +771,8 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
                   }}
                   className="absolute inset-0 overflow-hidden bg-[#121518] shadow-[0_20px_50px_rgba(0,0,0,0.75)] ring-1 ring-white/15"
                 >
-                  {/* Live Muted Video Preview when Video Card is in Center Slot */}
-                  {card.video && isCenter && (
+                  {/* Live Muted Video Preview when Video Card is in Center Slot and Carousel is in View */}
+                  {card.video && isCenter && isInView && (
                     <video
                       src={card.video}
                       poster={card.image}
@@ -731,6 +780,7 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
                       loop
                       playsInline
                       autoPlay
+                      preload="metadata"
                       className="absolute inset-0 w-full h-full object-cover pointer-events-none"
                     />
                   )}
@@ -809,6 +859,7 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
                   if (diff > len / 2) diff -= len;
                   if (diff < -len / 2) diff += len;
                   targetPosRef.current = baseIndex + diff;
+                  startAnimation();
                 }}
                 aria-label={`Go to ${c.client}`}
                 className={`h-1.5 transition-all cursor-pointer ${
