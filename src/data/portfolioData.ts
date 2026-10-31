@@ -86,7 +86,7 @@ export const portfolioData: PortfolioData = {
     {
       id: 1,
       title: "Brand Launch Film",
-      category: "Directing Outputs",
+      category: "Directing and Editing Outputs",
       year: "2025",
       image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
       description: "End-to-end creative direction, storyboarding, on-set blocking, and final narrative cut for a flagship brand launch film."

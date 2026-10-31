@@ -36,7 +36,7 @@ const CATEGORIES: PortfolioCategory[] = [
   {
     id: 'directing-outputs',
     index: '01',
-    label: 'Directing Outputs',
+    label: 'Directing and Editing Outputs',
     subtitle: 'COMMERCIAL FILMS, NARRATIVES & DIRECTION SHOWCASES'
   },
   {
@@ -66,11 +66,11 @@ const CATEGORIES: PortfolioCategory[] = [
 ];
 
 const CASE_STUDY_CARDS: CaseStudyCard[] = [
-  // 01. DIRECTING OUTPUTS (6 Works)
+  // 01. DIRECTING AND EDITING OUTPUTS (6 Works)
   {
     code: '01',
     categoryId: 'directing-outputs',
-    categoryLabel: 'Directing Outputs',
+    categoryLabel: 'Directing and Editing Outputs',
     client: 'BRAND LAUNCH FILM',
     discipline: 'DIRECTION & EDITING',
     year: '2025',
@@ -82,7 +82,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
   {
     code: '02',
     categoryId: 'directing-outputs',
-    categoryLabel: 'Directing Outputs',
+    categoryLabel: 'Directing and Editing Outputs',
     client: 'MNLTH VISUALS',
     discipline: 'CREATIVE DIRECTION',
     year: '2025',
@@ -94,7 +94,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
   {
     code: '03',
     categoryId: 'directing-outputs',
-    categoryLabel: 'Directing Outputs',
+    categoryLabel: 'Directing and Editing Outputs',
     client: 'DOCUMENTARY SHORT',
     discipline: 'DIRECTION & SOUND',
     year: '2024',
@@ -106,7 +106,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
   {
     code: '04',
     categoryId: 'directing-outputs',
-    categoryLabel: 'Directing Outputs',
+    categoryLabel: 'Directing and Editing Outputs',
     client: 'COLLISON CAMPAIGN',
     discipline: 'FILM DIRECTION',
     year: '2024',
@@ -118,7 +118,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
   {
     code: '05',
     categoryId: 'directing-outputs',
-    categoryLabel: 'Directing Outputs',
+    categoryLabel: 'Directing and Editing Outputs',
     client: 'NOCTURNE NARRATIVE',
     discipline: 'WRITING & DIRECTING',
     year: '2024',
@@ -130,7 +130,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
   {
     code: '06',
     categoryId: 'directing-outputs',
-    categoryLabel: 'Directing Outputs',
+    categoryLabel: 'Directing and Editing Outputs',
     client: 'SOLARIS LOOKBOOK FILM',
     discipline: 'FASHION DIRECTION',
     year: '2024',
