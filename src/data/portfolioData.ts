@@ -111,11 +111,12 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: 4,
-      title: "Editorial Reel & NarCraft Opener",
+      title: "Larry Fiero & Creator Short-Form Content",
       category: "Intro Videos & Short Video Contents",
       year: "2025",
-      image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80",
-      description: "High-retention vertical edits and custom signature logo stingers establishing immediate brand recognition."
+      image: "/projects/larry-intro-thumb.jpg",
+      video: "/projects/Larry%20intro.mp4",
+      description: "Cinematic 3D metallic logo reveals, dynamic channel intro openers, and high-retention vertical video edits with kinetic typography."
     },
     {
       id: 5,

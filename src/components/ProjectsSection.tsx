@@ -166,78 +166,42 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Commercial 2D animation explainer for M and L Car Trading detailing memorandum of agreement terms with custom vector assets and motion design.'
   },
 
-  // 03. INTRO VIDEOS & SHORT VIDEO CONTENTS (6 Works)
+  // 03. INTRO VIDEOS & SHORT VIDEO CONTENTS (3 Real Video Works)
   {
     code: '01',
     categoryId: 'intro-short-videos',
     categoryLabel: 'Intro Videos & Short Video Contents',
-    client: 'NARCRAFT OPENER',
-    discipline: 'LOGO STINGER & INTRO',
+    client: 'LARRY FIERO INTRO',
+    discipline: '3D LOGO STINGER & INTRO',
     year: '2025',
-    image:
-      'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1000&q=85',
+    image: '/projects/larry-intro-thumb.jpg',
+    video: '/projects/Larry%20intro.mp4',
     description:
-      'Custom signature logo reveal and dark-room sonic stinger establishing immediate brand recognition in the first 5 seconds.'
+      'Cinematic metallic 3D logo reveal and signature audio stinger crafted for personal branding and channel intro.'
   },
   {
     code: '02',
     categoryId: 'intro-short-videos',
     categoryLabel: 'Intro Videos & Short Video Contents',
-    client: 'EDITORIAL REEL',
-    discipline: 'SHORT-FORM PACING',
+    client: 'YANONG DIGOSEÑO',
+    discipline: 'ANIMATED 3D LOGO & INTRO',
     year: '2025',
-    image:
-      'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1000&q=85',
+    image: '/projects/yanong-thumb.jpg',
+    video: '/projects/yanong.mp4',
     description:
-      'High-retention vertical edit combining punchy hooks, dynamic speed ramps, custom captions, and crisp sound design.'
+      'Vibrant, playful 3D character animation and kinetic typography opener created for Yanong Digoseño.'
   },
   {
     code: '03',
     categoryId: 'intro-short-videos',
     categoryLabel: 'Intro Videos & Short Video Contents',
-    client: 'CHANNEL INTRO SEQ',
-    discipline: 'TITLE OPENER',
+    client: 'CREATOR RETENTION REEL',
+    discipline: 'SHORT-FORM PACING & DYNAMIC CAPTIONS',
     year: '2025',
-    image:
-      'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1000&q=85',
+    image: '/projects/final-video-thumb.jpg',
+    video: '/projects/FINAL%20VIDEO.mp4',
     description:
-      'Dynamic YouTube and creator channel intro sequence combining layered cut-outs, kinetic titles, and custom sound hits.'
-  },
-  {
-    code: '04',
-    categoryId: 'intro-short-videos',
-    categoryLabel: 'Intro Videos & Short Video Contents',
-    client: 'CREATOR HIGHLIGHT',
-    discipline: 'RETENTION EDITING',
-    year: '2025',
-    image:
-      'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1000&q=85',
-    description:
-      'Short-form storytelling tailored for Reels, TikTok, and YouTube Shorts with clean visual callouts and seamless B-roll integration.'
-  },
-  {
-    code: '05',
-    categoryId: 'intro-short-videos',
-    categoryLabel: 'Intro Videos & Short Video Contents',
-    client: 'PRODUCT DROP CUT',
-    discipline: 'SOCIAL VIDEO ADS',
-    year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1000&q=85',
-    description:
-      'Fast-paced 30-second commercial cut engineered for social conversion with rhythmic cuts and bold typography.'
-  },
-  {
-    code: '06',
-    categoryId: 'intro-short-videos',
-    categoryLabel: 'Intro Videos & Short Video Contents',
-    client: 'AVENOR STUDIO INTRO',
-    discipline: 'BROADCAST OPENER',
-    year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1000&q=85',
-    description:
-      'Editorial title sequence and show package opener with lower-thirds, transition mattes, and atmospheric pacing.'
+      'Fast-paced vertical talking-head edit featuring dynamic punch-zooms, kinetic text captions, and sound design for maximum audience retention.'
   },
 
   // 04. GRAPHICS (6 Works)

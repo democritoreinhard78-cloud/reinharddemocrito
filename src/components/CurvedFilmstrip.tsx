@@ -44,11 +44,11 @@ const PROJECT_OUTPUTS: FilmstripProject[] = [
     isLightCard: false
   },
   {
-    image: '/projects/moa-car-trading-thumb.jpg',
-    category: '[ 02 // 2D ANIMATION ]',
-    title: 'CAR TRADING',
-    subtitle: 'Commercial Motion Explainer',
-    year: '2023',
+    image: '/projects/larry-intro-thumb.jpg',
+    category: '[ 03 // INTRO VIDEO ]',
+    title: 'LARRY FIERO',
+    subtitle: '3D Metallic Logo Stinger',
+    year: '2025',
     isLightCard: true
   },
   {
@@ -60,11 +60,11 @@ const PROJECT_OUTPUTS: FilmstripProject[] = [
     isLightCard: false
   },
   {
-    image: '/projects/cert-11.png',
-    category: '[ 05 // RESEARCH AWARD ]',
-    title: 'BEST RESEARCH',
-    subtitle: 'Sacred Heart Chronicles',
-    year: '2024',
+    image: '/projects/final-video-thumb.jpg',
+    category: '[ 03 // SHORT VIDEO ]',
+    title: 'CREATOR REEL',
+    subtitle: 'High-Retention Short Content',
+    year: '2025',
     isLightCard: true
   },
   {
