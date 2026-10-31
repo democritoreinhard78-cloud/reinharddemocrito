@@ -252,23 +252,24 @@ export const ProcessToolsSection: React.FC = () => {
           }}
         />
 
-        {/* CARD 1: Upper-Left Behind Cap ("BURNED" dark laptop spread) */}
+        {/* CARD 1: Upper-Left Behind Cap (Larry Fiero 3D Logo Stinger Laptop Mockup) */}
         <div
           aria-hidden="true"
           className="hidden sm:flex flex-col justify-between w-[165px] lg:w-[215px] aspect-[16/10] bg-[#14171a] border border-white/15 p-2 shadow-[0_18px_38px_rgba(0,0,0,0.85)] absolute left-[18%] lg:left-[29%] top-[46px] lg:top-[52px] z-[14] overflow-hidden"
         >
           <div className="relative w-full h-[78%] bg-[#0b0d0f] border border-white/15 overflow-hidden flex flex-col justify-between p-2">
             <img
-              src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=400&q=80"
-              alt=""
+              src="/projects/larry-intro-thumb.jpg"
+              alt="Larry Fiero 3D Logo Stinger"
               loading="lazy"
-              className="absolute inset-0 w-full h-full object-cover grayscale contrast-150 opacity-45"
+              className="absolute inset-0 w-full h-full object-cover grayscale contrast-125 opacity-75"
             />
-            <span className="relative z-10 font-display text-[12px] lg:text-[14px] tracking-[0.22em] uppercase text-white/90 font-light pl-3 pt-1">
-              BURNED
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/35" />
+            <span className="relative z-10 font-display text-[10px] lg:text-[12px] tracking-[0.18em] uppercase text-white font-semibold pl-1 pt-0.5">
+              LARRY FIERO
             </span>
-            <div className="relative z-10 flex items-center justify-between text-[4.5px] font-mono text-white/50 tracking-widest">
-              <span>ARCHIVE 01</span>
+            <div className="relative z-10 flex items-center justify-between text-[5px] font-mono text-white/75 tracking-wider">
+              <span>[ 03 // 3D INTRO ]</span>
               <span>2025</span>
             </div>
           </div>
@@ -276,129 +277,123 @@ export const ProcessToolsSection: React.FC = () => {
           <div className="w-[88%] mx-auto h-[16%] bg-gradient-to-b from-[#2a2e33] to-[#15181b] rounded-b-xs border-t border-white/20" />
         </div>
 
-        {/* CARD 2: Upper-Right Behind Cap (Architectural brutalist 2-page spread) */}
+        {/* CARD 2: Upper-Right Behind Cap (Sacred Heart Chronicles Pixel Art 2-Page Spread) */}
         <div
           aria-hidden="true"
           className="hidden sm:grid grid-cols-12 gap-1 w-[165px] lg:w-[215px] aspect-[16/10] bg-[#16191c] border border-white/15 p-1 shadow-[0_18px_38px_rgba(0,0,0,0.85)] absolute right-[18%] lg:right-[34%] top-[42px] lg:top-[46px] z-[14] overflow-hidden"
         >
           <div className="col-span-8 bg-[#e5e4df] relative overflow-hidden flex flex-col justify-between p-1.5">
             <img
-              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80"
-              alt=""
+              src="/projects/graphics-shc-facade.png"
+              alt="Sacred Heart Chronicles Pixel Art"
               loading="lazy"
-              className="absolute inset-0 w-full h-[68%] object-cover grayscale contrast-125"
+              className="absolute inset-0 w-full h-[72%] object-cover grayscale contrast-125"
             />
             <div className="relative z-10 mt-auto bg-white/95 text-black p-1 shadow-xs">
-              <p className="font-display text-[6px] font-bold uppercase leading-none">
-                ARCHITECTURE
+              <p className="font-display text-[6.5px] font-bold uppercase leading-none truncate">
+                SACRED HEART
               </p>
-              <p className="font-mono text-[4.5px] text-black/65 uppercase tracking-wider pt-0.5">
-                SPATIAL IDENTITY
+              <p className="font-mono text-[4.5px] text-black/75 uppercase tracking-wider pt-0.5">
+                [ 04 // PIXEL ART ]
               </p>
             </div>
           </div>
-          <div className="col-span-4 bg-[#f5f4f0] text-black p-1 flex flex-col justify-between">
-            <div className="grid grid-cols-2 gap-0.5">
-              <div className="aspect-square bg-[#181a1d]" />
-              <div className="aspect-square bg-[#2c3035]" />
+          <div className="col-span-4 bg-[#f5f4f0] text-black p-1 flex flex-col justify-between overflow-hidden">
+            <div className="h-[52%] w-full overflow-hidden border border-black/10">
+              <img
+                src="/projects/graphics-shc-lirc.png"
+                alt="SHC Interior"
+                loading="lazy"
+                className="w-full h-full object-cover grayscale contrast-125"
+              />
             </div>
-            <div className="space-y-0.5">
+            <div className="space-y-0.5 pt-0.5">
               <div className="w-full h-[2px] bg-black/70" />
-              <div className="w-4/5 h-[2px] bg-black/45" />
-              <div className="w-3/5 h-[2px] bg-black/30" />
+              <div className="w-4/5 h-[1.5px] bg-black/45" />
+              <div className="font-mono text-[4px] uppercase text-black/60 pt-0.5">
+                CAMPUS · 2024
+              </div>
             </div>
-            <div className="w-full h-3 bg-[#181a1d]" />
           </div>
         </div>
 
-        {/* CARD 3: Mid-Left ("avenor" 2-page spread) */}
+        {/* CARD 3: Mid-Left (Dhenyhos Resort Commercial Menu 2-Page Spread) */}
         <div
           aria-hidden="true"
           className="hidden md:grid grid-cols-2 gap-1 w-[155px] lg:w-[192px] aspect-[16/10] bg-[#14171a] border border-white/15 p-1 shadow-[0_18px_38px_rgba(0,0,0,0.85)] absolute left-[6%] lg:left-[12.5%] top-[230px] lg:top-[270px] z-[14]"
         >
           <div className="bg-[#f4f3ef] text-black flex flex-col justify-between overflow-hidden">
-            <div className="h-[58%] w-full bg-[#1a1d20] overflow-hidden">
+            <div className="h-[62%] w-full bg-[#1a1d20] overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=300&q=80"
-                alt=""
+                src="/projects/graphics-dhenyhos-menu.jpg"
+                alt="Dhenyhos Resort Menu"
                 loading="lazy"
                 className="w-full h-full object-cover grayscale contrast-125"
               />
             </div>
-            <div className="p-1.5">
-              <p className="font-display text-[9px] lg:text-[11px] font-bold tracking-tight leading-none text-black">
-                avenor
+            <div className="p-1">
+              <p className="font-display text-[8px] lg:text-[9.5px] font-bold tracking-tight leading-none text-black truncate">
+                DHENYHOS
               </p>
-              <div className="w-8 h-[2px] bg-black/40 mt-1" />
+              <p className="font-mono text-[4.5px] text-black/65 uppercase tracking-wider pt-0.5">
+                [ 04 // MENU ]
+              </p>
             </div>
           </div>
           <div className="bg-[#f4f3ef] text-black p-1 flex flex-col justify-between">
-            <div className="grid grid-cols-2 gap-0.5 h-[56%]">
-              <img
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=200&q=80"
-                alt=""
-                loading="lazy"
-                className="w-full h-full object-cover grayscale contrast-150"
-              />
-              <div className="bg-[#16181b]" />
-            </div>
-            <div className="grid grid-cols-2 gap-0.5 h-[38%]">
-              <div className="space-y-0.5 pt-0.5">
-                <div className="w-full h-[1.5px] bg-black/60" />
-                <div className="w-3/4 h-[1.5px] bg-black/40" />
+            <div className="space-y-1">
+              <div className="font-mono text-[5px] font-semibold text-black uppercase tracking-wider">
+                COMMERCIAL
               </div>
-              <div className="bg-[#1c1f22]" />
+              <div className="w-full h-[1.5px] bg-black/60" />
+              <div className="w-4/5 h-[1.5px] bg-black/40" />
+              <div className="w-3/5 h-[1.5px] bg-black/25" />
+            </div>
+            <div className="flex items-center justify-between font-mono text-[4.5px] text-black/60 border-t border-black/15 pt-1">
+              <span>RESORT</span>
+              <span>2024</span>
             </div>
           </div>
         </div>
 
-        {/* CARD 4: Mid-Right ("Aurel Vance" 2-page spread) */}
+        {/* CARD 4: Mid-Right (Creator Reel Short Video Editorial Spread) */}
         <div
           aria-hidden="true"
           className="hidden md:grid grid-cols-2 gap-1 w-[170px] lg:w-[222px] aspect-[16/10] bg-[#121417] border border-white/15 p-1 shadow-[0_18px_38px_rgba(0,0,0,0.85)] absolute right-[6%] lg:right-[16.5%] top-[255px] lg:top-[305px] z-[14]"
         >
           <div className="bg-[#f4f3ef] text-black flex flex-col justify-between relative overflow-hidden">
-            <div className="h-[58%] w-full bg-[#181b1e] overflow-hidden">
+            <div className="h-[62%] w-full bg-[#181b1e] overflow-hidden relative">
               <img
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80"
-                alt=""
+                src="/projects/final-video-thumb.jpg"
+                alt="Creator Reel"
                 loading="lazy"
-                className="w-full h-full object-cover grayscale contrast-125 brightness-90"
+                className="w-full h-full object-cover grayscale contrast-125"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+              <p className="absolute left-1 bottom-1 font-display text-[7.5px] lg:text-[9px] font-semibold text-white">
+                CREATOR REEL
+              </p>
             </div>
-            <p className="absolute left-1.5 top-[44%] font-display text-[9px] lg:text-[11px] font-semibold text-white drop-shadow-xs">
-              Aurel Vance
-            </p>
-            <div className="p-1.5 flex items-end justify-between">
-              <div className="space-y-0.5">
-                <div className="w-8 h-[2px] bg-black/75" />
-                <div className="w-6 h-[1.5px] bg-black/45" />
-              </div>
-              <div className="w-3.5 h-4 bg-[#14171a]" />
+            <div className="p-1 flex items-end justify-between font-mono text-[4.5px] text-black/70">
+              <span>[ 03 // SHORT ]</span>
+              <span>2025</span>
             </div>
           </div>
-          <div className="bg-[#f4f3ef] text-black flex flex-col justify-between overflow-hidden">
-            <div className="p-1.5 flex items-start justify-between h-[44%]">
-              <div className="space-y-0.5">
-                <div className="w-6 h-[1.5px] bg-black/60" />
-                <div className="w-4 h-[1.5px] bg-black/40" />
-              </div>
-              <div className="w-7 h-5 bg-[#181a1d] overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=200&q=80"
-                  alt=""
-                  loading="lazy"
-                  className="w-full h-full object-cover grayscale"
-                />
-              </div>
-            </div>
-            <div className="h-[56%] w-full bg-[#111315] overflow-hidden">
+          <div className="bg-[#f4f3ef] text-black flex flex-col justify-between overflow-hidden p-1">
+            <div className="h-[52%] w-full overflow-hidden border border-black/10">
               <img
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80"
-                alt=""
+                src="/projects/yanong-thumb.jpg"
+                alt="Yanong Video"
                 loading="lazy"
-                className="w-full h-full object-cover grayscale contrast-150 brightness-75"
+                className="w-full h-full object-cover grayscale contrast-125"
               />
+            </div>
+            <div className="space-y-0.5 pt-1">
+              <div className="font-mono text-[4.5px] font-medium text-black uppercase">
+                DIRECTING & CUT
+              </div>
+              <div className="w-full h-[1.5px] bg-black/60" />
+              <div className="w-3/4 h-[1.5px] bg-black/40" />
             </div>
           </div>
         </div>
@@ -438,27 +433,39 @@ export const ProcessToolsSection: React.FC = () => {
           <MarqueeTapeContent reverse />
         </div>
 
-        {/* CARD 5: Bottom-Left Nestled Between Tapes ("rus" close-up B&W portrait spread, z-[15]) */}
+        {/* CARD 5: Bottom-Left Nestled Between Tapes (One-Way ANOVA 2D Animation Spread, z-[15]) */}
         <div
           aria-hidden="true"
           className="hidden sm:grid grid-cols-12 gap-1 w-[160px] lg:w-[214px] aspect-[16/10] bg-[#14171a] border border-white/20 p-1 shadow-[0_18px_38px_rgba(0,0,0,0.85)] absolute left-[6%] lg:left-[13.5%] bottom-[42px] sm:bottom-[50px] lg:bottom-[56px] z-[15]"
         >
           <div className="col-span-7 relative bg-[#1b1e22] overflow-hidden flex items-end p-1.5">
             <img
-              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80"
-              alt=""
+              src="/projects/cabe-final-proj-thumb.jpg"
+              alt="One-Way ANOVA 2D Animation"
               loading="lazy"
               className="absolute inset-0 w-full h-full object-cover grayscale contrast-125"
             />
-            <span className="relative z-10 font-display text-[18px] lg:text-[22px] font-bold lowercase leading-none text-white tracking-tight">
-              rus
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+            <span className="relative z-10 font-display text-[11px] lg:text-[13px] font-bold uppercase leading-none text-white tracking-tight">
+              ANOVA
             </span>
           </div>
-          <div className="col-span-5 bg-[#f4f3ef] text-black p-1 grid grid-cols-2 gap-0.5">
-            <div className="bg-[#181b1e]" />
-            <div className="bg-[#d8d6d0]" />
-            <div className="bg-[#d8d6d0]" />
-            <div className="bg-[#181b1e]" />
+          <div className="col-span-5 bg-[#f4f3ef] text-black p-1.5 flex flex-col justify-between">
+            <div className="space-y-0.5">
+              <p className="font-display text-[6.5px] font-bold uppercase leading-none text-black">
+                2D MOTION
+              </p>
+              <p className="font-mono text-[4.5px] text-black/70 uppercase">
+                STATISTICS
+              </p>
+            </div>
+            <div className="space-y-0.5">
+              <div className="w-full h-[1.5px] bg-black/60" />
+              <div className="w-3/4 h-[1.5px] bg-black/40" />
+            </div>
+            <div className="font-mono text-[4.5px] text-black/60 uppercase">
+              [ 02 // 2024 ]
+            </div>
           </div>
         </div>
 
@@ -481,51 +488,56 @@ export const ProcessToolsSection: React.FC = () => {
           />
         </div>
 
-        {/* CARD 6: Bottom-Right Foreground Card ("i'm James Holt / and i make / ideas work" spread, z-[22]) */}
+        {/* CARD 6: Bottom-Right Foreground Card (PSITS Region 11 Champion Award Spread, z-[22]) */}
         <div
           aria-hidden="true"
           className="hidden sm:grid grid-cols-12 gap-1 w-[175px] lg:w-[250px] aspect-[16/10] bg-[#121417] border border-black/40 p-1 shadow-[0_22px_48px_rgba(0,0,0,0.9)] absolute right-[6%] lg:right-[15.5%] bottom-[16px] sm:bottom-[20px] lg:bottom-[24px] z-[22]"
         >
           <div className="col-span-7 bg-[#f5f4f0] text-[#111315] p-2 flex flex-col justify-between relative overflow-hidden">
-            <div className="font-display text-[7px] lg:text-[9px] font-semibold leading-[1.15] tracking-tight space-y-0.5">
+            <div className="font-display text-[7px] lg:text-[8.5px] font-semibold leading-[1.15] tracking-tight space-y-0.5">
               <div className="flex justify-between">
-                <span>i&apos;m</span>
-                <span>Reinhard</span>
+                <span>PSITS R11</span>
+                <span>CHAMPION</span>
               </div>
-              <div className="flex justify-between">
-                <span>and i</span>
-                <span>make</span>
-              </div>
-              <div className="flex justify-between">
-                <span>ideas</span>
-                <span>work</span>
+              <div className="flex justify-between text-black/75">
+                <span>BEST DIRECTOR</span>
+                <span>& EDIT</span>
               </div>
             </div>
-            {/* Center portrait silhouette block */}
-            <div className="w-9 lg:w-12 h-9 lg:h-12 mx-auto bg-[#16191c] overflow-hidden rounded-xs">
+            {/* Center award thumbnail preview */}
+            <div className="w-12 lg:w-16 h-8 lg:h-11 mx-auto bg-[#16191c] overflow-hidden border border-black/20">
               <img
-                src="/portrait-nobg.png"
-                alt=""
+                src="/projects/cert-5.jpg"
+                alt="PSITS Champion Award"
                 loading="lazy"
-                className="w-full h-full object-cover object-top grayscale contrast-150 brightness-75"
+                className="w-full h-full object-cover grayscale contrast-125"
               />
             </div>
-            <div className="flex items-end justify-between text-[4px] font-mono uppercase tracking-wider text-black/65">
-              <span>CREATIVE DIRECTION</span>
+            <div className="flex items-end justify-between text-[4.5px] font-mono uppercase tracking-wider text-black/75">
+              <span>[ 05 // AWARD ]</span>
               <span>2025</span>
             </div>
           </div>
           <div className="col-span-5 bg-[#f5f4f0] text-black p-1.5 flex flex-col justify-between">
-            <div className="space-y-0.5">
-              <div className="w-full h-[2px] bg-black/70" />
-              <div className="w-4/5 h-[2px] bg-black/40" />
-              <div className="w-3/5 h-[2px] bg-black/30" />
+            <div className="h-[46%] w-full overflow-hidden border border-black/15">
+              <img
+                src="/projects/cert-11.png"
+                alt="Best Research Project Award"
+                loading="lazy"
+                className="w-full h-full object-cover grayscale contrast-125"
+              />
             </div>
-            <div className="grid grid-cols-2 gap-0.5 h-[42%]">
-              <div className="bg-[#181a1d]" />
-              <div className="bg-[#2a2e33]" />
+            <div className="space-y-0.5 pt-0.5">
+              <div className="font-mono text-[4.5px] uppercase font-semibold text-black leading-tight">
+                RESEARCH AWARD
+              </div>
+              <div className="font-mono text-[4px] uppercase text-black/60">
+                COR JESU COLLEGE
+              </div>
             </div>
-            <div className="h-[22%] bg-[#14171a]" />
+            <div className="font-mono text-[4px] uppercase text-black/50 border-t border-black/15 pt-0.5">
+              REINHARD DEMOCRITO
+            </div>
           </div>
         </div>
 
