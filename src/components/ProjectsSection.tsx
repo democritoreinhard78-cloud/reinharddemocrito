@@ -107,7 +107,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
     code: '04',
     categoryId: 'directing-outputs',
     categoryLabel: 'Directing and Editing Outputs',
-    client: 'CONTEMPO DANCE FILM',
+    client: 'GLOBAL GOVERNANCE',
     discipline: 'CONTEMPORARY DANCE FILM & EDITING',
     year: '2024',
     image: '/projects/contempo-thumb.jpg',

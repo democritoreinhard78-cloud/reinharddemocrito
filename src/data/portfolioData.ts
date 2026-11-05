@@ -112,7 +112,7 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: 4,
-      title: "Contempo Dance Film",
+      title: "Global Governance",
       category: "Directing and Editing Outputs",
       year: "2024",
       image: "/projects/contempo-thumb.jpg",
