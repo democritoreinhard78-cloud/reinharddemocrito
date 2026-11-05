@@ -85,14 +85,51 @@ export const portfolioData: PortfolioData = {
   projects: [
     {
       id: 1,
-      title: "Brand Launch Film",
+      title: "CCIS Short Film: Pahinumdom",
       category: "Directing and Editing Outputs",
-      year: "2025",
-      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-      description: "End-to-end creative direction, storyboarding, on-set blocking, and final narrative cut for a flagship brand launch film."
+      year: "2024",
+      image: "/projects/pahinumdom-thumb.jpg",
+      video: "/projects/CCIS-SHORT-FILM-PAHINUMDOM.mp4",
+      description: "CCIS short film 'Pahinumdom' exploring memory, grief, and reflection through cinematic narrative storytelling, emotional pacing, and nuanced color grading."
     },
     {
       id: 2,
+      title: "El Regreso — Eltresix9 (Official Music Video)",
+      category: "Directing and Editing Outputs",
+      year: "2024",
+      image: "/projects/el-regreso-thumb.jpg",
+      video: "/projects/EL%20REGRESO%20-%20ELTRESIX9%20(OFFICIAL%20MUSIC%20VIDEO)%20-%20ELTRESIX9.mp4",
+      description: "Official music video for 'El Regreso' by Eltresix9, featuring energetic performance choreography, stylized low-key lighting, kinetic visual rhythm, and urban street aesthetics."
+    },
+    {
+      id: 3,
+      title: "Lunan by MRC Films",
+      category: "Directing and Editing Outputs",
+      year: "2024",
+      image: "/projects/lunan-thumb.jpg",
+      video: "/projects/Lunan%20by%20MRC%20Films.mp4",
+      description: "Cinematic short film production by MRC Films directed with atmospheric location cinematography, delicate character blocking, and evocative sound design."
+    },
+    {
+      id: 4,
+      title: "Contempo Dance Film",
+      category: "Directing and Editing Outputs",
+      year: "2024",
+      image: "/projects/contempo-thumb.jpg",
+      video: "/projects/FINAL%20NAJUD%20NI%20CONTEMPO%20MER.mp4",
+      description: "High-energy contemporary dance film cut with rhythmic editorial synchronization, fluid motion tracking, dramatic stage lighting, and dynamic visual pacing."
+    },
+    {
+      id: 5,
+      title: "Sports Wellness",
+      category: "Directing and Editing Outputs",
+      year: "2024",
+      image: "/projects/sports-wellness-thumb.jpg",
+      video: "/projects/Sports%20Wellness.mp4",
+      description: "Dynamic sports wellness showcase capturing athletic movement, training discipline, and community well-being with crisp documentary cinematography and upbeat editorial tempo."
+    },
+    {
+      id: 6,
       title: "Statistics: One-Way ANOVA",
       category: "Motion Graphics & 2D Animation",
       year: "2024",
@@ -101,7 +138,7 @@ export const portfolioData: PortfolioData = {
       description: "Educational 2D animated explainer breaking down One-Way ANOVA statistical analysis with custom character rigging, illustrated environments, and motion design."
     },
     {
-      id: 3,
+      id: 7,
       title: "Memorandum of Agreement: Car Trading",
       category: "Motion Graphics & 2D Animation",
       year: "2023",
@@ -110,7 +147,7 @@ export const portfolioData: PortfolioData = {
       description: "Commercial 2D animation explainer for M and L Car Trading detailing memorandum of agreement terms with custom vector assets and motion design."
     },
     {
-      id: 4,
+      id: 8,
       title: "Larry Fiero & Creator Short-Form Content",
       category: "Intro Videos & Short Video Contents",
       year: "2025",
@@ -119,7 +156,7 @@ export const portfolioData: PortfolioData = {
       description: "Cinematic 3D metallic logo reveals, dynamic channel intro openers, and high-retention vertical video edits with kinetic typography."
     },
     {
-      id: 5,
+      id: 9,
       title: "Dhenyhos Menu & Sacred Heart Pixel Art",
       category: "Graphics",
       year: "2024",
@@ -127,7 +164,7 @@ export const portfolioData: PortfolioData = {
       description: "Commercial restaurant menu layouts for Dhenyhos Family Resort and custom 2D pixel art campus environments for Sacred Heart Chronicles."
     },
     {
-      id: 6,
+      id: 10,
       title: "Directing & Filmmaking Honors (PSITS & Sine Kabataan)",
       category: "Certificates & Awards",
       year: "2024–2025",

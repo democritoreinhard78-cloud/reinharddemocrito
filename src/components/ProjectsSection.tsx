@@ -66,78 +66,66 @@ const CATEGORIES: PortfolioCategory[] = [
 ];
 
 const CASE_STUDY_CARDS: CaseStudyCard[] = [
-  // 01. DIRECTING AND EDITING OUTPUTS (6 Works)
+  // 01. DIRECTING AND EDITING OUTPUTS (5 Real Video Works)
   {
     code: '01',
     categoryId: 'directing-outputs',
     categoryLabel: 'Directing and Editing Outputs',
-    client: 'BRAND LAUNCH FILM',
-    discipline: 'DIRECTION & EDITING',
-    year: '2025',
-    image:
-      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=85',
+    client: 'CCIS SHORT FILM: PAHINUMDOM',
+    discipline: 'SHORT FILM DIRECTION & EDITING',
+    year: '2024',
+    image: '/projects/pahinumdom-thumb.jpg',
+    video: '/projects/CCIS-SHORT-FILM-PAHINUMDOM.mp4',
     description:
-      'End-to-end creative direction, storyboarding, on-set blocking, and final narrative cut for a flagship brand launch film.'
+      'CCIS short film "Pahinumdom" exploring memory, grief, and reflection through cinematic narrative storytelling, emotional pacing, and nuanced color grading.'
   },
   {
     code: '02',
     categoryId: 'directing-outputs',
     categoryLabel: 'Directing and Editing Outputs',
-    client: 'MNLTH VISUALS',
-    discipline: 'CREATIVE DIRECTION',
-    year: '2025',
-    image:
-      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1000&q=85',
+    client: 'EL REGRESO — ELTRESIX9',
+    discipline: 'OFFICIAL MUSIC VIDEO DIRECTION',
+    year: '2024',
+    image: '/projects/el-regreso-thumb.jpg',
+    video: '/projects/EL%20REGRESO%20-%20ELTRESIX9%20(OFFICIAL%20MUSIC%20VIDEO)%20-%20ELTRESIX9.mp4',
     description:
-      'High-contrast commercial direction focusing on tactile product lighting, deliberate camera movement, and atmospheric sound design.'
+      'Official music video for "El Regreso" by Eltresix9, featuring energetic performance choreography, stylized low-key lighting, kinetic visual rhythm, and urban street aesthetics.'
   },
   {
     code: '03',
     categoryId: 'directing-outputs',
     categoryLabel: 'Directing and Editing Outputs',
-    client: 'DOCUMENTARY SHORT',
-    discipline: 'DIRECTION & SOUND',
+    client: 'LUNAN BY MRC FILMS',
+    discipline: 'MRC FILMS / SHORT FILM DIRECTION',
     year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1000&q=85',
+    image: '/projects/lunan-thumb.jpg',
+    video: '/projects/Lunan%20by%20MRC%20Films.mp4',
     description:
-      'Intimate documentary portrait directed on location, blending candid interview storytelling with cinematic B-roll and custom soundscapes.'
+      'Cinematic short film production by MRC Films directed with atmospheric location cinematography, delicate character blocking, and evocative sound design.'
   },
   {
     code: '04',
     categoryId: 'directing-outputs',
     categoryLabel: 'Directing and Editing Outputs',
-    client: 'COLLISON CAMPAIGN',
-    discipline: 'FILM DIRECTION',
+    client: 'CONTEMPO DANCE FILM',
+    discipline: 'CONTEMPORARY DANCE FILM & EDITING',
     year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1000&q=85',
+    image: '/projects/contempo-thumb.jpg',
+    video: '/projects/FINAL%20NAJUD%20NI%20CONTEMPO%20MER.mp4',
     description:
-      'Multi-scene campaign film directed with a focus on human connection, visual rhythm, and cohesive art direction.'
+      'High-energy contemporary dance film cut with rhythmic editorial synchronization, fluid motion tracking, dramatic stage lighting, and dynamic visual pacing.'
   },
   {
     code: '05',
     categoryId: 'directing-outputs',
     categoryLabel: 'Directing and Editing Outputs',
-    client: 'NOCTURNE NARRATIVE',
-    discipline: 'WRITING & DIRECTING',
+    client: 'SPORTS WELLNESS',
+    discipline: 'DOCUMENTARY & WELLNESS COMMERCIAL',
     year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1000&q=85',
+    image: '/projects/sports-wellness-thumb.jpg',
+    video: '/projects/Sports%20Wellness.mp4',
     description:
-      'Moody narrative short film exploring urban solitude through anamorphic framing, practical neon lighting, and deliberate pacing.'
-  },
-  {
-    code: '06',
-    categoryId: 'directing-outputs',
-    categoryLabel: 'Directing and Editing Outputs',
-    client: 'SOLARIS LOOKBOOK FILM',
-    discipline: 'FASHION DIRECTION',
-    year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=1000&q=85',
-    description:
-      'Dynamic seasonal fashion film combining choreographed camera movement, outdoor natural light, and rhythmic editorial cuts.'
+      'Dynamic sports wellness showcase capturing athletic movement, training discipline, and community well-being with crisp documentary cinematography and upbeat editorial tempo.'
   },
 
   // 02. MOTION GRAPHICS & 2D ANIMATION (2 Real Works)
