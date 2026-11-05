@@ -117,7 +117,7 @@ export const portfolioData: PortfolioData = {
       year: "2024",
       image: "/projects/contempo-thumb.jpg",
       video: "/projects/contempo-web.mp4",
-      description: "High-energy contemporary dance film cut with rhythmic editorial synchronization, fluid motion tracking, dramatic stage lighting, and dynamic visual pacing."
+      description: "Dynamic short film production exploring themes of global governance, crafted with deliberate narrative pacing, cinematic visual storytelling, and polished editorial rhythm."
     },
     {
       id: 5,
