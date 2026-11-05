@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Original master videos (>100MB - web versions with -web.mp4 are used instead)
+public/projects/CCIS-SHORT-FILM-PAHINUMDOM.mp4
+public/projects/EL REGRESO - ELTRESIX9 (OFFICIAL MUSIC VIDEO) - ELTRESIX9.mp4
+public/projects/FINAL NAJUD NI CONTEMPO MER.mp4
+public/projects/Lunan by MRC Films.mp4
+public/projects/Sports Wellness.mp4
+

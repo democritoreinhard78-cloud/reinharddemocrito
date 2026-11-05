@@ -75,7 +75,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
     discipline: 'SHORT FILM DIRECTION & EDITING',
     year: '2024',
     image: '/projects/pahinumdom-thumb.jpg',
-    video: '/projects/CCIS-SHORT-FILM-PAHINUMDOM.mp4',
+    video: '/projects/pahinumdom-web.mp4',
     description:
       'CCIS short film "Pahinumdom" exploring memory, grief, and reflection through cinematic narrative storytelling, emotional pacing, and nuanced color grading.'
   },
@@ -87,7 +87,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
     discipline: 'OFFICIAL MUSIC VIDEO DIRECTION',
     year: '2024',
     image: '/projects/el-regreso-thumb.jpg',
-    video: '/projects/EL%20REGRESO%20-%20ELTRESIX9%20(OFFICIAL%20MUSIC%20VIDEO)%20-%20ELTRESIX9.mp4',
+    video: '/projects/el-regreso-web.mp4',
     description:
       'Official music video for "El Regreso" by Eltresix9, featuring energetic performance choreography, stylized low-key lighting, kinetic visual rhythm, and urban street aesthetics.'
   },
@@ -99,7 +99,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
     discipline: 'MRC FILMS / SHORT FILM DIRECTION',
     year: '2024',
     image: '/projects/lunan-thumb.jpg',
-    video: '/projects/Lunan%20by%20MRC%20Films.mp4',
+    video: '/projects/lunan-web.mp4',
     description:
       'Cinematic short film production by MRC Films directed with atmospheric location cinematography, delicate character blocking, and evocative sound design.'
   },
@@ -111,7 +111,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
     discipline: 'CONTEMPORARY DANCE FILM & EDITING',
     year: '2024',
     image: '/projects/contempo-thumb.jpg',
-    video: '/projects/FINAL%20NAJUD%20NI%20CONTEMPO%20MER.mp4',
+    video: '/projects/contempo-web.mp4',
     description:
       'High-energy contemporary dance film cut with rhythmic editorial synchronization, fluid motion tracking, dramatic stage lighting, and dynamic visual pacing.'
   },
@@ -123,7 +123,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
     discipline: 'DOCUMENTARY & WELLNESS COMMERCIAL',
     year: '2024',
     image: '/projects/sports-wellness-thumb.jpg',
-    video: '/projects/Sports%20Wellness.mp4',
+    video: '/projects/sports-wellness-web.mp4',
     description:
       'Dynamic sports wellness showcase capturing athletic movement, training discipline, and community well-being with crisp documentary cinematography and upbeat editorial tempo.'
   },

@@ -169,6 +169,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 controls
                 autoPlay
                 playsInline
+                preload="metadata"
                 onError={() => setVideoError(true)}
                 className="w-full h-full max-h-[56vh] object-contain bg-black"
               />
@@ -176,10 +177,10 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 <div className="absolute inset-0 bg-black/85 flex flex-col items-center justify-center p-6 text-center z-20 backdrop-blur-xs">
                   <AlertCircle className="w-8 h-8 text-amber-400 mb-2" />
                   <p className="font-mono text-xs uppercase tracking-wider text-white font-semibold">
-                    Video Not Found On Cloud Host (404)
+                    Unable to load video stream
                   </p>
                   <p className="text-white/70 text-xs max-w-md mt-1.5 leading-relaxed font-sans">
-                    This video is 1.9 GB and stored on your local drive. Because GitHub has a 100 MB file limit, large videos should be linked via YouTube (Unlisted), Vimeo, or Google Drive to stream online.
+                    The video could not be loaded. Please check your internet connection or reload the player.
                   </p>
                 </div>
               )}
