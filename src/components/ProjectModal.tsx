@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { X, Calendar, Tag, ExternalLink, ZoomIn, ZoomOut } from 'lucide-react';
+import { X, Calendar, Tag, ExternalLink, ZoomIn, ZoomOut, AlertCircle } from 'lucide-react';
 import { ProjectItem } from '../types/portfolio';
 import { DoubleSquare } from './SectionLabel';
 
@@ -9,20 +9,46 @@ interface ProjectModalProps {
   onClose: () => void;
 }
 
+/** Converts YouTube, Vimeo, or Google Drive links to embeddable player URLs */
+const getEmbedUrl = (url?: string): string | null => {
+  if (!url) return null;
+  // YouTube watch?v=, youtu.be/, embed/, shorts/
+  const ytMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  if (ytMatch) {
+    return `https://www.youtube.com/embed/${ytMatch[1]}?autoplay=1&rel=0`;
+  }
+  // Vimeo
+  const vimeoMatch = url.match(/vimeo\.com\/(?:video\/)?([0-9]+)/);
+  if (vimeoMatch) {
+    return `https://player.vimeo.com/video/${vimeoMatch[1]}?autoplay=1`;
+  }
+  // Google Drive
+  const gdriveMatch = url.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
+  if (gdriveMatch) {
+    return `https://drive.google.com/file/d/${gdriveMatch[1]}/preview`;
+  }
+  return null;
+};
+
 /**
  * Lightbox dialog styled in the portfolio's monochrome Swiss-brutalist theme.
- * Renders full images/certificates with no cropping, no gradient obscuring,
- * interactive zoom-to-fit / 100% zoom toggle, and full-resolution open action.
+ * Supports direct MP4 video playback, YouTube/Vimeo/Drive embeds, and full-resolution images.
  */
 export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const [zoomedProjectId, setZoomedProjectId] = useState<number | null>(null);
+  const [videoError, setVideoError] = useState(false);
   const isZoomed = zoomedProjectId === project.id;
+  const embedUrl = getEmbedUrl(project.video);
 
   const toggleZoom = () => {
     setZoomedProjectId(isZoomed ? null : project.id);
   };
+
+  useEffect(() => {
+    setVideoError(false);
+  }, [project.id]);
 
   useEffect(() => {
     const previouslyFocused = document.activeElement as HTMLElement | null;
@@ -118,7 +144,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           </div>
         </div>
 
-        {/* Project Featured Video or Image (No Crop, Full Certificate Visible) */}
+        {/* Project Featured Video or Image */}
         <div
           className={`relative w-full shrink-0 border-b border-white/15 bg-[#050607] flex items-center justify-center transition-all ${
             isZoomed
@@ -126,15 +152,38 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
               : 'overflow-hidden min-h-[260px] sm:min-h-[420px] max-h-[58vh] p-3 sm:p-6'
           }`}
         >
-          {project.video ? (
-            <video
-              src={project.video}
-              poster={project.image}
-              controls
-              autoPlay
-              playsInline
-              className="w-full h-full max-h-[56vh] object-contain bg-black"
+          {embedUrl ? (
+            <iframe
+              src={embedUrl}
+              title={project.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="w-full h-[56vh] min-h-[280px] sm:min-h-[420px] border-0 bg-black"
             />
+          ) : project.video ? (
+            <div className="relative w-full h-full flex items-center justify-center">
+              <video
+                key={project.video}
+                src={project.video}
+                poster={project.image}
+                controls
+                autoPlay
+                playsInline
+                onError={() => setVideoError(true)}
+                className="w-full h-full max-h-[56vh] object-contain bg-black"
+              />
+              {videoError && (
+                <div className="absolute inset-0 bg-black/85 flex flex-col items-center justify-center p-6 text-center z-20 backdrop-blur-xs">
+                  <AlertCircle className="w-8 h-8 text-amber-400 mb-2" />
+                  <p className="font-mono text-xs uppercase tracking-wider text-white font-semibold">
+                    Video Not Found On Cloud Host (404)
+                  </p>
+                  <p className="text-white/70 text-xs max-w-md mt-1.5 leading-relaxed font-sans">
+                    This video is 1.9 GB and stored on your local drive. Because GitHub has a 100 MB file limit, large videos should be linked via YouTube (Unlisted), Vimeo, or Google Drive to stream online.
+                  </p>
+                </div>
+              )}
+            </div>
           ) : (
             <div className="relative w-full h-full flex items-center justify-center">
               <img
@@ -178,42 +227,19 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
               <Tag className="w-3 h-3" />
               {project.category}
             </span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.18em] bg-white/5 text-white/75 border border-white/15">
-              <Calendar className="w-3 h-3" />
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.18em] border border-white/15 text-white/60">
+              <Calendar className="w-3 h-3 text-white/40" />
               {project.year}
             </span>
           </div>
 
-          <h3 className="text-xl sm:text-2xl font-bold text-white font-display uppercase tracking-tight">
+          <h3 className="font-mono text-xl sm:text-2xl font-bold tracking-tight text-white uppercase">
             {project.title}
           </h3>
 
-          <p className="text-white/75 text-sm leading-relaxed">
+          <p className="text-white/70 text-sm sm:text-[15px] leading-relaxed font-sans max-w-3xl">
             {project.description}
           </p>
-
-          <div className="pt-3 border-t border-white/15 flex flex-wrap items-center justify-between gap-3">
-            {!project.video ? (
-              <a
-                href={project.image}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2 border border-white/20 hover:bg-white/10 font-mono text-[10px] uppercase tracking-[0.2em] text-white/80 transition-all cursor-pointer"
-              >
-                <ExternalLink className="w-3.5 h-3.5" />
-                [ OPEN FULL IMAGE ↗ ]
-              </a>
-            ) : (
-              <div />
-            )}
-
-            <button
-              onClick={onClose}
-              className="px-5 py-2 border border-white/20 hover:bg-[#e7e5dc] hover:text-black hover:border-[#e7e5dc] font-mono text-[10px] uppercase tracking-[0.2em] text-white/80 transition-all cursor-pointer"
-            >
-              [ CLOSE PREVIEW ]
-            </button>
-          </div>
         </div>
       </motion.div>
     </motion.div>
