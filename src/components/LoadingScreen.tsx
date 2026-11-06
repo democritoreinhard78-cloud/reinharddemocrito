@@ -61,7 +61,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
             NarCraft
           </h1>
           <p className="text-[9px] tracking-[0.28em] text-white/60 uppercase font-mono">
-            [ DIRECTOR · VIDEO EDITOR · VISUAL DESIGNER ]
+            [ DIRECTOR · VIDEO EDITOR · GRAPHIC DESIGNER ]
           </p>
         </div>
 

@@ -4,8 +4,8 @@ export const portfolioData: PortfolioData = {
   personalInfo: {
     firstName: "REINHARD",
     lastName: "DEMOCRITO",
-    title: "Director, Video Editor & Visual Designer",
-    subtitle: "Director, Video Editor & Visual Designer",
+    title: "Director, Video Editor & Graphic Designer",
+    subtitle: "Director, Video Editor & Graphic Designer",
     tagline: "I direct, edit & design stories that connect.",
     intro: "Every project is a partnership - I make sure I understand your story before diving in.",
     email: "democritoreinhard78@gmail.com",
@@ -57,7 +57,7 @@ export const portfolioData: PortfolioData = {
   whatCanIDo: [
     "Direction - Storytelling - Concept",
     "Video Editing - Motion Graphics",
-    "Visual Design - Social Media Graphics",
+    "Graphic Design - Social Media Graphics",
     "Presentations - Canva & PowerPoint"
   ],
 

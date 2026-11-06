@@ -54,7 +54,7 @@ export const ContactSection: React.FC = () => {
 
             <p className="font-sans text-[13.5px] sm:text-[14.5px] font-normal normal-case tracking-normal text-white/75 leading-relaxed max-w-sm">
               Whether you&apos;re starting a new project or need a partner for direction, video
-              editing, or visual design — I&apos;m here to help turn your vision into reality.
+              editing, or graphic design — I&apos;m here to help turn your vision into reality.
             </p>
 
             {/* Interactive Controls */}
