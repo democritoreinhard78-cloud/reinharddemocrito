@@ -885,26 +885,73 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
 
 export const ProjectsSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<CategoryId>('all');
-  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+  const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);
+  const [modalCards, setModalCards] = useState<CaseStudyCard[]>([]);
 
   const visibleCategories =
     activeCategory === 'all'
       ? CATEGORIES
       : CATEGORIES.filter((cat) => cat.id === activeCategory);
 
-  const handleSelectCard = (card: CaseStudyCard, itemIndex?: number) => {
+  const visibleCards =
+    activeCategory === 'all'
+      ? CASE_STUDY_CARDS
+      : CASE_STUDY_CARDS.filter((cat) => cat.categoryId === activeCategory);
+
+  const handleSelectCard = (card: CaseStudyCard) => {
     trackProjectView(card.client, card.categoryLabel);
-    const itemNum = itemIndex !== undefined ? itemIndex : (Number(card.code) || 1);
-    setSelectedProject({
-      id: itemNum,
-      title: card.client,
-      category: `${card.categoryLabel} — ${card.discipline}`,
-      year: card.year,
-      image: card.image,
-      video: card.video,
-      description: card.description
-    });
+    const listToUse = visibleCards.length > 0 ? visibleCards : CASE_STUDY_CARDS;
+    setModalCards(listToUse);
+    const idx = listToUse.findIndex(
+      (c) => c.client === card.client && c.categoryId === card.categoryId
+    );
+    setSelectedCardIndex(idx >= 0 ? idx : 0);
   };
+
+  const handleNextProject = () => {
+    if (selectedCardIndex === null || modalCards.length === 0) return;
+    const nextIdx = (selectedCardIndex + 1) % modalCards.length;
+    setSelectedCardIndex(nextIdx);
+    const nextCard = modalCards[nextIdx];
+    if (nextCard) {
+      trackProjectView(nextCard.client, nextCard.categoryLabel);
+    }
+  };
+
+  const handlePrevProject = () => {
+    if (selectedCardIndex === null || modalCards.length === 0) return;
+    const prevIdx = (selectedCardIndex - 1 + modalCards.length) % modalCards.length;
+    setSelectedCardIndex(prevIdx);
+    const prevCard = modalCards[prevIdx];
+    if (prevCard) {
+      trackProjectView(prevCard.client, prevCard.categoryLabel);
+    }
+  };
+
+  const currentModalCard =
+    selectedCardIndex !== null && selectedCardIndex >= 0 && selectedCardIndex < modalCards.length
+      ? modalCards[selectedCardIndex]
+      : null;
+
+  const categoryCardsForActive = currentModalCard
+    ? CASE_STUDY_CARDS.filter((c) => c.categoryId === currentModalCard.categoryId)
+    : [];
+  const categoryItemIndex = currentModalCard
+    ? categoryCardsForActive.findIndex((c) => c.client === currentModalCard.client) + 1
+    : 1;
+  const categoryItemTotal = categoryCardsForActive.length;
+
+  const currentProject: ProjectItem | null = currentModalCard
+    ? {
+        id: Number(currentModalCard.code) || selectedCardIndex! + 1,
+        title: currentModalCard.client,
+        category: `${currentModalCard.categoryLabel} — ${currentModalCard.discipline}`,
+        year: currentModalCard.year,
+        image: currentModalCard.image,
+        video: currentModalCard.video,
+        description: currentModalCard.description
+      }
+    : null;
 
   return (
     <section
@@ -1011,8 +1058,19 @@ export const ProjectsSection: React.FC = () => {
         </div>
       </div>
 
-      {selectedProject && (
-        <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+      {currentProject && (
+        <ProjectModal
+          project={currentProject}
+          onClose={() => setSelectedCardIndex(null)}
+          onNext={handleNextProject}
+          onPrev={handlePrevProject}
+          currentIndex={selectedCardIndex ?? 0}
+          totalCount={modalCards.length}
+          categoryIndex={categoryItemIndex}
+          categoryTotal={categoryItemTotal}
+          categoryCode={currentModalCard?.code}
+          categoryLabel={currentModalCard?.categoryLabel}
+        />
       )}
     </section>
   );

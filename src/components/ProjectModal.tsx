@@ -1,12 +1,30 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { X, Calendar, Tag, ExternalLink, ZoomIn, ZoomOut, AlertCircle } from 'lucide-react';
+import {
+  X,
+  Calendar,
+  Tag,
+  ExternalLink,
+  ZoomIn,
+  ZoomOut,
+  AlertCircle,
+  ChevronLeft,
+  ChevronRight
+} from 'lucide-react';
 import { ProjectItem } from '../types/portfolio';
 import { DoubleSquare } from './SectionLabel';
 
 interface ProjectModalProps {
   project: ProjectItem;
   onClose: () => void;
+  onNext?: () => void;
+  onPrev?: () => void;
+  currentIndex?: number;
+  totalCount?: number;
+  categoryIndex?: number;
+  categoryTotal?: number;
+  categoryCode?: string;
+  categoryLabel?: string;
 }
 
 /** Converts YouTube, Vimeo, or Google Drive links to embeddable player URLs */
@@ -32,15 +50,28 @@ const getEmbedUrl = (url?: string): string | null => {
 
 /**
  * Lightbox dialog styled in the portfolio's monochrome Swiss-brutalist theme.
- * Supports direct MP4 video playback, YouTube/Vimeo/Drive embeds, and full-resolution images.
+ * Supports direct MP4 video playback, YouTube/Vimeo/Drive embeds, full-resolution images,
+ * and seamless Prev/Next navigation across outputs.
  */
-export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
+export const ProjectModal: React.FC<ProjectModalProps> = ({
+  project,
+  onClose,
+  onNext,
+  onPrev,
+  currentIndex = 0,
+  totalCount = 1,
+  categoryIndex,
+  categoryTotal,
+  categoryCode,
+  categoryLabel
+}) => {
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const [zoomedProjectId, setZoomedProjectId] = useState<number | null>(null);
   const [videoError, setVideoError] = useState(false);
   const isZoomed = zoomedProjectId === project.id;
   const embedUrl = getEmbedUrl(project.video);
+  const touchStartXRef = useRef<number | null>(null);
 
   const toggleZoom = () => {
     setZoomedProjectId(isZoomed ? null : project.id);
@@ -48,7 +79,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
   useEffect(() => {
     setVideoError(false);
-  }, [project.id]);
+    setZoomedProjectId(null);
+  }, [project.title, project.video, project.image]);
 
   useEffect(() => {
     const previouslyFocused = document.activeElement as HTMLElement | null;
@@ -61,6 +93,18 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         onClose();
+        return;
+      }
+
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        onPrev?.();
+        return;
+      }
+
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        onNext?.();
         return;
       }
 
@@ -88,7 +132,22 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
       document.body.style.overflow = previousOverflow;
       previouslyFocused?.focus?.();
     };
-  }, [onClose]);
+  }, [onClose, onNext, onPrev]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartXRef.current = e.touches[0]?.clientX ?? null;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartXRef.current === null) return;
+    const deltaX = (e.changedTouches[0]?.clientX ?? 0) - touchStartXRef.current;
+    if (deltaX > 45) {
+      onPrev?.();
+    } else if (deltaX < -45) {
+      onNext?.();
+    }
+    touchStartXRef.current = null;
+  };
 
   return (
     <motion.div
@@ -112,15 +171,52 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         className="relative w-full max-w-4xl lg:max-w-5xl bg-[#0c0e10] border border-white/20 overflow-hidden shadow-2xl flex flex-col max-h-[92vh]"
       >
         {/* Top Editorial Registration Header */}
-        <div className="flex items-center justify-between px-5 py-3 border-b border-white/15 bg-[#08090a] shrink-0">
-          <div className="flex items-center gap-2.5">
+        <div className="flex items-center justify-between px-3.5 sm:px-5 py-2.5 sm:py-3 border-b border-white/15 bg-[#08090a] shrink-0 gap-2">
+          {/* Left Case Study Label & Output Counters */}
+          <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
             <DoubleSquare />
-            <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-white/60">
-              [ CASE STUDY // {String(project.id).padStart(2, '0')} ]
+            <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-white/70 whitespace-nowrap">
+              [ CASE STUDY // {categoryCode ?? String(project.id).padStart(2, '0')} ]
             </span>
+            {categoryIndex !== undefined && categoryTotal !== undefined && (
+              <span className="hidden md:inline-block font-mono text-[8.5px] uppercase tracking-[0.16em] text-white/45 truncate">
+                // {categoryLabel ? `${categoryLabel.toUpperCase()} · ` : ''}[ {String(categoryIndex).padStart(2, '0')} OF {String(categoryTotal).padStart(2, '0')} ]
+              </span>
+            )}
           </div>
 
-          <div className="flex items-center gap-2">
+          {/* Right Action Controls: Top Bar Prev/Next, Full Res & Close */}
+          <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+            {totalCount > 1 && (
+              <div className="flex items-center gap-1 sm:gap-1.5">
+                <button
+                  type="button"
+                  onClick={onPrev}
+                  className="px-2 sm:px-2.5 py-1 border border-white/20 hover:border-white hover:bg-white hover:text-black font-mono text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.16em] text-white/80 transition-all flex items-center gap-1 cursor-pointer select-none"
+                  aria-label="Previous output"
+                  title="Previous output (Left Arrow)"
+                >
+                  <ChevronLeft className="w-3 h-3" />
+                  <span className="hidden sm:inline">PREV</span>
+                </button>
+
+                <span className="font-mono text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.16em] text-white/50 px-1 select-none">
+                  {String(currentIndex + 1).padStart(2, '0')}/{String(totalCount).padStart(2, '0')}
+                </span>
+
+                <button
+                  type="button"
+                  onClick={onNext}
+                  className="px-2 sm:px-2.5 py-1 border border-white/20 hover:border-white hover:bg-white hover:text-black font-mono text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.16em] text-white/80 transition-all flex items-center gap-1 cursor-pointer select-none"
+                  aria-label="Next output"
+                  title="Next output (Right Arrow)"
+                >
+                  <span className="hidden sm:inline">NEXT</span>
+                  <ChevronRight className="w-3 h-3" />
+                </button>
+              </div>
+            )}
+
             {!project.video && (
               <a
                 href={project.image}
@@ -130,9 +226,10 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 title="Open full-resolution image in new tab"
               >
                 <ExternalLink className="w-3 h-3" />
-                [ FULL RES ]
+                <span className="hidden lg:inline">[ FULL RES ]</span>
               </a>
             )}
+
             <button
               ref={closeButtonRef}
               onClick={onClose}
@@ -144,14 +241,48 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           </div>
         </div>
 
-        {/* Project Featured Video or Image */}
+        {/* Project Featured Video or Image with Floating Side Arrows */}
         <div
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
           className={`relative w-full shrink-0 border-b border-white/15 bg-[#050607] flex items-center justify-center transition-all ${
             isZoomed
               ? 'overflow-auto max-h-[64vh] p-2 sm:p-4'
               : 'overflow-hidden min-h-[260px] sm:min-h-[420px] max-h-[58vh] p-3 sm:p-6'
           }`}
         >
+          {/* Floating Left/Prev Arrow Button */}
+          {totalCount > 1 && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onPrev?.();
+              }}
+              aria-label="Previous output"
+              title="Previous output (Left Arrow)"
+              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-11 sm:h-11 bg-black/80 hover:bg-white text-white hover:text-black border border-white/25 hover:border-white backdrop-blur-md flex items-center justify-center transition-all cursor-pointer shadow-2xl group"
+            >
+              <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:-translate-x-0.5" />
+            </button>
+          )}
+
+          {/* Floating Right/Next Arrow Button */}
+          {totalCount > 1 && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onNext?.();
+              }}
+              aria-label="Next output"
+              title="Next output (Right Arrow)"
+              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-11 sm:h-11 bg-black/80 hover:bg-white text-white hover:text-black border border-white/25 hover:border-white backdrop-blur-md flex items-center justify-center transition-all cursor-pointer shadow-2xl group"
+            >
+              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-0.5" />
+            </button>
+          )}
+
           {embedUrl ? (
             <iframe
               src={embedUrl}
@@ -188,6 +319,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           ) : (
             <div className="relative w-full h-full flex items-center justify-center">
               <img
+                key={project.image}
                 src={project.image}
                 alt={project.title}
                 onClick={toggleZoom}
@@ -223,24 +355,83 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
         {/* Details Content */}
         <div className="p-5 sm:p-7 overflow-y-auto space-y-4">
-          <div className="flex flex-wrap items-center gap-2.5">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.18em] bg-[#e7e5dc] text-black font-semibold">
-              <Tag className="w-3 h-3" />
-              {project.category}
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.18em] border border-white/15 text-white/60">
-              <Calendar className="w-3 h-3 text-white/40" />
-              {project.year}
-            </span>
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="flex flex-wrap items-center gap-2.5">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.18em] bg-[#e7e5dc] text-black font-semibold">
+                <Tag className="w-3 h-3" />
+                {project.category}
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.18em] border border-white/15 text-white/60">
+                <Calendar className="w-3 h-3 text-white/40" />
+                {project.year}
+              </span>
+            </div>
+
+            {/* Quick Header Next/Prev Buttons */}
+            {totalCount > 1 && (
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <button
+                  type="button"
+                  onClick={onPrev}
+                  className="px-3 py-1 border border-white/20 hover:border-white hover:bg-white hover:text-black font-mono text-[8.5px] sm:text-[9px] uppercase tracking-[0.18em] text-white/80 transition-all inline-flex items-center gap-1 cursor-pointer"
+                  title="Previous output"
+                >
+                  <ChevronLeft className="w-3 h-3" />
+                  <span>PREV</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={onNext}
+                  className="px-3 py-1 bg-white text-black hover:bg-white/85 font-mono text-[8.5px] sm:text-[9px] uppercase tracking-[0.18em] font-semibold transition-all inline-flex items-center gap-1 cursor-pointer shadow-sm"
+                  title="Next output"
+                >
+                  <span>NEXT</span>
+                  <ChevronRight className="w-3 h-3" />
+                </button>
+              </div>
+            )}
           </div>
 
           <h3 className="font-mono text-xl sm:text-2xl font-bold tracking-tight text-white uppercase">
             {project.title}
           </h3>
 
-          <p className="text-white/70 text-sm sm:text-[15px] leading-relaxed font-sans max-w-3xl">
+          <p className="text-white/80 text-sm sm:text-[15px] leading-relaxed font-sans max-w-3xl">
             {project.description}
           </p>
+
+          {/* Bottom Full Navigation Action Bar */}
+          {totalCount > 1 && (
+            <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-white/10">
+              <button
+                type="button"
+                onClick={onPrev}
+                className="px-4 py-2 border border-white/20 hover:border-white hover:bg-white hover:text-black font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.18em] text-white/85 transition-all inline-flex items-center gap-2 cursor-pointer"
+              >
+                <ChevronLeft className="w-3.5 h-3.5" />
+                <span>[ PREV OUTPUT ]</span>
+              </button>
+
+              <div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.2em] text-white/45">
+                <span className="hidden sm:inline">OUTPUT</span>
+                <span className="text-white font-semibold">
+                  {String(currentIndex + 1).padStart(2, '0')}
+                </span>
+                <span>/</span>
+                <span>{String(totalCount).padStart(2, '0')}</span>
+                <span className="hidden sm:inline text-white/30">· USE ← / → KEYS</span>
+              </div>
+
+              <button
+                type="button"
+                onClick={onNext}
+                className="px-4 py-2 bg-white text-black hover:bg-white/85 font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.18em] font-semibold transition-all inline-flex items-center gap-2 cursor-pointer shadow-lg"
+              >
+                <span>[ NEXT OUTPUT ]</span>
+                <ChevronRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          )}
         </div>
       </motion.div>
     </motion.div>
