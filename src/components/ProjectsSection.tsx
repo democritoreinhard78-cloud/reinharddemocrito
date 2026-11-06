@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { ProjectItem } from '../types/portfolio';
 import { DoubleSquare } from './SectionLabel';
 import { ProjectModal } from './ProjectModal';
+import { trackProjectView } from '../utils/analytics';
 
 type CategoryId =
   | 'all'
@@ -892,6 +893,7 @@ export const ProjectsSection: React.FC = () => {
       : CATEGORIES.filter((cat) => cat.id === activeCategory);
 
   const handleSelectCard = (card: CaseStudyCard, itemIndex?: number) => {
+    trackProjectView(card.client, card.categoryLabel);
     const itemNum = itemIndex !== undefined ? itemIndex : (Number(card.code) || 1);
     setSelectedProject({
       id: itemNum,

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useId } from 'react';
 import { Send, Check, Loader2, AlertCircle } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 import { CustomDropdown, DropdownOption } from './CustomDropdown';
+import { trackContactSubmit } from '../utils/analytics';
 
 const INQUIRY_OPTIONS: DropdownOption[] = [
   { value: 'Video Editing', label: 'Video Editing & Post-Production' },
@@ -64,6 +65,7 @@ export const ContactForm: React.FC = () => {
       const data = await response.json().catch(() => ({}));
 
       if (response.ok && (data.success === 'true' || data.success === true)) {
+        trackContactSubmit(formData.subject);
         setSubmittedData({ name: formData.name, email: formData.email });
         setIsSubmitted(true);
         setActivationNeeded(false);

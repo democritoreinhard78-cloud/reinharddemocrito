@@ -7,6 +7,8 @@ import { ContactForm } from './ContactForm';
 import { DoubleSquare } from './SectionLabel';
 import { SocialIcon } from './SocialIcons';
 import { NarCraftLogo } from './NarCraftLogo';
+import { ViewCounter } from './ViewCounter';
+import { trackEmailCopy } from '../utils/analytics';
 
 const NAV_LINKS = [
   { label: 'HOME', href: '#home' },
@@ -27,6 +29,7 @@ export const ContactSection: React.FC = () => {
   const handleCopyEmail = async () => {
     try {
       await navigator.clipboard.writeText(personalInfo.email);
+      trackEmailCopy();
       setIsCopied(true);
       clearTimeout(copyTimer.current);
       copyTimer.current = setTimeout(() => setIsCopied(false), 2500);
@@ -170,7 +173,12 @@ export const ContactSection: React.FC = () => {
           </span>
         </div>
 
-        <div className="relative z-10 pb-3 pt-4 text-center font-mono text-[8px] sm:text-[9px] uppercase tracking-[0.26em] text-white/60">
+        {/* Live Visitor Counter Telemetry Badge */}
+        <div className="relative z-10 pt-5 pb-2 flex justify-center">
+          <ViewCounter />
+        </div>
+
+        <div className="relative z-10 pb-6 pt-3 text-center font-mono text-[8px] sm:text-[9px] uppercase tracking-[0.26em] text-white/60">
           ALL RIGHTS RESERVED · NARCRAFT · REINHARD DEMOCRITO
         </div>
       </div>

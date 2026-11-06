@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { ThemeProvider } from './context/ThemeContext';
 import { Header } from './components/Header';
@@ -8,9 +8,14 @@ import { ProjectsSection } from './components/ProjectsSection';
 import { ProcessToolsSection } from './components/ProcessToolsSection';
 import { ContactSection } from './components/ContactSection';
 import { LoadingScreen } from './components/LoadingScreen';
+import { initGA } from './utils/analytics';
 
 export const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    initGA();
+  }, []);
 
   return (
     <ThemeProvider>
