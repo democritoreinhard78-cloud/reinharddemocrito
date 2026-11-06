@@ -15,7 +15,6 @@ export interface PersonalInfo {
   email: string;
   phone: string;
   location: LocationInfo;
-  bioHeadline?: string;
   bio: string[];
 }
 

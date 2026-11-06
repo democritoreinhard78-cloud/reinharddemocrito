@@ -190,7 +190,7 @@ export const Hero: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.35 }}
               className="mt-5 sm:mt-8 lg:mt-10 space-y-5 sm:space-y-8 lg:space-y-10 pointer-events-auto"
             >
-              <p className="font-sans text-[13.5px] sm:text-[15px] text-white/80 leading-relaxed max-w-[340px] sm:max-w-[460px] font-normal">
+              <p className="font-sans text-[13px] sm:text-[14.5px] font-normal normal-case tracking-normal text-white/80 leading-relaxed max-w-[315px] sm:max-w-[440px]">
                 A selection of identity systems, video editing, and creative direction developed for
                 founders, creators, and ambitious stories across diverse mediums.
               </p>

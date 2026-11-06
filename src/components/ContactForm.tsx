@@ -102,15 +102,15 @@ export const ContactForm: React.FC = () => {
           <h3 className="font-display uppercase tracking-wider text-white text-base sm:text-lg">
             [ MESSAGE TRANSMITTED DIRECTLY TO GMAIL ]
           </h3>
-          <p className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.14em] text-white/75 leading-relaxed">
-            THANK YOU FOR REACHING OUT{submittedData?.name ? `, ${submittedData.name.toUpperCase()}` : ''}.
-            YOUR INQUIRY HAS BEEN DISPATCHED STRAIGHT TO REINHARD&apos;S GMAIL (
-            <span className="text-white font-medium">{personalInfo.email.toUpperCase()}</span>).
-            HE WILL REVIEW YOUR PROJECT AND REPLY TO{' '}
+          <p className="font-sans text-xs sm:text-[13px] font-normal normal-case tracking-normal text-white/80 leading-relaxed">
+            Thank you for reaching out{submittedData?.name ? `, ${submittedData.name}` : ''}.
+            Your inquiry has been dispatched straight to Reinhard&apos;s Gmail (
+            <span className="text-white font-medium">{personalInfo.email}</span>).
+            He will review your project and reply to{' '}
             <span className="text-white font-medium">
-              {submittedData?.email.toUpperCase() || 'YOUR EMAIL'}
+              {submittedData?.email || 'your email'}
             </span>{' '}
-            SHORTLY.
+            shortly.
           </p>
         </div>
 

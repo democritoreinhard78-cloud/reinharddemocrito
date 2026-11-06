@@ -100,7 +100,7 @@ export const AboutSection: React.FC = () => {
                 {/* Expanded Details Inside Active Column */}
                 {isActive ? (
                   <div className="space-y-4 pt-3">
-                    <p className="font-sans text-[13.5px] sm:text-[14.5px] text-white/80 leading-relaxed font-normal">
+                    <p className="font-sans text-[13px] sm:text-[14px] font-normal normal-case tracking-normal text-white/80 leading-[1.65]">
                       {proj.description}
                     </p>
                     <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.18em] text-white/50 pt-3 border-t border-white/10">
@@ -138,16 +138,11 @@ export const AboutSection: React.FC = () => {
             )}
           </div>
 
-          <div className="lg:col-span-6 space-y-4 sm:space-y-5">
-            {personalInfo.bioHeadline && (
-              <h3 className="font-sans text-xl sm:text-2xl lg:text-[1.65rem] font-bold text-white tracking-tight leading-snug">
-                {personalInfo.bioHeadline}
-              </h3>
-            )}
+          <div className="lg:col-span-6 space-y-5">
             {personalInfo.bio.map((paragraph, index) => (
               <p
                 key={index}
-                className="font-sans text-[15px] sm:text-[16px] text-white/85 leading-[1.75] font-normal"
+                className="font-sans text-[15px] sm:text-[16px] lg:text-[16.5px] font-normal normal-case tracking-normal text-white/85 leading-[1.75]"
               >
                 {paragraph}
               </p>
