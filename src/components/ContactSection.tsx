@@ -52,9 +52,9 @@ export const ContactSection: React.FC = () => {
               SOMETHING MEANINGFUL
             </h2>
 
-            <p className="font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.15em] text-white/65 leading-relaxed max-w-sm">
-              WHETHER YOU&apos;RE STARTING A NEW PROJECT OR NEED A PARTNER FOR DIRECTION, VIDEO
-              EDITING, OR VISUAL DESIGN — I&apos;M HERE TO HELP TURN YOUR VISION INTO REALITY.
+            <p className="font-sans text-[13.5px] sm:text-[14.5px] text-white/75 leading-relaxed max-w-sm font-normal">
+              Whether you&apos;re starting a new project or need a partner for direction, video
+              editing, or visual design — I&apos;m here to help turn your vision into reality.
             </p>
 
             {/* Interactive Controls */}

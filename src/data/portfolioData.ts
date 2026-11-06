@@ -14,9 +14,11 @@ export const portfolioData: PortfolioData = {
       city: "Digos City",
       address: "Davao del Sur, Philippines"
     },
+    bioHeadline: "I’m a visual creative driven by storytelling, movement, and detail.",
     bio: [
-      "Hi, I'm Reinhard Democrito. For me, good creative work simply comes down to curiosity and honest effort. As someone who directs, edits, and designs, I don't just take a brief and disappear—I like treating every project as a partnership, making sure I really understand your story and what you want to achieve before diving in.",
-      "I try to keep things simple: stay grounded, communicate clearly, and be someone people genuinely enjoy working with. I'm constantly eager to learn new tools, try different creative approaches, and pick up fresh experiences with every project. Whatever we're building together, I put real care into making sure the final piece feels right and actually connects with people."
+      "I'm Reinhard Democrito — a director, video editor, and visual designer based in the Philippines. I work across events, brand stories, commercial edits, and promotional content, and I like being involved from the first shot to the final cut.",
+      "My approach is straightforward: frame it well, trust the light, and let the moment do the work. I shoot and edit with intention so the final piece feels real and connects with people. Whether I'm behind the camera or deep in a timeline, the goal is always the same — make something that feels real. I bring that same care to motion graphics and AI-assisted video, using modern tools in service of the story.",
+      "I'm available for videography, editing, and visual design projects. If you have footage that needs cutting or an idea ready to direct, I take edit-only jobs and full collaborations too."
     ]
   },
 

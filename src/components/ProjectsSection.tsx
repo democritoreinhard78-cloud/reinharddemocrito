@@ -795,7 +795,7 @@ const CategoryCoverflow: React.FC<CategoryCoverflowProps> = ({ cards, onSelectCa
                         <p className="font-display text-sm sm:text-lg lg:text-xl font-bold uppercase tracking-tight text-white drop-shadow-sm">
                           {card.client}
                         </p>
-                        <p className="font-mono text-[8px] sm:text-[9px] uppercase tracking-[0.16em] text-white/75 line-clamp-1">
+                        <p className="font-sans text-[11px] sm:text-[12.5px] text-white/75 line-clamp-1 font-normal">
                           {card.description}
                         </p>
                       </div>
