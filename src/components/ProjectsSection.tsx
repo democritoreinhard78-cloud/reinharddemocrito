@@ -37,7 +37,7 @@ const CATEGORIES: PortfolioCategory[] = [
   {
     id: 'directing-outputs',
     index: '01',
-    label: 'Directing and Editing Outputs',
+    label: 'Video Editing',
     subtitle: 'COMMERCIAL FILMS, NARRATIVES & DIRECTION SHOWCASES'
   },
   {
@@ -67,11 +67,11 @@ const CATEGORIES: PortfolioCategory[] = [
 ];
 
 const CASE_STUDY_CARDS: CaseStudyCard[] = [
-  // 01. DIRECTING AND EDITING OUTPUTS (5 Real Video Works)
+  // 01. VIDEO EDITING (5 Real Video Works)
   {
     code: '01',
     categoryId: 'directing-outputs',
-    categoryLabel: 'Directing and Editing Outputs',
+    categoryLabel: 'Video Editing',
     client: 'CCIS SHORT FILM: PAHINUMDOM',
     discipline: 'SHORT FILM DIRECTION & EDITING',
     year: '2024',
@@ -83,7 +83,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
   {
     code: '02',
     categoryId: 'directing-outputs',
-    categoryLabel: 'Directing and Editing Outputs',
+    categoryLabel: 'Video Editing',
     client: 'EL REGRESO — ELTRESIX9',
     discipline: 'OFFICIAL MUSIC VIDEO DIRECTION',
     year: '2024',
@@ -95,7 +95,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
   {
     code: '03',
     categoryId: 'directing-outputs',
-    categoryLabel: 'Directing and Editing Outputs',
+    categoryLabel: 'Video Editing',
     client: 'LUNAN BY MRC FILMS',
     discipline: 'MRC FILMS / SHORT FILM DIRECTION',
     year: '2024',
@@ -107,7 +107,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
   {
     code: '04',
     categoryId: 'directing-outputs',
-    categoryLabel: 'Directing and Editing Outputs',
+    categoryLabel: 'Video Editing',
     client: 'GLOBAL GOVERNANCE',
     discipline: 'CREATIVE DIRECTION & EDITING',
     year: '2024',
@@ -119,7 +119,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
   {
     code: '05',
     categoryId: 'directing-outputs',
-    categoryLabel: 'Directing and Editing Outputs',
+    categoryLabel: 'Video Editing',
     client: 'SPORTS WELLNESS',
     discipline: 'DOCUMENTARY & WELLNESS COMMERCIAL',
     year: '2024',

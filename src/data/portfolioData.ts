@@ -86,7 +86,7 @@ export const portfolioData: PortfolioData = {
     {
       id: 1,
       title: "CCIS Short Film: Pahinumdom",
-      category: "Directing and Editing Outputs",
+      category: "Video Editing",
       year: "2024",
       image: "/projects/pahinumdom-thumb.jpg",
       video: "/projects/pahinumdom-web.mp4",
@@ -95,7 +95,7 @@ export const portfolioData: PortfolioData = {
     {
       id: 2,
       title: "El Regreso — Eltresix9 (Official Music Video)",
-      category: "Directing and Editing Outputs",
+      category: "Video Editing",
       year: "2024",
       image: "/projects/el-regreso-thumb.jpg",
       video: "/projects/el-regreso-web.mp4",
@@ -104,7 +104,7 @@ export const portfolioData: PortfolioData = {
     {
       id: 3,
       title: "Lunan by MRC Films",
-      category: "Directing and Editing Outputs",
+      category: "Video Editing",
       year: "2024",
       image: "/projects/lunan-thumb.jpg",
       video: "/projects/lunan-web.mp4",
@@ -113,7 +113,7 @@ export const portfolioData: PortfolioData = {
     {
       id: 4,
       title: "Global Governance",
-      category: "Directing and Editing Outputs",
+      category: "Video Editing",
       year: "2024",
       image: "/projects/contempo-thumb.jpg",
       video: "/projects/contempo-web.mp4",
@@ -122,7 +122,7 @@ export const portfolioData: PortfolioData = {
     {
       id: 5,
       title: "Sports Wellness",
-      category: "Directing and Editing Outputs",
+      category: "Video Editing",
       year: "2024",
       image: "/projects/sports-wellness-thumb.jpg",
       video: "/projects/sports-wellness-web.mp4",
