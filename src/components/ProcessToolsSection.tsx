@@ -192,7 +192,7 @@ export const ProcessToolsSection: React.FC = () => {
       className="relative w-full bg-ink border-b border-white/10 overflow-hidden transition-colors duration-300"
     >
       {/* 1. UPPER PHILOSOPHY STATEMENT WITH FLANKING EDGE-TO-EDGE HAIRLINES & STACKED SQUARES */}
-      <div className="relative flex items-center justify-between w-full pt-24 sm:pt-32 pb-2 z-10">
+      <div className="relative flex items-center justify-between w-full pt-20 sm:pt-28 lg:pt-32 pb-6 sm:pb-8 lg:pb-3 z-20">
         {/* Left Edge Hairline + Stacked Squares */}
         <div
           aria-hidden="true"
@@ -213,7 +213,7 @@ export const ProcessToolsSection: React.FC = () => {
           transition={{ duration: 0.7 }}
           className="px-4 sm:px-8 text-center mx-auto"
         >
-          <h2 className="font-display font-normal uppercase text-[clamp(1.45rem,3.65vw,3.35rem)] leading-[1.06] tracking-[-0.02em]">
+          <h2 className="font-display font-normal uppercase text-[clamp(1.2rem,3.4vw,3.35rem)] leading-[1.08] tracking-[-0.02em]">
             <span className="block text-[#f2f2f2]">GOOD WORK IS BUILT ON GOOD</span>
             <span className="block text-[#f2f2f2]">QUESTIONS. STRATEGY PROVIDES</span>
             <span className="block text-[#f2f2f2]">THE DIRECTION, DESIGN GIVES IT</span>
@@ -240,11 +240,11 @@ export const ProcessToolsSection: React.FC = () => {
       </div>
 
       {/* 2. PORTRAIT STAGE WITH 6 EDITORIAL SPREAD CARDS & CRISS-CROSSED TAPE RIBBONS */}
-      <div className="spread-card-stage relative w-full h-[490px] sm:h-[600px] lg:h-[670px] -mt-5 sm:-mt-8 lg:-mt-10 overflow-hidden">
+      <div className="spread-card-stage relative w-full h-[470px] sm:h-[600px] lg:h-[670px] mt-1 sm:-mt-4 lg:-mt-10 overflow-hidden">
         {/* Studio Horizon Backdrop (starts below cap level so cap & upper cards straddle the horizon) */}
         <div
           aria-hidden="true"
-          className="absolute inset-x-0 top-[95px] sm:top-[125px] lg:top-[142px] bottom-0 z-[1] transition-all duration-300"
+          className="absolute inset-x-0 top-[110px] sm:top-[125px] lg:top-[142px] bottom-0 z-[1] transition-all duration-300"
           style={{
             background: isLight
               ? 'radial-gradient(ellipse 64% 92% at 76% 56%, #ffffff 0%, #dcd9cf 40%, #cbc7bc 70%, #e4e1d7 94%)'
@@ -471,7 +471,7 @@ export const ProcessToolsSection: React.FC = () => {
 
         {/* CENTER PORTRAIT CUTOUT (Large close-up chest-to-head crop rising from bottom, z-[18], solid bottom blocking tapes) */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 top-0 z-[18] mx-auto w-[min(98vw,780px)] sm:w-[min(92vw,900px)] lg:w-[1020px] overflow-hidden flex items-start justify-center">
-          <div className="relative w-full h-[182%] scale-x-[1.1] -translate-y-[4.5%] translate-x-[1%] flex items-start justify-center origin-top">
+          <div className="relative w-full h-[182%] scale-x-[1.1] translate-y-[4%] sm:translate-y-[0%] lg:-translate-y-[4.5%] translate-x-[1%] flex items-start justify-center origin-top">
             <Portrait
               alt={`${fullName} studio portrait`}
               className="w-full h-full !object-contain !object-top grayscale contrast-[1.32] brightness-[0.86] drop-shadow-[0_22px_48px_rgba(0,0,0,0.9)]"
@@ -542,7 +542,7 @@ export const ProcessToolsSection: React.FC = () => {
         </div>
 
         {/* Chest Micro-Links Over Portrait ([ START A PROJECT ] & [ GET IN TOUCH ], z-[24]) */}
-        <div className="absolute inset-x-0 bottom-[38px] sm:bottom-[48px] lg:bottom-[54px] z-[24] flex items-center justify-center gap-8 sm:gap-14">
+        <div className="absolute inset-x-0 bottom-[30px] sm:bottom-[48px] lg:bottom-[54px] z-[24] flex items-center justify-center gap-8 sm:gap-14">
           <a
             href="#contact"
             className="font-mono text-[8px] sm:text-[9px] uppercase tracking-[0.18em] text-white/90 hover:text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] transition-colors"
