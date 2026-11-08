@@ -7,17 +7,26 @@ import { DoubleSquare } from './SectionLabel';
 
 const TAPE_ITEMS = [
   'TURNING COMPLEXITY INTO CLARITY',
-  'CREATIVE DIRECTOR',
+  'VIDEO EDITOR',
   'TURNING COMPLEXITY INTO CLARITY',
-  'CREATIVE DIRECTOR',
+  'POST-PRODUCTION SPECIALIST',
   'TURNING COMPLEXITY INTO CLARITY',
-  'CREATIVE DIRECTOR',
+  'VIDEO EDITOR',
   'TURNING COMPLEXITY INTO CLARITY',
-  'CREATIVE DIRECTOR'
+  'POST-PRODUCTION SPECIALIST'
 ];
 
-const MarqueeTapeContent: React.FC<{ reverse?: boolean }> = ({ reverse = false }) => (
-  <div className="bg-gradient-to-r from-[#82878a] via-[#e2e4e6] to-[#82878a] text-[#111315] py-1.5 sm:py-2 border-y border-black/25 shadow-[0_10px_28px_rgba(0,0,0,0.65)] overflow-hidden">
+const MarqueeTapeContent: React.FC<{ reverse?: boolean; isLight?: boolean }> = ({
+  reverse = false,
+  isLight = false
+}) => (
+  <div
+    className={`py-1.5 sm:py-2 border-y shadow-[0_10px_28px_rgba(0,0,0,0.25)] overflow-hidden ${
+      isLight
+        ? 'bg-gradient-to-r from-[#e5e2d6] via-[#ffffff] to-[#e5e2d6] text-[#111315] border-black/15'
+        : 'bg-gradient-to-r from-[#82878a] via-[#e2e4e6] to-[#82878a] text-[#111315] border-black/25'
+    }`}
+  >
     <div
       className={`${
         reverse ? 'animate-marquee-right' : 'animate-marquee-left'
@@ -241,14 +250,14 @@ export const ProcessToolsSection: React.FC = () => {
 
       {/* 2. PORTRAIT STAGE WITH 6 EDITORIAL SPREAD CARDS & CRISS-CROSSED TAPE RIBBONS */}
       <div className="spread-card-stage relative w-full h-[470px] sm:h-[600px] lg:h-[670px] mt-1 sm:-mt-4 lg:-mt-10 overflow-hidden">
-        {/* Studio Horizon Backdrop (starts below cap level so cap & upper cards straddle the horizon) */}
+        {/* Studio Horizon Backdrop */}
         <div
           aria-hidden="true"
-          className="absolute inset-x-0 top-[110px] sm:top-[125px] lg:top-[142px] bottom-0 z-[1] transition-all duration-300"
+          className="absolute inset-0 z-[1] transition-all duration-300 pointer-events-none"
           style={{
             background: isLight
-              ? 'radial-gradient(ellipse 64% 92% at 76% 56%, #ffffff 0%, #dcd9cf 40%, #cbc7bc 70%, #e4e1d7 94%)'
-              : 'radial-gradient(ellipse 64% 92% at 76% 56%, #8f969a 0%, #585f63 38%, #1d2124 68%, #080808 92%)'
+              ? 'radial-gradient(ellipse 70% 85% at 50% 55%, #ffffff 0%, rgba(242,240,232,0.6) 55%, var(--color-ink) 100%)'
+              : 'radial-gradient(ellipse 64% 92% at 76% 56%, #8f969a 0%, #585f63 38%, #1d2124 68%, #080808 85%, var(--color-ink) 100%)'
           }}
         />
 
@@ -390,7 +399,7 @@ export const ProcessToolsSection: React.FC = () => {
             </div>
             <div className="space-y-0.5 pt-1">
               <div className="font-mono text-[4.5px] font-medium text-black uppercase">
-                DIRECTING & CUT
+                VIDEO EDITING & CUT
               </div>
               <div className="w-full h-[1.5px] bg-black/60" />
               <div className="w-3/4 h-[1.5px] bg-black/40" />
@@ -405,7 +414,7 @@ export const ProcessToolsSection: React.FC = () => {
           className="pointer-events-none absolute -inset-x-24 bottom-[95px] sm:bottom-[115px] lg:bottom-[124px] z-[10]"
           style={{ transform: 'rotate(6.2deg)' }}
         >
-          <MarqueeTapeContent />
+          <MarqueeTapeContent isLight={isLight} />
         </div>
 
         {/* Tape 2: Middle Horizontal */}
@@ -413,7 +422,7 @@ export const ProcessToolsSection: React.FC = () => {
           aria-hidden="true"
           className="pointer-events-none absolute -inset-x-24 bottom-[92px] sm:bottom-[118px] lg:bottom-[132px] z-[10]"
         >
-          <MarqueeTapeContent reverse />
+          <MarqueeTapeContent reverse isLight={isLight} />
         </div>
 
         {/* Tape 3: Lower-Left to Upper-Right Diagonal */}
@@ -422,7 +431,7 @@ export const ProcessToolsSection: React.FC = () => {
           className="pointer-events-none absolute -inset-x-24 bottom-[48px] sm:bottom-[62px] lg:bottom-[72px] z-[10]"
           style={{ transform: 'rotate(-3.6deg)' }}
         >
-          <MarqueeTapeContent />
+          <MarqueeTapeContent isLight={isLight} />
         </div>
 
         {/* Tape 4: Bottom Horizontal */}
@@ -430,7 +439,7 @@ export const ProcessToolsSection: React.FC = () => {
           aria-hidden="true"
           className="pointer-events-none absolute -inset-x-24 bottom-[18px] sm:bottom-[22px] lg:bottom-[26px] z-[10]"
         >
-          <MarqueeTapeContent reverse />
+          <MarqueeTapeContent reverse isLight={isLight} />
         </div>
 
         {/* CARD 5: Bottom-Left Nestled Between Tapes (One-Way ANOVA 2D Animation Spread, z-[15]) */}
@@ -469,23 +478,29 @@ export const ProcessToolsSection: React.FC = () => {
           </div>
         </div>
 
-        {/* CENTER PORTRAIT CUTOUT (Large close-up chest-to-head crop rising from bottom, z-[18], solid bottom blocking tapes) */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 top-0 z-[18] mx-auto w-[min(98vw,780px)] sm:w-[min(92vw,900px)] lg:w-[1020px] overflow-hidden flex items-start justify-center">
-          <div className="relative w-full h-[182%] scale-x-[1.1] translate-y-[4%] sm:translate-y-[0%] lg:-translate-y-[4.5%] translate-x-[1%] flex items-start justify-center origin-top">
+        {/* CENTER PORTRAIT CUTOUT */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[18] mx-auto w-full flex items-end justify-center overflow-visible">
+          <div className="relative h-[390px] sm:h-[500px] lg:h-[560px] w-auto max-w-[min(96vw,720px)] sm:max-w-[780px] lg:max-w-[880px] flex items-end justify-center">
             <Portrait
               alt={`${fullName} studio portrait`}
-              className="w-full h-full !object-contain !object-top grayscale contrast-[1.32] brightness-[0.86] drop-shadow-[0_22px_48px_rgba(0,0,0,0.9)]"
+              className={`h-full w-auto max-w-full !object-contain !object-bottom grayscale contrast-[1.28] brightness-[0.92] transition-all ${
+                isLight
+                  ? 'drop-shadow-[0_12px_28px_rgba(0,0,0,0.18)]'
+                  : 'drop-shadow-[0_22px_48px_rgba(0,0,0,0.9)]'
+              }`}
             />
+            {/* Subtle dark studio vignette across lower chest only in dark mode */}
+            {!isLight && (
+              <div
+                aria-hidden="true"
+                className="absolute inset-x-0 bottom-0 h-[36%] pointer-events-none"
+                style={{
+                  background:
+                    'radial-gradient(ellipse 38% 88% at 52% 100%, rgba(8,8,8,0.82) 0%, rgba(8,8,8,0.4) 55%, transparent 100%)'
+                }}
+              />
+            )}
           </div>
-          {/* Subtle dark studio vignette across lower chest so [ START A PROJECT ] & [ GET IN TOUCH ] pop cleanly */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-x-0 bottom-0 h-[36%] pointer-events-none"
-            style={{
-              background:
-                'radial-gradient(ellipse 38% 88% at 52% 100%, rgba(8,8,8,0.82) 0%, rgba(8,8,8,0.4) 55%, transparent 100%)'
-            }}
-          />
         </div>
 
         {/* CARD 6: Bottom-Right Foreground Card (PSITS Region 11 Champion Award Spread, z-[22]) */}
@@ -500,7 +515,7 @@ export const ProcessToolsSection: React.FC = () => {
                 <span>CHAMPION</span>
               </div>
               <div className="flex justify-between text-black/75">
-                <span>BEST DIRECTOR</span>
+                <span>BEST FILM</span>
                 <span>& EDIT</span>
               </div>
             </div>
@@ -545,13 +560,21 @@ export const ProcessToolsSection: React.FC = () => {
         <div className="absolute inset-x-0 bottom-[30px] sm:bottom-[48px] lg:bottom-[54px] z-[24] flex items-center justify-center gap-8 sm:gap-14">
           <a
             href="#contact"
-            className="font-mono text-[8px] sm:text-[9px] uppercase tracking-[0.18em] text-white/90 hover:text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] transition-colors"
+            className={`font-mono text-[8px] sm:text-[9px] uppercase tracking-[0.18em] transition-colors ${
+              isLight
+                ? 'text-[#111315]/90 hover:text-black drop-shadow-[0_1px_4px_rgba(255,255,255,0.9)]'
+                : 'text-white/90 hover:text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)]'
+            }`}
           >
             [ START A PROJECT ]
           </a>
           <a
             href="#contact"
-            className="font-mono text-[8px] sm:text-[9px] uppercase tracking-[0.18em] text-white/90 hover:text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] transition-colors"
+            className={`font-mono text-[8px] sm:text-[9px] uppercase tracking-[0.18em] transition-colors ${
+              isLight
+                ? 'text-[#111315]/90 hover:text-black drop-shadow-[0_1px_4px_rgba(255,255,255,0.9)]'
+                : 'text-white/90 hover:text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)]'
+            }`}
           >
             [ GET IN TOUCH ]
           </a>

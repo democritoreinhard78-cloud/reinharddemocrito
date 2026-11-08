@@ -31,15 +31,15 @@ const PROJECT_OUTPUTS: FilmstripProject[] = [
     image: '/projects/cert-5.jpg',
     category: '[ 05 // CHAMPION ]',
     title: 'PSITS REGION 11',
-    subtitle: 'Champion • Best Director & Edit',
+    subtitle: 'Champion • Best Short Film & Edit',
     year: '2025',
     isLightCard: true
   },
   {
     image: '/projects/cert-9.jpg',
-    category: '[ 01 // DIRECTING ]',
+    category: '[ 01 // VIDEO EDITING ]',
     title: 'FOUR-SAKEN TRUTHS',
-    subtitle: 'Best Director • MRC Films',
+    subtitle: 'Award-Winning Film • MRC Films',
     year: '2024',
     isLightCard: false
   },

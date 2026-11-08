@@ -8,7 +8,7 @@ import { trackProjectView } from '../utils/analytics';
 
 type CategoryId =
   | 'all'
-  | 'directing-outputs'
+  | 'video-editing-outputs'
   | 'motion-2d'
   | 'intro-short-videos'
   | 'graphics'
@@ -35,10 +35,10 @@ interface CaseStudyCard {
 
 const CATEGORIES: PortfolioCategory[] = [
   {
-    id: 'directing-outputs',
+    id: 'video-editing-outputs',
     index: '01',
     label: 'Video Editing',
-    subtitle: 'COMMERCIAL FILMS, NARRATIVES & DIRECTION SHOWCASES'
+    subtitle: 'COMMERCIAL FILMS, NARRATIVES & EDITORIAL SHOWCASES'
   },
   {
     id: 'motion-2d',
@@ -70,10 +70,10 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
   // 01. VIDEO EDITING (5 Real Video Works)
   {
     code: '01',
-    categoryId: 'directing-outputs',
+    categoryId: 'video-editing-outputs',
     categoryLabel: 'Video Editing',
     client: 'CCIS SHORT FILM: PAHINUMDOM',
-    discipline: 'SHORT FILM DIRECTION & EDITING',
+    discipline: 'SHORT FILM EDITING & POST-PRODUCTION',
     year: '2024',
     image: '/projects/pahinumdom-thumb.jpg',
     video: '/projects/pahinumdom-web.mp4',
@@ -82,10 +82,10 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
   },
   {
     code: '02',
-    categoryId: 'directing-outputs',
+    categoryId: 'video-editing-outputs',
     categoryLabel: 'Video Editing',
     client: 'EL REGRESO — ELTRESIX9',
-    discipline: 'OFFICIAL MUSIC VIDEO DIRECTION',
+    discipline: 'OFFICIAL MUSIC VIDEO EDITING',
     year: '2024',
     image: '/projects/el-regreso-thumb.jpg',
     video: '/projects/el-regreso-web.mp4',
@@ -94,22 +94,22 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
   },
   {
     code: '03',
-    categoryId: 'directing-outputs',
+    categoryId: 'video-editing-outputs',
     categoryLabel: 'Video Editing',
     client: 'LUNAN BY MRC FILMS',
-    discipline: 'MRC FILMS / SHORT FILM DIRECTION',
+    discipline: 'MRC FILMS / SHORT FILM EDITING',
     year: '2024',
     image: '/projects/lunan-thumb.jpg',
     video: '/projects/lunan-web.mp4',
     description:
-      'Cinematic short film production by MRC Films directed with atmospheric location cinematography, delicate character blocking, and evocative sound design.'
+      'Cinematic short film production by MRC Films edited with atmospheric pacing, nuanced color grading, and evocative sound design.'
   },
   {
     code: '04',
-    categoryId: 'directing-outputs',
+    categoryId: 'video-editing-outputs',
     categoryLabel: 'Video Editing',
     client: 'GLOBAL GOVERNANCE',
-    discipline: 'CREATIVE DIRECTION & EDITING',
+    discipline: 'VIDEO EDITING & POST-PRODUCTION',
     year: '2024',
     image: '/projects/contempo-thumb.jpg',
     video: '/projects/contempo-web.mp4',
@@ -118,7 +118,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
   },
   {
     code: '05',
-    categoryId: 'directing-outputs',
+    categoryId: 'video-editing-outputs',
     categoryLabel: 'Video Editing',
     client: 'SPORTS WELLNESS',
     discipline: 'DOCUMENTARY & WELLNESS COMMERCIAL',
@@ -256,33 +256,33 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
     categoryId: 'certificates-awards',
     categoryLabel: 'Certificates & Awards',
     client: 'PSITS REGIONAL CHAMPION',
-    discipline: 'BEST SHORT FILM, DIRECTOR & EDITING',
+    discipline: 'BEST SHORT FILM & EDITING CHAMPION',
     year: '2025',
     image: '/projects/cert-5.jpg',
     description:
-      "Champion & multi-award sweep at the PSITS Region 11 Contest: Best Short Film, People's Choice Award, Best Director, Best Editing, Best Musical Scoring, and Best Trailer."
+      "Champion & multi-award sweep at the PSITS Region 11 Contest: Best Short Film, People's Choice Award, Best Editing, Best Musical Scoring, and Best Trailer."
   },
   {
     code: '02',
     categoryId: 'certificates-awards',
     categoryLabel: 'Certificates & Awards',
-    client: 'BEST DIRECTOR — "LUNAN"',
+    client: 'BEST SHORT FILM & EDITING — "LUNAN"',
     discipline: 'PSITS REGION 11 FILM FESTIVAL',
     year: '2024',
     image: '/projects/cert-8.jpg',
     description:
-      'Awarded Best Director for the short film "Lunan" at the PSITS Region 11 Interschool Short Film Festival, celebrating exceptional cinematic vision and narrative execution.'
+      'Awarded Best Short Film & Editing Honors for "Lunan" at the PSITS Region 11 Interschool Short Film Festival, celebrating exceptional cinematic pacing and editorial execution.'
   },
   {
     code: '03',
     categoryId: 'certificates-awards',
     categoryLabel: 'Certificates & Awards',
-    client: 'BEST DIRECTOR — "FOUR-SAKEN TRUTHS"',
+    client: 'BEST EDITING & FILM — "FOUR-SAKEN TRUTHS"',
     discipline: 'SINE KABATAAN FILM FESTIVAL',
     year: '2024',
     image: '/projects/cert-9.jpg',
     description:
-      'Awarded Best Director for "Four-Saken Truths" (MRC Films) at the Sine Kabataan Short Film Festival, hosted by the Sangguniang Kabataan Provincial Federation of Davao del Sur.'
+      'Awarded Filmmaking & Editorial Honors for "Four-Saken Truths" (MRC Films) at the Sine Kabataan Short Film Festival, hosted by the Sangguniang Kabataan Provincial Federation of Davao del Sur.'
   },
   {
     code: '04',
@@ -315,7 +315,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
     year: '2023',
     image: '/projects/cert-2.jpg',
     description:
-      '1st Runner-Up distinction in the Short Film Category at the CPAR Recital 2023, showcasing early narrative directing and cinematography craft.'
+      '1st Runner-Up distinction in the Short Film Category at the CPAR Recital 2023, showcasing early narrative filmmaking and editorial craft.'
   },
   {
     code: '07',

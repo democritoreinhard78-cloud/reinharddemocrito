@@ -6,7 +6,7 @@ import { trackContactSubmit } from '../utils/analytics';
 
 const INQUIRY_OPTIONS: DropdownOption[] = [
   { value: 'Video Editing', label: 'Video Editing & Post-Production' },
-  { value: 'Direction', label: 'Creative Direction & Storytelling' },
+  { value: 'Short Form', label: 'Short-Form & Social Video Editing' },
   { value: 'Graphic Design', label: 'Graphic Design' },
   { value: 'Motion Graphics', label: 'Motion Graphics & Social Content' },
   { value: 'Collaboration', label: 'Project Collaboration' },

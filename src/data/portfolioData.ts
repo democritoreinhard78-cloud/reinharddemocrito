@@ -4,9 +4,9 @@ export const portfolioData: PortfolioData = {
   personalInfo: {
     firstName: "REINHARD",
     lastName: "DEMOCRITO",
-    title: "Director, Video Editor & Graphic Designer",
-    subtitle: "Director, Video Editor & Graphic Designer",
-    tagline: "I direct, edit & design stories that connect.",
+    title: "Video Editor & Graphic Designer",
+    subtitle: "Video Editor & Graphic Designer",
+    tagline: "I edit & design stories that connect.",
     intro: "Every project is a partnership - I make sure I understand your story before diving in.",
     email: "democritoreinhard78@gmail.com",
     phone: "+63 917 145 6375",
@@ -15,7 +15,7 @@ export const portfolioData: PortfolioData = {
       address: "Davao del Sur, Philippines"
     },
     bio: [
-      "Hi, I'm Reinhard Democrito. For me, good creative work simply comes down to curiosity and honest effort. As someone who directs, edits, and designs, I don't just take a brief and disappear—I like treating every project as a partnership, making sure I really understand your story and what you want to achieve before diving in.",
+      "Hi, I'm Reinhard Democrito. For me, good creative work simply comes down to curiosity and honest effort. As someone who specializes in video editing and graphic design, I don't just take a brief and disappear—I like treating every project as a partnership, making sure I really understand your story and what you want to achieve before diving in.",
       "I try to keep things simple: stay grounded, communicate clearly, and be someone people genuinely enjoy working with. I'm constantly eager to learn new tools, try different creative approaches, and pick up fresh experiences with every project. Whatever we're building together, I put real care into making sure the final piece feels right and actually connects with people."
     ]
   },
@@ -55,7 +55,7 @@ export const portfolioData: PortfolioData = {
   },
 
   whatCanIDo: [
-    "Direction - Storytelling - Concept",
+    "Video Editing - Post-Production - Storytelling",
     "Video Editing - Motion Graphics",
     "Graphic Design - Social Media Graphics",
     "Presentations - Canva & PowerPoint"
@@ -77,7 +77,7 @@ export const portfolioData: PortfolioData = {
   // Editable: describe your own workflow here.
   process: [
     { title: "Discover", description: "Understanding your story, goals and audience." },
-    { title: "Define", description: "Shaping the concept, tone and creative direction." },
+    { title: "Define", description: "Shaping the narrative pacing, structure and editorial flow." },
     { title: "Create", description: "Shooting, designing and building the first cut." },
     { title: "Refine", description: "Editing, polishing and fine-tuning together with you." },
     { title: "Deliver", description: "Final files, ready to connect with people." }
@@ -108,7 +108,7 @@ export const portfolioData: PortfolioData = {
       year: "2024",
       image: "/projects/lunan-thumb.jpg",
       video: "/projects/lunan-web.mp4",
-      description: "Cinematic short film production by MRC Films directed with atmospheric location cinematography, delicate character blocking, and evocative sound design."
+      description: "Cinematic short film production by MRC Films edited with atmospheric pacing, nuanced color grading, and evocative sound design."
     },
     {
       id: 4,
@@ -165,11 +165,11 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: 10,
-      title: "Directing & Filmmaking Honors (PSITS & Sine Kabataan)",
+      title: "Video Editing & Filmmaking Honors (PSITS & Sine Kabataan)",
       category: "Certificates & Awards",
       year: "2024–2025",
       image: "/projects/cert-5.jpg",
-      description: "PSITS Region 11 Champion & Best Director / Best Editing awards, Sine Kabataan Best Director ('Four-Saken Truths'), Best Research Project Award, and CCIS-LGU Governor leadership distinction."
+      description: "PSITS Region 11 Champion & Best Editing / Short Film awards, Sine Kabataan Best Film & Editing Honors ('Four-Saken Truths'), Best Research Project Award, and CCIS-LGU Governor leadership distinction."
     }
   ]
 };
