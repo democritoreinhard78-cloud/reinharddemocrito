@@ -217,7 +217,7 @@ export const Hero: React.FC = () => {
                   className="px-3.5 sm:px-4 py-2 bg-white text-black font-mono text-[9.5px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] flex items-center gap-2 hover:bg-white/90 active:scale-95 transition-all shadow-[0_4px_22px_rgba(255,255,255,0.22)] cursor-pointer"
                 >
                   <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse shrink-0" />
-                  <span>[ WATCH SHOWREEL // 0:14 ]</span>
+                  <span>[ REPLAY INTRO REEL ↺ ]</span>
                 </button>
                 <a
                   href="#projects"

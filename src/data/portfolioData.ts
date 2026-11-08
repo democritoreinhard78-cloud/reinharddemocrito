@@ -85,15 +85,6 @@ export const portfolioData: PortfolioData = {
   projects: [
     {
       id: 1,
-      title: "Video Editing Showreel // Highlights",
-      category: "Video Editing",
-      year: "2025",
-      image: "/projects/video-editing-highlights-thumb.jpg",
-      video: "/projects/video-editing-highlights.mp4",
-      description: "Official video editing highlight montage showcasing rhythmic cutting, cinematic pacing, dynamic motion sync, color grading, and creative post-production across commercial and narrative works."
-    },
-    {
-      id: 2,
       title: "CCIS Short Film: Pahinumdom",
       category: "Video Editing",
       year: "2024",
@@ -102,7 +93,7 @@ export const portfolioData: PortfolioData = {
       description: "CCIS short film 'Pahinumdom' exploring memory, grief, and reflection through cinematic narrative storytelling, emotional pacing, and nuanced color grading."
     },
     {
-      id: 3,
+      id: 2,
       title: "El Regreso — Eltresix9 (Official Music Video)",
       category: "Video Editing",
       year: "2024",
@@ -111,7 +102,7 @@ export const portfolioData: PortfolioData = {
       description: "Official music video for 'El Regreso' by Eltresix9, featuring energetic performance choreography, stylized low-key lighting, kinetic visual rhythm, and urban street aesthetics."
     },
     {
-      id: 4,
+      id: 3,
       title: "Lunan by MRC Films",
       category: "Video Editing",
       year: "2024",
@@ -120,7 +111,7 @@ export const portfolioData: PortfolioData = {
       description: "Cinematic short film production by MRC Films edited with atmospheric pacing, nuanced color grading, and evocative sound design."
     },
     {
-      id: 5,
+      id: 4,
       title: "Global Governance",
       category: "Video Editing",
       year: "2024",
@@ -129,7 +120,7 @@ export const portfolioData: PortfolioData = {
       description: "Dynamic short film production exploring themes of global governance, crafted with deliberate narrative pacing, cinematic visual storytelling, and polished editorial rhythm."
     },
     {
-      id: 6,
+      id: 5,
       title: "Sports Wellness",
       category: "Video Editing",
       year: "2024",
@@ -138,7 +129,7 @@ export const portfolioData: PortfolioData = {
       description: "Dynamic sports wellness showcase capturing athletic movement, training discipline, and community well-being with crisp documentary cinematography and upbeat editorial tempo."
     },
     {
-      id: 7,
+      id: 6,
       title: "Statistics: One-Way ANOVA",
       category: "Motion Graphics & 2D Animation",
       year: "2024",
@@ -147,7 +138,7 @@ export const portfolioData: PortfolioData = {
       description: "Educational 2D animated explainer breaking down One-Way ANOVA statistical analysis with custom character rigging, illustrated environments, and motion design."
     },
     {
-      id: 8,
+      id: 7,
       title: "Memorandum of Agreement: Car Trading",
       category: "Motion Graphics & 2D Animation",
       year: "2023",
@@ -156,7 +147,7 @@ export const portfolioData: PortfolioData = {
       description: "Commercial 2D animation explainer for M and L Car Trading detailing memorandum of agreement terms with custom vector assets and motion design."
     },
     {
-      id: 9,
+      id: 8,
       title: "Larry Fiero & Creator Short-Form Content",
       category: "Intro Videos & Short Video Contents",
       year: "2025",
@@ -165,7 +156,7 @@ export const portfolioData: PortfolioData = {
       description: "Cinematic 3D metallic logo reveals, dynamic channel intro openers, and high-retention vertical video edits with kinetic typography."
     },
     {
-      id: 10,
+      id: 9,
       title: "Dhenyhos Menu & Sacred Heart Pixel Art",
       category: "Graphics",
       year: "2024",
@@ -173,7 +164,7 @@ export const portfolioData: PortfolioData = {
       description: "Commercial restaurant menu layouts for Dhenyhos Family Resort and custom 2D pixel art campus environments for Sacred Heart Chronicles."
     },
     {
-      id: 11,
+      id: 10,
       title: "Video Editing & Filmmaking Honors (PSITS & Sine Kabataan)",
       category: "Certificates & Awards",
       year: "2024–2025",
