@@ -1,19 +1,9 @@
 import React, { useState, useEffect, useRef, useId } from 'react';
 import { Send, Check, Loader2, AlertCircle } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
-import { CustomDropdown, DropdownOption } from './CustomDropdown';
 import { trackContactSubmit } from '../utils/analytics';
 
-const INQUIRY_OPTIONS: DropdownOption[] = [
-  { value: 'Video Editing', label: 'Video Editing & Post-Production' },
-  { value: 'Short Form', label: 'Short-Form & Social Video Editing' },
-  { value: 'Graphic Design', label: 'Graphic Design' },
-  { value: 'Motion Graphics', label: 'Motion Graphics & Social Content' },
-  { value: 'Collaboration', label: 'Project Collaboration' },
-  { value: 'Other', label: 'Other Inquiry' }
-];
-
-const EMPTY_FORM = { name: '', email: '', subject: 'Video Editing', message: '' };
+const EMPTY_FORM = { name: '', email: '', message: '' };
 
 const FIELD_CLASS =
   'w-full px-3.5 py-2.5 bg-ink border border-white/20 text-xs text-white placeholder-white/35 focus:outline-none focus:border-white transition-colors font-mono disabled:opacity-50';
@@ -41,7 +31,7 @@ export const ContactForm: React.FC = () => {
     setIsSubmitting(true);
     setErrorMessage(null);
 
-    const subject = `[NarCraft Portfolio] ${formData.subject} from ${formData.name}`;
+    const subject = `[NarCraft Portfolio] Project Inquiry from ${formData.name}`;
 
     try {
       const response = await fetch(`https://formsubmit.co/ajax/${personalInfo.email}`, {
@@ -55,7 +45,6 @@ export const ContactForm: React.FC = () => {
           email: formData.email,
           _replyto: formData.email,
           _subject: subject,
-          inquiry_type: formData.subject,
           message: formData.message,
           _captcha: 'false',
           _template: 'table'
@@ -65,7 +54,7 @@ export const ContactForm: React.FC = () => {
       const data = await response.json().catch(() => ({}));
 
       if (response.ok && (data.success === 'true' || data.success === true)) {
-        trackContactSubmit(formData.subject);
+        trackContactSubmit('Project Inquiry');
         setSubmittedData({ name: formData.name, email: formData.email });
         setIsSubmitted(true);
         setActivationNeeded(false);
@@ -143,7 +132,7 @@ export const ContactForm: React.FC = () => {
   }
 
   const mailtoFallbackHref = `mailto:${personalInfo.email}?subject=${encodeURIComponent(
-    `[${formData.subject}] Inquiry from ${formData.name || 'Visitor'}`
+    `Project Inquiry from ${formData.name || 'Visitor'}`
   )}&body=${encodeURIComponent(
     `${formData.message}\n\n— ${formData.name || 'Anonymous'} (${formData.email || 'No email provided'})`
   )}`;
@@ -196,15 +185,6 @@ export const ContactForm: React.FC = () => {
           placeholder="JANE@COMPANY.COM"
           autoComplete="email"
           className={FIELD_CLASS}
-        />
-      </div>
-
-      <div className="sm:col-span-2">
-        <CustomDropdown
-          label="[ INQUIRY TYPE ]"
-          options={INQUIRY_OPTIONS}
-          value={formData.subject}
-          onChange={(val) => setFormData({ ...formData, subject: val })}
         />
       </div>
 
