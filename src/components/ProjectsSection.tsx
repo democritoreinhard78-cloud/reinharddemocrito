@@ -67,9 +67,21 @@ const CATEGORIES: PortfolioCategory[] = [
 ];
 
 const CASE_STUDY_CARDS: CaseStudyCard[] = [
-  // 01. VIDEO EDITING (5 Real Video Works)
+  // 01. VIDEO EDITING (6 Real Video Works)
   {
     code: '01',
+    categoryId: 'video-editing-outputs',
+    categoryLabel: 'Video Editing',
+    client: 'VIDEO EDITING SHOWREEL',
+    discipline: 'EDITORIAL HIGHLIGHTS & INTRO REEL',
+    year: '2025',
+    image: '/projects/video-editing-highlights-thumb.jpg',
+    video: '/projects/video-editing-highlights.mp4',
+    description:
+      'Official video editing highlight montage showcasing rhythmic cutting, cinematic pacing, dynamic motion sync, color grading, and creative post-production across commercial and narrative works.'
+  },
+  {
+    code: '02',
     categoryId: 'video-editing-outputs',
     categoryLabel: 'Video Editing',
     client: 'CCIS SHORT FILM: PAHINUMDOM',
@@ -81,7 +93,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'CCIS short film "Pahinumdom" exploring memory, grief, and reflection through cinematic narrative storytelling, emotional pacing, and nuanced color grading.'
   },
   {
-    code: '02',
+    code: '03',
     categoryId: 'video-editing-outputs',
     categoryLabel: 'Video Editing',
     client: 'EL REGRESO — ELTRESIX9',
@@ -93,7 +105,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Official music video for "El Regreso" by Eltresix9, featuring energetic performance choreography, stylized low-key lighting, kinetic visual rhythm, and urban street aesthetics.'
   },
   {
-    code: '03',
+    code: '04',
     categoryId: 'video-editing-outputs',
     categoryLabel: 'Video Editing',
     client: 'LUNAN BY MRC FILMS',
@@ -105,7 +117,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Cinematic short film production by MRC Films edited with atmospheric pacing, nuanced color grading, and evocative sound design.'
   },
   {
-    code: '04',
+    code: '05',
     categoryId: 'video-editing-outputs',
     categoryLabel: 'Video Editing',
     client: 'GLOBAL GOVERNANCE',
@@ -117,7 +129,7 @@ const CASE_STUDY_CARDS: CaseStudyCard[] = [
       'Dynamic short film production exploring themes of global governance, crafted with deliberate narrative pacing, cinematic visual storytelling, and polished editorial rhythm.'
   },
   {
-    code: '05',
+    code: '06',
     categoryId: 'video-editing-outputs',
     categoryLabel: 'Video Editing',
     client: 'SPORTS WELLNESS',

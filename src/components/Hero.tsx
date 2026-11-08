@@ -1,10 +1,23 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { portfolioData } from '../data/portfolioData';
 import { useTheme } from '../context/ThemeContext';
 import { renderCurvedCylinder, useCurvedFilmstrip } from './CurvedFilmstrip';
 import { Portrait } from './Portrait';
 import { DoubleSquare } from './SectionLabel';
+import { ProjectModal } from './ProjectModal';
+import type { ProjectItem } from '../types/portfolio';
+
+const SHOWREEL_PROJECT: ProjectItem = {
+  id: 0,
+  title: 'Video Editing Showreel // Highlights',
+  category: 'Video Editing',
+  year: '2025',
+  video: '/projects/video-editing-highlights.mp4',
+  image: '/projects/video-editing-highlights-thumb.jpg',
+  description:
+    'Official video editing highlight montage showcasing rhythmic cutting, cinematic pacing, dynamic motion sync, color grading, and creative post-production across commercial and narrative works.'
+};
 
 const TAPE_ITEMS = [
   'TURNING COMPLEXITY INTO CLARITY',
@@ -22,6 +35,8 @@ export const Hero: React.FC = () => {
   const fullName = `${personalInfo.firstName} ${personalInfo.lastName}`;
   const { theme } = useTheme();
   const isLight = theme === 'light';
+
+  const [isShowreelOpen, setIsShowreelOpen] = useState(false);
 
   const sectionRef = useRef<HTMLElement>(null);
   const frontCanvasRef = useRef<HTMLCanvasElement>(null);
@@ -195,7 +210,15 @@ export const Hero: React.FC = () => {
                 founders, creators, and ambitious stories across diverse mediums.
               </p>
 
-              <div className="flex items-center gap-5 sm:gap-12 pt-0.5 sm:pt-1 whitespace-nowrap">
+              <div className="flex flex-wrap items-center gap-3.5 sm:gap-6 pt-0.5 sm:pt-1">
+                <button
+                  type="button"
+                  onClick={() => setIsShowreelOpen(true)}
+                  className="px-3.5 sm:px-4 py-2 bg-white text-black font-mono text-[9.5px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] flex items-center gap-2 hover:bg-white/90 active:scale-95 transition-all shadow-[0_4px_22px_rgba(255,255,255,0.22)] cursor-pointer"
+                >
+                  <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse shrink-0" />
+                  <span>[ WATCH SHOWREEL // 0:14 ]</span>
+                </button>
                 <a
                   href="#projects"
                   className="font-mono text-[10px] sm:text-[12px] uppercase tracking-[0.16em] sm:tracking-[0.2em] text-white/90 hover:text-white transition-colors"
@@ -284,6 +307,15 @@ export const Hero: React.FC = () => {
           className="absolute inset-0 w-full h-full z-20 drop-shadow-[0_24px_38px_rgba(0,0,0,0.85)]"
         />
       </div>
+
+      {isShowreelOpen && (
+        <ProjectModal
+          project={SHOWREEL_PROJECT}
+          onClose={() => setIsShowreelOpen(false)}
+          categoryCode="01"
+          categoryLabel="Video Editing"
+        />
+      )}
     </section>
   );
 };

@@ -36,11 +36,11 @@ const PROJECT_OUTPUTS: FilmstripProject[] = [
     isLightCard: true
   },
   {
-    image: '/projects/cert-9.jpg',
-    category: '[ 01 // VIDEO EDITING ]',
-    title: 'FOUR-SAKEN TRUTHS',
-    subtitle: 'Award-Winning Film • MRC Films',
-    year: '2024',
+    image: '/projects/video-editing-highlights-thumb.jpg',
+    category: '[ 01 // HIGHLIGHTS ]',
+    title: 'VIDEO EDITING REEL',
+    subtitle: 'Highlights & Intro • 2025',
+    year: '2025',
     isLightCard: false
   },
   {
