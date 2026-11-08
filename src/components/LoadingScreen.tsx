@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Volume2, VolumeX, Play, Pause, ArrowRight } from 'lucide-react';
 import { NarCraftLogo } from './NarCraftLogo';
@@ -9,13 +9,23 @@ interface LoadingScreenProps {
 
 export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const completedRef = useRef(false);
   const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(true);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(14.23);
   const [isExiting, setIsExiting] = useState(false);
 
-  // Attempt autoplay immediately upon mount
+  const handleComplete = useCallback(() => {
+    if (completedRef.current) return;
+    completedRef.current = true;
+    setIsExiting(true);
+    setTimeout(() => {
+      onComplete?.();
+    }, 350);
+  }, [onComplete]);
+
+  // Attempt autoplay immediately upon mount + attach ended listener & safety fallback timer
   useEffect(() => {
     const vid = videoRef.current;
     if (vid) {
@@ -25,29 +35,42 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         playPromise
           .then(() => setIsPlaying(true))
           .catch(() => {
-            // Autoplay blocked fallback
             setIsPlaying(false);
           });
       }
+
+      const onEnded = () => {
+        handleComplete();
+      };
+
+      vid.addEventListener('ended', onEnded);
+
+      // Safety timeout: automatically enter portfolio after 15 seconds if video ends or stalls
+      const fallbackTimer = setTimeout(() => {
+        handleComplete();
+      }, 15000);
+
+      return () => {
+        vid.removeEventListener('ended', onEnded);
+        clearTimeout(fallbackTimer);
+      };
     }
-  }, []);
+  }, [handleComplete]);
 
   const handleTimeUpdate = () => {
     const vid = videoRef.current;
     if (vid) {
-      setCurrentTime(vid.currentTime);
-      if (vid.duration && !isNaN(vid.duration)) {
-        setDuration(vid.duration);
+      const cur = vid.currentTime;
+      const dur = vid.duration;
+      setCurrentTime(cur);
+      if (dur && !isNaN(dur) && dur > 0) {
+        setDuration(dur);
+        // Automatically transition into portfolio when video reaches within 0.25s of end
+        if (cur >= dur - 0.25) {
+          handleComplete();
+        }
       }
     }
-  };
-
-  const handleComplete = () => {
-    if (isExiting) return;
-    setIsExiting(true);
-    setTimeout(() => {
-      onComplete?.();
-    }, 450);
   };
 
   const toggleSound = () => {
@@ -266,13 +289,13 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
       {/* FOOTER BAR: Location & Enter Site CTA */}
       <footer className="relative z-20 flex flex-wrap items-center justify-between gap-3 w-full max-w-6xl mx-auto pt-2 border-t border-white/10 font-mono text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.2em] text-white/50">
         <span className="hidden sm:inline-block">[ DIGOS CITY, DAVAO DEL SUR · PHILIPPINES ]</span>
-        <span className="text-white/70">
-          AUTOPLAYING INTRO // ADVANCES TO PORTFOLIO ON COMPLETION
+        <span className="text-white/80 font-medium">
+          AUTOMATICALLY ENTERING PORTFOLIO IN {Math.max(0, Math.ceil(duration - currentTime))}S
         </span>
         <button
           type="button"
           onClick={handleComplete}
-          className="text-white hover:underline underline-offset-4 cursor-pointer ml-auto sm:ml-0"
+          className="text-white hover:underline underline-offset-4 cursor-pointer ml-auto sm:ml-0 font-semibold"
         >
           [ ENTER PORTFOLIO ↓ ]
         </button>
